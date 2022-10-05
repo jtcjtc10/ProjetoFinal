@@ -1,0 +1,83 @@
+body{
+    background-image: url("../../public/images/jordan1-bg.png");
+    background-size: cover;
+}
+
+label{
+    color:white;
+}
+
+span{
+    color:white;
+}
+
+legend{
+    color: white;
+}
+
+.titulo-login{
+    font-size: 24px;
+    font-weight: bolder;
+    color: black;
+    font-family: 'Montserrat';
+    margin-bottom: 30px;
+}
+
+.modal-login{
+    justify-content: center;
+    margin-top: 20%;
+    padding: 2% 0% 4% 0%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+.section-login{
+    height: 600px;
+}
+
+.label-login{
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-self: flex-start;
+}
+
+.input-login{
+    background-color: #F3F3F3 !important;
+    border-width: 0px !important;
+    border-radius: 10px !important;
+}
+
+.btn-login{
+    background-color: #CD0D0D;
+    align-items: center;
+    height: 35px;
+    border-width: 0px;
+    border-radius: 11px;
+}
+
+.btn-texto-login{
+    color: #FFFFFF;
+    justify-self: center;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Montserrat';
+}
+
+.esqueci-senha-login{
+    color: black;
+    text-decoration: underline;
+    font-weight: bolder;
+    display: block;
+    margin-top: 5%;
+}
+
+.cadastre-se-login{
+    color: black;
+    text-decoration: none;
+    font-weight: bolder;
+    display: block;
+    margin-top: 10%;
+}
