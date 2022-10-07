@@ -3,6 +3,8 @@ import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 export default function Login() {
     const [tLogin, setTxtLogin] = React.useState("");
@@ -72,7 +74,9 @@ export default function Login() {
     }
 
     return (
-        <div className="container-fluid">
+        <>
+        <Header/>
+        <div className="container-fluid ">
             <div className="row justify-content-center align-items-center section-login">
                 <div className="col-lg-4 col-md-6 col-sm-8 modal-login text-center">
                     <h1 className="titulo-login">LOGIN</h1>
@@ -104,5 +108,7 @@ export default function Login() {
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }

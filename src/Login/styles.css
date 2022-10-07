@@ -31,7 +31,7 @@ legend{
 }
 
 .section-login{
-    height: 600px;
+    height: 600px; /*Pedrosa coloca 100vh aqui para que o footer permaneça no pé da página*/
 }
 
 .label-login{

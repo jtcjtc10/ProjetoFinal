@@ -1,0 +1,45 @@
+.backgroudHeader{
+    background-color: white !important;
+}
+
+.navHeader{
+    margin-right: 1rem ;
+}
+
+.inputDePesquisa{    
+    margin-top: .5rem;
+    border-radius: 15px;
+    border: transparent;    
+    width: 10rem;
+    height: 30px;   
+    background-color: #ECEBEB !important; 
+    color: black !important;
+    padding-left: 1rem;
+}
+
+.buttonDePesquisa{
+    margin-top: .5rem;
+    border-radius: 15px;
+    background-color: #ECEBEB !important; 
+    border: 2px solid transparent;
+    width: 4rem;
+    height: 30px;
+    margin-right: 2rem;    
+}
+
+.linkTelaInicial{
+    font-size: 25px;
+    padding-top: .5rem;
+    font-family: "Montserrat";
+    font-weight: bold;   
+}
+
+.buttonLogin{
+    background-color: transparent !important;
+    border: none;
+}
+
+.buttonCarrinho{
+    background-color: transparent !important;
+    border: none;
+}

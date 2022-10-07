@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import  'bootstrap/dist/css/bootstrap.min.css' ;
-import Login from './Login/Login';
 
+import Rotas from './routes';
 class App extends Component {
 state = {
     data: null
@@ -22,10 +22,11 @@ state = {
     }
     return body;
   };
+  
   render() {
     return (
       <div className="App">
-        <Login/>
+        <Rotas/>
       </div>
     );
   }

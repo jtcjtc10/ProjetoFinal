@@ -1,0 +1,18 @@
+.backgroudHeader{
+    background-color: white !important;
+}
+
+.navHeader{
+    margin-right: 1rem ;
+}
+
+.imgFooter{
+    width: 5rem;
+}
+
+.spanTextFooter{
+    color: black;
+    padding-top: .25rem;
+    font-weight: bold;
+    font-family: "Montserrat";
+}
