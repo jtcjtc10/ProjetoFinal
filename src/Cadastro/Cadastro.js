@@ -52,70 +52,70 @@ export default function Cadastro() {
     return (
         <>
             <Header/>
-            <div className="container-fluid">
-                <div className="row justify-content-center align-items-center section-login">
-                    <div className="col-lg-6 col-md-8 col-sm-10 modal-login text-center">
+            <div className="container-fluid body-cadastro">
+                <div className="row justify-content-center align-items-center section-cadastro">
+                    <div className="col-lg-6 col-md-8 col-sm-10 modal-cadastro text-center">
                         <h1 className="titulo-login">REGISTRO</h1>
                         <p>Por favor, preencha os dados abaixo para completar seu cadastro!</p>
                         <form id="registro">
                             <div className="row col-sm-12 ms-1 mb-3 justify-content-center">
                                 <div className="row col-sm-6 justify-content-center">
                                     <div className="row mb-2 mt-3 justify-content-center">
-                                        <label for="nome" className="col-sm-12 col-form-label label-login">Nome</label>
+                                        <label for="nome" className="col-sm-12 col-form-label label-cadastro">Nome</label>
                                         <div className="col-sm-12">
-                                            <input type="text" className="form-control input-login" id="nome"
+                                            <input type="text" className="form-control input-cadastro" id="nome"
                                                 onChange={(e) => setTxtNome(e.target.value)} value={tNome} placeholder="Nome" />
                                         </div>
                                     </div>
                                     <div className="row mb-2 justify-content-center">
-                                        <label for="cpf" className="col-sm-12 col-form-label label-login">CPF</label>
+                                        <label for="cpf" className="col-sm-12 col-form-label label-cadastro">CPF</label>
                                         <div className="col-sm-12">
-                                            <input type="number" className="form-control input-login" id="cpf"
+                                            <input type="number" className="form-control input-cadastro" id="cpf"
                                                 onChange={(e) => setTxtCpf(e.target.value)} value={tCpf} placeholder="CPF" />
                                         </div>
                                     </div>
                                     <div className="row mb-2 justify-content-center">
-                                        <label for="rg" className="col-sm-12 col-form-label label-login">RG</label>
+                                        <label for="rg" className="col-sm-12 col-form-label label-cadastro">RG</label>
                                         <div className="col-sm-12">
-                                            <input type="text" className="form-control input-login" id="rg"
+                                            <input type="text" className="form-control input-cadastro" id="rg"
                                                 onChange={(e) => setTxtRg(e.target.value)} value={tRg} placeholder="RG" />
                                         </div>
                                     </div>
                                     <div className="row mb-2 justify-content-center">
-                                        <label for="endereco" className="col-sm-12 col-form-label label-login">Endereço</label>
+                                        <label for="endereco" className="col-sm-12 col-form-label label-cadastro">Endereço</label>
                                         <div className="col-sm-12">
-                                            <input type="text" className="form-control input-login" id="endereco"
+                                            <input type="text" className="form-control input-cadastro" id="endereco"
                                                 onChange={(e) => setTxtEndereco(e.target.value)} value={tEndereco} placeholder="Endereço" />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="row col-sm-6 justify-content-center">
                                     <div className="row mb-2 mt-3 justify-content-center">
-                                        <label for="email" className="col-sm-12 col-form-label label-login">E-mail</label>
+                                        <label for="email" className="col-sm-12 col-form-label label-cadastro">E-mail</label>
                                         <div className="col-sm-12">
-                                            <input type="email" className="form-control input-login" id="email"
+                                            <input type="email" className="form-control input-cadastro" id="email"
                                                 onChange={(e) => setTxtEmail(e.target.value)} value={tEmail} placeholder="E-mail" />
                                         </div>
                                     </div>
                                     <div className="row mb-2 justify-content-center">
-                                        <label for="telefone" className="col-sm-12 col-form-label label-login">Telefone</label>
+                                        <label for="telefone" className="col-sm-12 col-form-label label-cadastro">Telefone</label>
                                         <div className="col-sm-12">
-                                            <input type="number" className="form-control input-login" id="telefone"
+                                            <input type="number" className="form-control input-cadastro" id="telefone"
                                                 onChange={(e) => setTxtTelefone(e.target.value)} value={tTelefone} placeholder="Telefone" />
                                         </div>
                                     </div>
                                     <div className="row mb-2 justify-content-center">
-                                        <label for="senha" className="col-sm-12 col-form-label label-login">Senha</label>
+                                        <label for="senha" className="col-sm-12 col-form-label label-cadastro">Senha</label>
                                         <div className="col-sm-12">
-                                            <input type="password" className="form-control input-login" id="senha"
+                                            <input type="password" className="form-control input-cadastro" id="senha"
                                                 onChange={(e) => setTxtSenha(e.target.value)} value={tSenha} placeholder="Senha" />
                                         </div>
                                     </div>
                                     <div className="row mb-2 justify-content-center">
-                                        <label for="confirmarSenha" className="col-sm-12 col-form-label label-login">Confirmar
+                                        <label for="confirmarSenha" className="col-sm-12 col-form-label label-cadastro">Confirmar
                                             Senha</label>
                                         <div className="col-sm-12">
-                                            <input type="password" className="form-control input-login" id="confirmarSenha"
+                                            <input type="password" className="form-control input-cadastro" id="confirmarSenha"
                                                 onChange={(e) => setTxtConfirmSenha(e.target.value)} value={tConfirmSenha} placeholder="Confirmar senha" />
                                         </div>
                                     </div>
@@ -124,7 +124,7 @@ export default function Cadastro() {
                             <div className="row justify-content-center">
                                 <div className="col-sm-6">
                                     <button type="submit" className="mt-3 btn-login col-sm-12" onClick={verificaCadastro}>
-                                        <span className="btn-texto-login">CADASTRAR</span>
+                                        <span className="btn-cadastrar">CADASTRAR</span>
                                     </button>
                                 </div>
                             </div>

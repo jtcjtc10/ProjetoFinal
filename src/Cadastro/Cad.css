@@ -10,11 +10,6 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-body{
-    background-image: url("../../public/images/jordan1-redbg.png");
-    background-size: cover;
-}
-
 label{
     color:white;
 }
@@ -27,6 +22,11 @@ legend{
     color: white;
 }
 
+.body-cadastro{
+    background-image: url("../../public/images/jordan1-redbg.png");
+    background-size: cover;
+}
+
 .titulo-login{
     font-size: 24px;
     font-weight: bolder;
@@ -35,7 +35,7 @@ legend{
     margin-bottom: 30px;
 }
 
-.modal-login{
+.modal-cadastro{
     justify-content: center;
     margin: 3% 0% 3% 0% !important;
     padding: 2% 0% 4% 0%;
@@ -43,11 +43,11 @@ legend{
     border-radius: 20px;
 }
 
-.section-login{
-    height: 650px;
+.section-cadastro{
+    height: 100vh;
 }
 
-.label-login{
+.label-cadastro{
     color: black;
     font-family: 'Montserrat';
     font-weight: bold;
@@ -56,40 +56,17 @@ legend{
     justify-self: flex-start;
 }
 
-.input-login{
+.input-cadastro{
     background-color: #F3F3F3 !important;
     border-width: 0px !important;
     border-radius: 10px !important;
 }
 
-.btn-login{
-    background-color: #CD0D0D;
-    align-items: center;
-    height: 35px;
-    border-width: 0px;
-    border-radius: 11px;
-}
 
-.btn-texto-login{
+.btn-cadastrar{
     color: #FFFFFF;
     justify-self: center;
     font-size: 14px;
     font-weight: bold;
     font-family: 'Montserrat';
-}
-
-.esqueci-senha-login{
-    color: black;
-    text-decoration: underline;
-    font-weight: bolder;
-    display: block;
-    margin-top: 5%;
-}
-
-.cadastre-se-login{
-    color: black;
-    text-decoration: none;
-    font-weight: bolder;
-    display: block;
-    margin-top: 10%;
 }
