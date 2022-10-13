@@ -25,6 +25,9 @@ legend{
 .body-cadastro{
     background-image: url("../../public/images/jordan1-redbg.png");
     background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .titulo-login{
@@ -37,14 +40,15 @@ legend{
 
 .modal-cadastro{
     justify-content: center;
-    margin: 3% 0% 3% 0% !important;
     padding: 2% 0% 4% 0%;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .section-cadastro{
-    height: 100vh;
+    margin: 20px 0px;
 }
 
 .label-cadastro{
