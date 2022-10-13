@@ -1,9 +1,5 @@
-.backgroudHeader{
-    background-color: white !important;
-}
-
-.navHeader{
-    margin-right: 1rem ;
+.backgroundFooter{
+    background-color: #D9D9D9 !important;
 }
 
 .imgFooter{
@@ -13,6 +9,5 @@
 .spanTextFooter{
     color: black;
     padding-top: .25rem;
-    font-weight: bold;
-    font-family: "Montserrat";
+    font-family: 'Mate SC', serif;
 }
