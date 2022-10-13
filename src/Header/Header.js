@@ -3,6 +3,7 @@ import "./Header.css";
 import { BsFillPersonFill } from "react-icons/bs";
 import { BsFillCartFill } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function Header() {
     const [logado, setLogado] = useState(1);
@@ -40,14 +41,16 @@ function Header() {
                             </button>                            
                         </div>
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle buttonLogin" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <BsFillPersonFill size={30} color="black"/>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item" type="button">Meus Dados</button></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><button class="dropdown-item" type="button">Sair</button></li>                                
-                            </ul>
+                                <button class="btn btn-secondary dropdown-toggle buttonLogin" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <BsFillPersonFill size={30} color="black"/>
+                                </button>
+                                <ul class="dropdown-menu">
+                                <Link to="/dados_pedidos" className="linkPessoa">
+                                    <li><button class="dropdown-item" type="button">Meus Dados</button></li>
+                                </Link>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><button class="dropdown-item" type="button">Sair</button></li>                                
+                                </ul>
                         </div>                        
                     </div>                    
                 </div>
