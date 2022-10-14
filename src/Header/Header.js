@@ -19,7 +19,7 @@ function Header() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light backgroundHeader">
-            {logado == 1 &&
+            {logado == 1 && 
                 <div className="container-fluid backgroundHeader">
                     <div className="col-sm">
                         <Link to={"/"}>
@@ -31,6 +31,17 @@ function Header() {
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
+                </div>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div className="col-sm ms-3 justify-content-center">
+                        <ul className="navbar-nav mb-2 mb-lg-0 justify-content-start">
+                        <li className="nav-item">
+                                <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#classicSection">CLÁSSICOS</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#jordanSection">AIR JORDAN</a>
+                            </li>
+                        </ul>
                     </div>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <div className="col-sm ms-3 justify-content-center">
@@ -75,6 +86,7 @@ function Header() {
                         </div>
                     </div>
                 </div>
+            </div>
             }
             {logado == 0 &&
                 <div className="container-fluid backgroundHeader">

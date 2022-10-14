@@ -85,3 +85,7 @@
   .container .buttons button:first-child img {
     transform: rotate(180deg);
   }
+
+  .containerCard2{
+    height: 80vh;
+  }

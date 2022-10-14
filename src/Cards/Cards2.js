@@ -25,9 +25,11 @@ function Cards2() {
   if (!data || !data.length) return null;
 
   return (
-    <div className="container">
+    <div className="container containerCard2">
       <div className="logo">
+        <br/><br/>
         <img src="/static/images/logo.png"/>
+        <br/>
       </div>
       <div className="carousel" ref={carousel}>
         {data.map((item) => {
