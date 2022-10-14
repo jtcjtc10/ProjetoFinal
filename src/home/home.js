@@ -26,10 +26,10 @@ export default function Home() {
                         </div>
                     </div>
                     <div>
-                    <div className="row justify-content-center align-items-center card1 ">
+                    <div id="classicSection" className="row justify-content-center align-items-center card1 ">
                     <Cards />
                     </div>
-                    <div className="row justify-content-center align-items-center card2 ">
+                    <div id="jordanSection" className="row justify-content-center align-items-center card2 ">
                     <Cards2 />
                     </div>
                     </div>                    
