@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import "../DadosPedidos.css";
 import "../Cadastro/Cad.css";
 import "./Carrinho.css";
+import { BsFillTrashFill } from "react-icons/bs";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -22,7 +23,14 @@ export default function Cadastro() {
                                             <img></img>
                                         </div>
                                         <div className="col-8 dadosCarrinho">
-                                            <p className="pDadosCarrinho">Nike Jordan Fly Black Edition</p>
+                                            <div className="row">
+                                                <div className="col-11">
+                                                    <p className="pDadosCarrinho">Nike Jordan Fly Black Edition</p>
+                                                </div>
+                                                <div className="col-1 ">
+                                                    <BsFillTrashFill size={26} color="black" onClick={""}/>
+                                                </div>
+                                            </div>
                                             <p className="pDadosCarrinho">Tênis espetacular desenvolvido com a melhor tecnologia do mercado, utilizando couro de cabra cega.</p>
                                             <div className="mb-1">
                                                 <span className="spanTamanho">Tamanho: </span>
@@ -87,7 +95,7 @@ export default function Cadastro() {
                                         </div>
                                         <div className="row text-center mt-3">
                                             <div className="col-sm-12">
-                                                <a href="/home" className="spanCadastrarCarrinho">VOLTAR PARA AS COMPRAS</a>
+                                                <a href="/" className="spanCadastrarCarrinho">VOLTAR PARA AS COMPRAS</a>
                                             </div>
                                         </div>
                                     </div>

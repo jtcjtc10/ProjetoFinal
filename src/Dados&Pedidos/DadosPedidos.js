@@ -55,8 +55,8 @@ export default function Cadastro() {
 
             <div className="container-fluid body-cadastro">
                 <div className="row justify-content-center">
-                    <Header/>
-                    <div className="row justify-content-center align-items-center section-cadastro">
+                    <Header />
+                    <div className="row justify-content-center section-cadastro">
                         <div className="col-lg-5 col-md-6 col-sm-10 modal-cadastro">
                             <h1 className="titulo-login2">Meus Dados</h1>
                             {/* <p>Por favor, preencha os dados abaixo para completar seu cadastro!</p> */}
@@ -133,29 +133,29 @@ export default function Cadastro() {
                                 </div>
                             </form>
                         </div>
-                        <div className="col-lg-5 col-md-6 col-sm-10 modal-cadastro">
-                            <h1 className="titulo-login2">Meus Pedidos</h1>                            
+                        <div className="col-lg-5 col-md-6 col-sm-10 modal-cadastro1">
+                            <h1 className="titulo-login2">Meus Pedidos</h1>
                             <div className="container ">
                                 <div className="row rowPedidos">
                                     <div className="col-sm">
                                         <p className="pPedidos">Pedido: <small>{123456}</small></p>
-                                    </div>   
+                                    </div>
                                     <div className="col-sm">
-                                        <p className="pPedidos">Nº itens: <small>{2}</small></p>                                        
-                                    </div>   
+                                        <p className="pPedidos">Nº itens: <small>{2}</small></p>
+                                    </div>
                                     <div className="col-sm">
                                         <p className="pPedidos">Status: <small className="tagSmall">Aprovado</small></p>
-                                    </div>   
+                                    </div>
                                 </div>
                                 <div className="row rowPedidos">
                                     <div className="col-sm">
                                         <p className="pPedidos">Entrega: <small>A caminho</small></p>
-                                    </div>                                      
+                                    </div>
                                     <div className="col-sm">
                                         <p className="pPedidos">Endereço: <small>Rua das Mercês, 856, Prado, Belo Horizonte, MG</small></p>
-                                    </div>   
+                                    </div>
                                 </div>
-                                <hr></hr>                                
+                                <hr></hr>
                             </div>
                         </div>
                     </div>
