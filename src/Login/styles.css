@@ -27,7 +27,8 @@ legend{
 }
 
 .modal-login{
-    justify-content: center;
+    justify-content: center !important;
+    align-items: center !important;
     padding: 2% 0% 4% 0%;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
@@ -35,6 +36,7 @@ legend{
 
 .section-login{
     margin: 20px 0px;
+    height: 100%;
 }
 
 .label-login{

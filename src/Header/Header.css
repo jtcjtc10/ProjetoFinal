@@ -1,4 +1,4 @@
-.backgroudHeader{
+.backgroundHeader{
     background-color: white !important;
 }
 
@@ -28,10 +28,11 @@
 }
 
 .linkTelaInicial{
-    font-size: 25px;
+    font-size: 13px !important;
     padding-top: .5rem;
-    font-family: "Montserrat";
-    font-weight: bold;   
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: bolder !important;
+    color: black !important;
 }
 
 .buttonLogin{

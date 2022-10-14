@@ -24,24 +24,8 @@ export default function Login() {
                 text: 'Você deve preencher todos os campos.',
                 icon: 'error'
             });
-        } else if (tLogin != "gizpitta@gmail.com" || tPassword != "gizpitta") {
-            MySwal.fire({
-                title: 'Atenção!',
-                text: 'Credenciais inválidas.',
-                icon: 'warning'
-            });
         } else {
-            MySwal.fire({
-                title: 'Bem vindo de volta!',
-                text: 'Credenciais verificadas com sucesso.',
-                icon: 'success',
-                allowEscapeKey: false,
-                allowOutsideClick: false
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "principal.html";
-                }
-            });
+            entrar();
         }
         /*MySwal.fire({
         title: <p>Hello World</p>,
@@ -52,28 +36,6 @@ export default function Login() {
         }).then(() => {
         return MySwal.fire(<p>Shorthand works too</p>)
         })*/
-    }
-
-    const verifyLogin = () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
-            "txtLogin": "login",
-            "txtPassword": "gizpitta"
-        });
-
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-        };
-
-        fetch("http://localhost:8080/login", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
     }
 
     const entrar = () => {
@@ -92,7 +54,17 @@ export default function Login() {
             if (!responseJson.success) {
                 alert("Usuário e/ou senha incorreto!");
             } else {
-                window.location.href("https://www.nike.com.br");
+                MySwal.fire({
+                    title: 'Bem vindo de volta!',
+                    text: 'Credenciais verificadas com sucesso.',
+                    icon: 'success',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "principal.html";
+                    }
+                });
             }
         });
     }
@@ -122,7 +94,7 @@ export default function Login() {
                                 </div>
                                 <div className="row justify-content-center">
                                     <div className="col-sm-10">
-                                        <button type="button" className="mt-3 btn-login col-sm-12" onClick={verifyLogin}>
+                                        <button type="button" className="mt-3 btn-login col-sm-12" onClick={verificaEntrada}>
                                             <span className="btn-texto-login">ENTRAR</span>
                                             {/*<BiRightArrowAlt 
                                         color={"white"}

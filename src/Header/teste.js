@@ -37,26 +37,36 @@ function Header() {
                         </ul>
                     </div>
                     <div className="col-sm  ms-3 justify-content-end">
-                        <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end input-group">
-                                <li className="nav-item">
-                                    <a className="nav-link buttonCarrinho" role="button" >
-                                        <BsFillCartFill size={26} color="black" />
-                                    </a>
-                                </li>
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle form-control buttonLogin" role="button" id="navbarDropdown"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <BsFillPersonFill size={26} color="black" />
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item" role="button">Meus Dados</a></li>
-                                        <li><hr className="dropdown-divider" /></li>
-                                        <li><a className="dropdown-item" role="button">Sair</a></li>
-                                    </ul>
-                                </li>
-                            {/* 
-                            ----------------BARRA DE PESQUISA----------------
+                        <ul className="navbar-nav mb-2 mb-lg-0 justify-content-end">
                             <li className="nav-item">
+                                <a className="nav-link buttonCarrinho" role="button" >
+                                    <BsFillCartFill size={26} color="black" />
+                                </a>
+                            </li>
+
+                            <div className="input-group mb-3">
+                                <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                <ul className="dropdown-menu">
+                                    <li><a className="dropdown-item" href="#">Action</a></li>
+                                    <li><a className="dropdown-item" href="#">Another action</a></li>
+                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
+                                    <li><hr className="dropdown-divider"/></li>
+                                    <li><a className="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                                <input type="text" className="form-control" aria-label="Text input with dropdown button"/>
+                            </div>
+                            {/* <li className="nav-item dropdown ul-login">
+                                <a className="nav-link dropdown-toggle buttonLogin" role="button" id="navbarDropdown"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <BsFillPersonFill size={26} color="black" />
+                                </a>
+                                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a className="dropdown-item" role="button">Meus Dados</a></li>
+                                    <li><hr className="dropdown-divider" /></li>
+                                    <li><a className="dropdown-item" role="button">Sair</a></li>
+                                </ul>
+                            </li> */}
+                            {/* <li className="nav-item">
                                 <input className="inputDePesquisa" type="text" name="search" id="search" placeholder="Pesquisar" onChange={(e) => { setPesquisa(e.target.value) }}></input>
                                 <button className="buttonDePesquisa" type="" onClick={() => { teste() }}><BsSearch size={20} /></button>
                             </li> */}
