@@ -12,7 +12,7 @@ function Rotas(){
     return(
         <Router>
             <Routes>
-                <Route path="/home" exact element={<Home/>}></Route>
+                <Route path="/" exact element={<Home/>}></Route>
                 <Route path="/login" exact element={<Login/>}></Route>
                 <Route path="/cadastro" exact element={<Cadastro/>}></Route>
                 <Route path="/dados_pedidos" exact element={<DadosPedidos/>}></Route>
