@@ -27,7 +27,7 @@ function Cards2() {
   return (
     <div className="container">
       <div className="logo">
-        <img src="/static/images/logo.png"  />
+        <img src="/static/images/logo.png"/>
       </div>
       <div className="carousel" ref={carousel}>
         {data.map((item) => {
