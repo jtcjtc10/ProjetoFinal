@@ -3,6 +3,7 @@ import "./Header.css";
 import { BsFillPersonFill } from "react-icons/bs";
 import { BsFillCartFill } from "react-icons/bs";
 import { BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function Header() {
     const [logado, setLogado] = useState(1);

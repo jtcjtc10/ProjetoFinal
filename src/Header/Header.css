@@ -44,3 +44,7 @@
     background-color: transparent !important;
     border: none;
 }
+
+.linkPessoa{
+    text-decoration: none;
+}
