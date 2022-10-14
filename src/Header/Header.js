@@ -18,7 +18,7 @@ function Header() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light backgroundHeader">
             <div className="container-fluid backgroundHeader">
                 <a className="navbar-brand" href="#"><img src="images/logo.png" className=" w-20" width={85}></img></a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
