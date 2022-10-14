@@ -2,56 +2,56 @@
   {
     "id": "94313731",
     "name": "Nike Revolution 5 " ,
-    "price": 449.99,
+    "price": "Comprar",
     "oldPrice": 549.99,
     "image": "images/imagesC/pngwing.com (1).png"
   },
   {
     "id": "94313762",
     "name": "Nike Revolution Green 2",
-    "price": 499.99,
+    "price": "Comprar",
     "oldPrice": 799.99,
     "image": "images/imagesC/pngwing.com (2).png"
   },
   {
     "id": "94313731",
     "name": "Nike Classic 1 " ,
-    "price": 249.99,
+    "price": "Comprar",
     "oldPrice": 349.99,
     "image": "images/imagesC/pngwing.com (3).png"
   },
   {
     "id": "94313731",
     "name": "Nike Revolution 8 " ,
-    "price": 499.99,
+    "price": "Comprar",
     "oldPrice": 799.99,
     "image": "images/imagesC/pngwing.com (4).png"
   },
   {
     "id": "94313731",
     "name": "Nike Air Max 3 " ,
-    "price": 899.99,
+    "price": "Comprar",
     "oldPrice": 499.99,
     "image": "images/imagesC/pngwing.com (5).png"
   },
   {
     "id": "94313731",
     "name": "Tênis Nike Revolution 4 " ,
-    "price": 249.99,
+    "price": "Comprar",
     "oldPrice": 349.99,
     "image": "images/imagesC/pngwing.com (6).png"
   },
   {
     "id": "94313731",
     "name": "Nike Casual M1 " ,
-    "price": 499.99,
+    "price": "Comprar",
     "oldPrice": 249.99,
     "image": "images/imagesC/pngwing.com (7).png"
   },
   {
     "id": "94313731",
     "name": "Nike Air Max Red 3 " ,
-    "price": 699.99,
+    "price": "Comprar",
     "oldPrice": 449.99,
     "image": "images/imagesC/pngwing.com (8).png"
   }

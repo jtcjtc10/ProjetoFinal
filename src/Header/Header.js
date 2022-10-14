@@ -18,7 +18,7 @@ function Header() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light backgroundHeader">
             <div className="container-fluid backgroundHeader">
                 <div className="col-sm">
                 <Link to={"/"}>

@@ -1,0 +1,49 @@
+.body-home{
+    background-image: url("../../public/images/jordan1-bg.png");
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.card1{
+    background-color: white;
+
+}
+.card2{  
+    background-image: linear-gradient(to right, bisque ,  aliceblue );
+}
+.main1{
+    height: 450px;
+    width: 100%;
+    background-color: aliceblue;
+    background-image: linear-gradient(to right, bisque ,  aliceblue );
+    display:inline-flex;
+    
+}
+.main1-1{  
+    
+    width: 50%;
+    display: inline-block;    
+    
+}
+.main1-2{ 
+    display: inline-block;  
+    width: 50%;
+    text-align: center;  
+    
+    
+}
+.img1{
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 5%;
+    width: 100%;
+}
+.text1{
+    margin-top: 25%;
+}
+
+
+

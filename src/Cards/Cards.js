@@ -39,8 +39,8 @@ function Cards() {
               </div>
               <div className="info">
                 <span className="name">{name}</span>
-                <span className="oldPrice">U$ {oldPrice}</span>
-                <span className="price">U$ {price}</span>
+                <span className="oldPrice">R$ {oldPrice}</span>
+                <span className="price"> {price}</span>
               </div>
             </div>
           );
