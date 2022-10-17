@@ -1,5 +1,4 @@
 .body-home{
-    background-image: url("../../public/images/jordan1-bg.png");
     background-size: cover;
     position: relative;
     width: 100%;
@@ -47,10 +46,15 @@
 .main2{
     height: 500px;
     width: 100%;
-    background-color: aliceblue;
-    background-image: linear-gradient(to right, bisque ,  aliceblue );
+    background-color: rgb(252, 252, 252);
     display:inline-flex;
     
+}
+.img2{
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 
 
