@@ -44,6 +44,14 @@
 .text1{
     margin-top: 25%;
 }
+.main2{
+    height: 500px;
+    width: 100%;
+    background-color: aliceblue;
+    background-image: linear-gradient(to right, bisque ,  aliceblue );
+    display:inline-flex;
+    
+}
 
 
 

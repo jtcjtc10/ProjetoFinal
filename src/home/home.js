@@ -32,6 +32,19 @@ export default function Home() {
                     <div id="jordanSection" className="row justify-content-center align-items-center card2 ">
                     <Cards2 />
                     </div>
+                    <div className=" main2">
+                        <div className=" main1-1">
+                        <img className="img1" src="/images/jordan1-crimson.png"  />
+                        </div>
+                        <div className=" main1-2">
+                        <div className="text1">
+                        <h2>Os Melhores Modelos!</h2>
+                        <h4>Cores Vivas estão no Nosso DNA</h4>
+                        <h4>Conheça nosso modelos</h4>
+                        </div>
+                        </div>
+                    </div>
+
                     </div>                    
                     <Footer />
                 </div>
