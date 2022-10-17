@@ -47,10 +47,10 @@ function Header() {
                         <div className="col-sm ms-3 justify-content-center">
                             <ul className="navbar-nav mb-2 mb-lg-0 justify-content-start">
                                 <li className="nav-item">
-                                    <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#">CLÁSSICOS</a>
+                                    <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#classicSection">CLÁSSICOS</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#">AIR JORDAN</a>
+                                    <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#jordanSection">AIR JORDAN</a>
                                 </li>
                             </ul>
                         </div>
@@ -105,10 +105,10 @@ function Header() {
                         <div className="col-sm ms-3 justify-content-center">
                             <ul className="navbar-nav mb-2 mb-lg-0 justify-content-start">
                                 <li className="nav-item">
-                                    <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#">CLÁSSICOS</a>
+                                    <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#classicSection">CLÁSSICOS</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#">AIR JORDAN</a>
+                                    <a className="nav-link navHeader linkTelaInicial" aria-current="page" href="#jordanSection">AIR JORDAN</a>
                                 </li>
                             </ul>
                         </div>

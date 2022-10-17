@@ -25,7 +25,7 @@ function Cards2() {
   if (!data || !data.length) return null;
 
   return (
-    <div className="container containerCard2">
+    <div className="container">
       <div className="logo">
         <br/><br/>
         <img src="/static/images/logo.png"/>
