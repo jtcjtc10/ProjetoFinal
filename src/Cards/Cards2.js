@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import './Cardss2.css';
+import './styles.css';
 
 function Cards2() {
   const [data, setData] = useState([]);
@@ -31,7 +31,7 @@ function Cards2() {
         <img src="/static/images/logo.png"/>
         <br/>
       </div>
-      <div className="carousel" ref={carousel}>
+      <div className="carousel-cards2" ref={carousel}>
         {data.map((item) => {
           const { id, name, price, oldPrice, image } = item;
           return (

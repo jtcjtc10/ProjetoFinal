@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import './Cardss.css';
+import './styles.css';
 
 function Cards() {
   const [data, setData] = useState([]);
