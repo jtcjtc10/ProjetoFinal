@@ -8,9 +8,16 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { BsAlignTop } from "react-icons/bs";
 
+import axios from "axios";
+
 export default function Login() {
     const [tLogin, setTxtLogin] = React.useState("");
     const [tPassword, setTxtPassword] = React.useState("");
+
+    // const form = {        
+    //     email_usuario: tLogin,        
+    //     senha_usuario: tPassword
+    // }
 
     const MySwal = withReactContent(Swal);
 
@@ -39,34 +46,43 @@ export default function Login() {
     }
 
     const entrar = () => {
-        let formData = new FormData();
-        formData.append('txtLogin', tLogin.replace(/ /g, ''));
-        formData.append('txtPassword', tPassword.replace(/ /g, ''));
+        axios.post("http://localhost:8080/login", {tLogin, tPassword})
+            .then((response) => console.log("logou Corretamente " + response))     
+            .catch((error) => {
+                console.log(error)
+            })   
+        // let formData = new FormData();
+        // formData.append('txtLogin', tLogin.replace(/ /g, ''));
+        // formData.append('txtPassword', tPassword.replace(/ /g, ''));
 
-        fetch("http://localhost:8080/login", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-            },
-            body: FormData
-        }).then(response => response.json()).then((responseJson) => {
-            if (!responseJson.success) {
-                alert("Usuário e/ou senha incorreto!");
-            } else {
-                MySwal.fire({
-                    title: 'Bem vindo de volta!',
-                    text: 'Credenciais verificadas com sucesso.',
-                    icon: 'success',
-                    allowEscapeKey: false,
-                    allowOutsideClick: false
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "principal.html";
-                    }
-                });
-            }
-        });
+        // fetch("http://localhost:8080/login", {
+        //     method: "POST",
+        //     headers: {
+        //         Accept: "application/json",
+        //         "Content-Type": "application/json"
+        //     },
+        //     body: FormData
+        // }).then(response => response.json()).then((responseJson) => {
+        //     if (!responseJson.success) {
+        //         alert("Usuário e/ou senha incorreto!");
+        //     } else {
+        //         MySwal.fire({
+        //             title: 'Bem vindo de volta!',
+        //             text: 'Credenciais verificadas com sucesso.',
+        //             icon: 'success',
+        //             allowEscapeKey: false,
+        //             allowOutsideClick: false
+        //         }).then((result) => {
+        //             if (result.isConfirmed) {
+        //                 axios.post("http://localhost:8080/login", form)
+        //                 .then((response) => console.log("logou Corretamente " + response))     
+        //                 .catch((error) => {
+        //                     console.log(error)
+        //                 })   
+        //             }
+        //         });
+        //     }
+        // });
     }
 
     return (

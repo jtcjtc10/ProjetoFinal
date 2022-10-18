@@ -2,6 +2,10 @@ import React from "react";
 import "../Cadastro/Cad.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import axios from "axios";
+
+
+// import api from "../api"
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -16,11 +20,20 @@ export default function Cadastro() {
     const [tSenha, setTxtSenha] = React.useState("");
     const [tConfirmSenha, setTxtConfirmSenha] = React.useState("");
 
+    const form = {
+        nome_usuario: tNome,
+        rg_usuario: tRg,
+        cpf_usuario: tCpf,
+        email_usuario: tEmail,
+        telefone_usuario: tTelefone,
+        endereco_usuario: tEndereco,
+        senha_usuario: tSenha
+    }
+
     const MySwal = withReactContent(Swal);
 
     const verificaCadastro = (e) => {
-        e.preventDefault();
-        console.log(tNome, tCpf, tRg, tEndereco, tEmail, tTelefone, tSenha, tConfirmSenha);
+        e.preventDefault();                      
 
         if (tNome === "" || tCpf === "" || tRg === "" || tEndereco === "" || tEmail === "" || tTelefone === "" || tSenha === "" || tConfirmSenha === "") {
             MySwal.fire({
@@ -43,7 +56,11 @@ export default function Cadastro() {
                 allowOutsideClick: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "login.html";
+                    axios.post("http://localhost:8080/cadastro", form)
+                    .then((response) => console.log("Cadastrou Corretamente " + response))     
+                    .catch((error) => {
+                        console.log(error)
+                    })   
                 }
             });
         }
