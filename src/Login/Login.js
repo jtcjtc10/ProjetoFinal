@@ -14,16 +14,16 @@ export default function Login() {
     const [tLogin, setTxtLogin] = React.useState("");
     const [tPassword, setTxtPassword] = React.useState("");
 
-    // const form = {        
-    //     email_usuario: tLogin,        
-    //     senha_usuario: tPassword
-    // }
+    const form = {        
+        email_usuario: tLogin,        
+        senha_usuario: tPassword
+    }
 
     const MySwal = withReactContent(Swal);
 
     const verificaEntrada = (e) => {
         e.preventDefault();
-        console.log(tLogin, tPassword);
+        // console.log(tLogin, tPassword);
 
         if (tLogin === "" || tPassword === "") {
             MySwal.fire({
@@ -47,42 +47,23 @@ export default function Login() {
 
     const entrar = () => {
         axios.post("http://localhost:8080/login", {tLogin, tPassword})
-            .then((response) => console.log("logou Corretamente " + response))     
+            .then((response) => {
+                // console.log(response.data)
+                if(response.data == true){
+                    window.location.href="/"                    
+                    window.localStorage.setItem("logado", true)                    
+                }else if(response.data == false){
+                    MySwal.fire({
+                        title: 'Atenção!',
+                        text: 'Os dados inseridos estão incorretos!',
+                        icon: 'error'
+                    });
+                    window.localStorage.setItem("logado", false)
+                }
+            })     
             .catch((error) => {
                 console.log(error)
-            })   
-        // let formData = new FormData();
-        // formData.append('txtLogin', tLogin.replace(/ /g, ''));
-        // formData.append('txtPassword', tPassword.replace(/ /g, ''));
-
-        // fetch("http://localhost:8080/login", {
-        //     method: "POST",
-        //     headers: {
-        //         Accept: "application/json",
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: FormData
-        // }).then(response => response.json()).then((responseJson) => {
-        //     if (!responseJson.success) {
-        //         alert("Usuário e/ou senha incorreto!");
-        //     } else {
-        //         MySwal.fire({
-        //             title: 'Bem vindo de volta!',
-        //             text: 'Credenciais verificadas com sucesso.',
-        //             icon: 'success',
-        //             allowEscapeKey: false,
-        //             allowOutsideClick: false
-        //         }).then((result) => {
-        //             if (result.isConfirmed) {
-        //                 axios.post("http://localhost:8080/login", form)
-        //                 .then((response) => console.log("logou Corretamente " + response))     
-        //                 .catch((error) => {
-        //                     console.log(error)
-        //                 })   
-        //             }
-        //         });
-        //     }
-        // });
+        })          
     }
 
     return (

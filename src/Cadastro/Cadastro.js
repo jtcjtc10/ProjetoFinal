@@ -48,21 +48,43 @@ export default function Cadastro() {
                 icon: 'warning'
             });
         } else {
-            MySwal.fire({
-                title: 'Usuário cadastrado!',
-                text: 'Credenciais verificadas com sucesso.',
-                icon: 'success',
-                allowEscapeKey: false,
-                allowOutsideClick: false
-            }).then((result) => {
-                if (result.isConfirmed) {
+            // MySwal.fire({
+            //     title: 'Usuário cadastrado!',
+            //     text: 'Credenciais verificadas com sucesso.',
+            //     icon: 'success',
+            //     allowEscapeKey: false,
+            //     allowOutsideClick: false
+            // }).then((result) => {
+                // if (result.isConfirmed) {
                     axios.post("http://localhost:8080/cadastro", form)
-                    .then((response) => console.log("Cadastrou Corretamente " + response))     
+                    .then((response) => {
+                        console.log(response.data)
+                        if(response.data == true){
+                            MySwal.fire({
+                                title: 'Usuário cadastrado!',
+                                text: 'Credenciais verificadas com sucesso.',
+                                icon: 'success',
+                                allowEscapeKey: false,
+                                allowOutsideClick: false
+                            }).then((result) => {
+                                if(result.isConfirmed){
+                                    window.location.href="/login"
+                                }
+                            });         
+                            
+                        }else if(response.data == false){
+                            MySwal.fire({
+                                title: 'Atenção!',
+                                text: 'O e-mail inserido já se encontra sendo utilizado!',
+                                icon: 'error'
+                            });
+                        }
+                    })     
                     .catch((error) => {
                         console.log(error)
                     })   
-                }
-            });
+                // }
+            // });
         }
 
     }
