@@ -2,6 +2,13 @@
      max-width: 80vw;
  }
 
+ .container .title-card {
+    font-size: 24px;
+    font-weight: bolder;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+ }
+
  .container .carousel {
      display: flex;
      overflow-x: auto;

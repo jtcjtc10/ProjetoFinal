@@ -28,7 +28,7 @@ function Cards() {
     <div className="container">
       <div className="logo text-center">
         <br/><br/>
-        <h1>Clássicos da Nike</h1>
+        <h1 className="title-card">CLÁSSICOS DA NIKE</h1>
         <br/>
       </div>
       <div className="carousel" ref={carousel}>
