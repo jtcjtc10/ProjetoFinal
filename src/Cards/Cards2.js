@@ -26,9 +26,9 @@ function Cards2() {
 
   return (
     <div className="container">
-      <div className="logo">
+      <div className="logo text-center">
         <br/><br/>
-        <img src="/static/images/logo.png"/>
+        <h1>Air Jordan</h1>
         <br/>
       </div>
       <div className="carousel-cards2" ref={carousel}>

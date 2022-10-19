@@ -26,9 +26,9 @@ function Cards() {
 
   return (
     <div className="container">
-      <div className="logo">
+      <div className="logo text-center">
         <br/><br/>
-        <img src="/static/images/logo.png"  />
+        <h1>Clássicos da Nike</h1>
         <br/>
       </div>
       <div className="carousel" ref={carousel}>
