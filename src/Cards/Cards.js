@@ -24,6 +24,14 @@ function Cards() {
 
   if (!data || !data.length) return null;
 
+  const addCarrinho = () => {
+    if (window.localStorage.getItem("logado") == "true") {
+      console.log("adicionou carrinho")      
+    } else{
+      console.log("vai logar FDP")   
+    }
+  }
+
   return (
     <div className="container">
       <div className="logo text-center">
@@ -42,7 +50,7 @@ function Cards() {
               <div className="info">
                 <span className="name">{name}</span>
                 <span className="oldPrice">R$ {oldPrice}</span>
-                <span className="price"> {price}</span>
+                <a className='tagAAddCarrinho' onClick={() => {addCarrinho()}}><span className="price">{price}</span></a>
               </div>
             </div>
           );

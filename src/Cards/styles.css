@@ -147,3 +147,8 @@
     font-weight: bold;
     background-color: #000000;
 }
+
+.tagAAddCarrinho{
+    cursor: pointer;
+    text-decoration: none;
+}

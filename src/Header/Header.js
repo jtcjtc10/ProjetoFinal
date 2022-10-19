@@ -9,15 +9,15 @@ function Header(props) {
     const [logado, setLogado] = useState();
     // const [pesquisa, setPesquisa] = useState("");
 
-    const teste1 = () => {
-        console.log(props.login)
-    }
+    // const teste1 = () => {
+    //     console.log(props.login)
+    // }
 
     const saida = () => {
         console.log("saiu")
         props.logadoFunc(0)
         window.localStorage.setItem("logado", false)
-        // setLogado(0)
+        setLogado(0)
     }
 
     useEffect(() => {

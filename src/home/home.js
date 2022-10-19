@@ -17,17 +17,17 @@ export default function Home() {
 
     useEffect(() => {    
         console.log("testando useeffect")    
-        if (window.localStorage.getItem("logado")) {
+        if (window.localStorage.getItem("logado") == "true") {
             setLogado(1)
-        } else if(window.localStorage.getItem("logado") == false){
+        } else if(window.localStorage.getItem("logado") == "false"){
             setLogado(0)
         }
     }, [])
 
-    const teste = () => {
-        console.log(window.localStorage.getItem("logado"))
-        console.log("esta logado: " +logado)
-    }
+    // const teste = () => {
+    //     console.log(window.localStorage.getItem("logado"))
+    //     console.log("esta logado: " +logado)
+    // }
 
     
 
