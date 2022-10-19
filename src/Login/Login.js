@@ -49,10 +49,11 @@ export default function Login() {
         axios.post("http://localhost:8080/login", {tLogin, tPassword})
             .then((response) => {
                 // console.log(response.data)
-                if(response.data == true){
+                if(response.data){
                     window.location.href="/"                    
-                    window.localStorage.setItem("logado", true)                    
-                }else if(response.data == false){
+                    window.localStorage.setItem("logado", true)    
+                    window.localStorage.setItem("idUsuario", response.data)                                  
+                }else if(!response.data){
                     MySwal.fire({
                         title: 'Atenção!',
                         text: 'Os dados inseridos estão incorretos!',

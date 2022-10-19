@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import './styles.css';
 
 function Cards() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]); 
   const carousel = useRef(null);
 
   useEffect(() => {
@@ -24,9 +24,9 @@ function Cards() {
 
   if (!data || !data.length) return null;
 
-  const addCarrinho = () => {
+  const addCarrinho = (id) => {
     if (window.localStorage.getItem("logado") == "true") {
-      console.log("adicionou carrinho")      
+      console.log("adicionou produto id: " + id + " e usuario: " + window.localStorage.getItem("idUsuario"))
     } else{
       console.log("vai logar FDP")   
     }
@@ -50,7 +50,7 @@ function Cards() {
               <div className="info">
                 <span className="name">{name}</span>
                 <span className="oldPrice">R$ {oldPrice}</span>
-                <a className='tagAAddCarrinho' onClick={() => {addCarrinho()}}><span className="price">{price}</span></a>
+                <a className='tagAAddCarrinho' onClick={() => {addCarrinho(id)}}><span className="price">{price}</span></a>
               </div>
             </div>
           );
