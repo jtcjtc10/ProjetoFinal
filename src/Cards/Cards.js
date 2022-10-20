@@ -59,11 +59,9 @@ function Cards() {
                 <span className="name">{name}</span>
                 <span className="oldPrice">R$ {oldPrice}</span>
 
-                <button type="button" className="btn-carousel" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target={"#staticBackdrop"+id} />
 
-                </button>
-
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id={"staticBackdrop" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -76,8 +74,8 @@ function Cards() {
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary">Adicionar ao Carrinho</button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-outline-success">Adicionar ao Carrinho</button>
                       </div>
                     </div>
                   </div>
