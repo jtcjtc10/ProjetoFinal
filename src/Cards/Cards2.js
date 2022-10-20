@@ -21,6 +21,13 @@ function Cards2() {
 
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
+  const addCarrinho = (id) => {
+    if (window.localStorage.getItem("logado") == "true") {
+      console.log("adicionou produto id: " + id + " e usuario: " + window.localStorage.getItem("idUsuario"))
+    } else{
+      console.log("vai logar FDP")   
+    }
+  }
 
   if (!data || !data.length) return null;
 
@@ -42,7 +49,7 @@ function Cards2() {
               <div className="info">
                 <span className="name">{name}</span>
                 <span className="oldPrice">R$ {oldPrice}</span>
-                <span className="price"> {price}</span>
+                <a className='tagAAddCarrinho' onClick={() => {addCarrinho(id)}}><span className="price">{price}</span></a>
               </div>
             </div>
           );

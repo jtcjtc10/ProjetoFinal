@@ -1,9 +1,14 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Component } from 'react';
 import './styles.css';
+import Modal from '../modal/modal';
+
 
 function Cards() {
   const [data, setData] = useState([]); 
+  const [IsModalVisible, setIsModalVisible] = useState(false);
   const carousel = useRef(null);
+
+
 
   useEffect(() => {
     fetch('http://localhost:3000/static/shoes.json')
@@ -27,10 +32,13 @@ function Cards() {
   const addCarrinho = (id) => {
     if (window.localStorage.getItem("logado") == "true") {
       console.log("adicionou produto id: " + id + " e usuario: " + window.localStorage.getItem("idUsuario"))
+
     } else{
       console.log("vai logar FDP")   
     }
   }
+
+  
 
   return (
     <div className="container">
@@ -49,8 +57,12 @@ function Cards() {
               </div>
               <div className="info">
                 <span className="name">{name}</span>
-                <span className="oldPrice">R$ {oldPrice}</span>
-                <a className='tagAAddCarrinho' onClick={() => {addCarrinho(id)}}><span className="price">{price}</span></a>
+                <span className="oldPrice">R$ {oldPrice}</span>             
+
+                 <button onClick={() =>setIsModalVisible(true)}>Adiconar ao carrinho</button>
+                {IsModalVisible ? <Modal /> : Error} 
+
+                
               </div>
             </div>
           );
