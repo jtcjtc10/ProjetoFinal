@@ -4,7 +4,7 @@ import Modal from '../modal/modal';
 
 
 function Cards() {
-  const [data, setData] = useState([]); 
+  const [data, setData] = useState([]);
   const [IsModalVisible, setIsModalVisible] = useState(false);
   const carousel = useRef(null);
 
@@ -33,19 +33,19 @@ function Cards() {
     if (window.localStorage.getItem("logado") == "true") {
       console.log("adicionou produto id: " + id + " e usuario: " + window.localStorage.getItem("idUsuario"))
 
-    } else{
-      console.log("vai logar FDP")   
+    } else {
+      console.log("vai logar FDP")
     }
   }
 
-  
+
 
   return (
     <div className="container">
       <div className="logo text-center">
-        <br/><br/>
+        <br /><br />
         <h1 className="title-card">CLÁSSICOS DA NIKE</h1>
-        <br/>
+        <br />
       </div>
       <div className="carousel" ref={carousel}>
         {data.map((item) => {
@@ -57,12 +57,34 @@ function Cards() {
               </div>
               <div className="info">
                 <span className="name">{name}</span>
-                <span className="oldPrice">R$ {oldPrice}</span>             
+                <span className="oldPrice">R$ {oldPrice}</span>
 
-                 <button onClick={() =>setIsModalVisible(true)}>Adiconar ao carrinho</button>
-                {IsModalVisible ? <Modal /> : Error} 
+                <button type="button" className="btn-carousel" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 
-                
+                </button>
+
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">{name}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div className="image">
+                          <img src={image} alt={name} />
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary">Adicionar ao Carrinho</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
               </div>
             </div>
           );

@@ -9,6 +9,11 @@
     font-family: 'Montserrat', sans-serif;
  }
 
+ .container .btn-carousel {
+    background-color: #000000;
+    border-radius: 10px;
+ }
+
  .container .carousel {
      display: flex;
      overflow-x: auto;
