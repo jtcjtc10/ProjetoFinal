@@ -33,7 +33,7 @@ export default function Cadastro() {
     const MySwal = withReactContent(Swal);
 
     const verificaCadastro = (e) => {
-        e.preventDefault();                      
+        e.preventDefault();
 
         if (tNome === "" || tCpf === "" || tRg === "" || tEndereco === "" || tEmail === "" || tTelefone === "" || tSenha === "" || tConfirmSenha === "") {
             MySwal.fire({
@@ -48,42 +48,34 @@ export default function Cadastro() {
                 icon: 'warning'
             });
         } else {
-            // MySwal.fire({
-            //     title: 'Usuário cadastrado!',
-            //     text: 'Credenciais verificadas com sucesso.',
-            //     icon: 'success',
-            //     allowEscapeKey: false,
-            //     allowOutsideClick: false
-            // }).then((result) => {
-                // if (result.isConfirmed) {
-                    axios.post("http://localhost:8080/cadastro", form)
-                    .then((response) => {
-                        console.log(response.data)
-                        if(response.data == true){
-                            MySwal.fire({
-                                title: 'Usuário cadastrado!',
-                                text: 'Credenciais verificadas com sucesso.',
-                                icon: 'success',
-                                allowEscapeKey: false,
-                                allowOutsideClick: false
-                            }).then((result) => {
-                                if(result.isConfirmed){
-                                    window.location.href="/login"
-                                }
-                            });         
-                            
-                        }else if(response.data == false){
-                            MySwal.fire({
-                                title: 'Atenção!',
-                                text: 'O e-mail inserido já se encontra sendo utilizado!',
-                                icon: 'error'
-                            });
-                        }
-                    })     
-                    .catch((error) => {
-                        console.log(error)
-                    })   
-                // }
+            axios.post("http://localhost:8080/cadastro", form)
+                .then((response) => {
+                    console.log(response.data)
+                    if (response.data == true) {
+                        MySwal.fire({
+                            title: 'Usuário cadastrado!',
+                            text: 'Credenciais verificadas com sucesso.',
+                            icon: 'success',
+                            allowEscapeKey: false,
+                            allowOutsideClick: false
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "/login"
+                            }
+                        });
+
+                    } else if (response.data == false) {
+                        MySwal.fire({
+                            title: 'Atenção!',
+                            text: 'O e-mail inserido já se encontra sendo utilizado!',
+                            icon: 'error'
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            // }
             // });
         }
 
@@ -93,7 +85,7 @@ export default function Cadastro() {
 
             <div className="container-fluid body-cadastro">
                 <div className="row justify-content-center">
-                    <Header/>
+                    <Header />
                     <div className="row justify-content-center align-items-center section-cadastro">
                         <div className="col-lg-6 col-md-8 col-sm-10 modal-cadastro text-center">
                             <h1 className="titulo-login">REGISTRO</h1>
