@@ -45,57 +45,11 @@ export default function DadosPedidos() {
         
     }, []); 
 
-    // function verificaCampos () {
-    //     if(tNome.length == 0){
-    //         setTxtNome(dados.nome_usuario);
-    //         console.log(dados.nome_usuario);
-    //         console.log(tNome);
-    //     }else if(tCpf == ""){
-    //         setTxtCpf(dados.cpf_usuario);
-    //     }else if(tRg==""){
-    //         setTxtRg(dados.rg_usuario);
-    //     }else if(tEndereco== ""){
-    //         setTxtEndereco(dados.endereco_usuario);
-    //     }else if(tEmail == ""){
-    //         setTxtEmail(dados.email_usuario);
-    //     }else{
-    //         setTxtTelefone(dados.telefone_usuario);
-    //     }
-    // }
-
     const verificaDados = (e) => {
         e.preventDefault();
         //console.log(tNome, tCpf, tRg, tEndereco, tEmail, tTelefone, tSenha, tConfirmSenha);
         if (tNome == "" || tEndereco == "" || tEmail == "" || tTelefone == "") {
-            // verificaCampos();
-            // if(tNome === dados.nome_usuario && tEndereco === dados.endereco_usuario && tEmail === dados.email_usuario && tTelefone === dados.telefone_usuario){
-            //     MySwal.fire({
-            //         title: 'Atenção!',
-            //         text: 'Os dados permareceram os mesmos.',
-            //         icon: 'success'
-            //     });
-            // } else {
-            //     axios.put("http://localhost:8080/alteracao/10",form)
-            //     .then((response) => {
-            //         console.log(response.data);
-            //         if(response.data === true){
-            //             MySwal.fire({
-            //                 title: 'Dados alterados!',
-            //                 text: 'Credenciais verificadas com sucesso.',
-            //                 icon: 'success',
-            //                 allowEscapeKey: false,
-            //                 allowOutsideClick: false
-            //             }).then((result) => {
-            //                 if(result.isConfirmed){
-            //                     window.location.reload(true);
-            //                     setTxtNome("pedrosa")
-            //                 }
-            //             });         
-            //         }
-            //     }).catch((error) =>{
-            //         console.log(error)
-            //     });
-            // }
+            
             MySwal.fire({
                 title: 'Atenção!',
                 text: 'Você deve preencher todos os campos.',

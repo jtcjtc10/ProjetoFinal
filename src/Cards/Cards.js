@@ -1,6 +1,7 @@
 
 import { useEffect, useState, useRef, Component } from 'react';
 import './styles.css';
+import axios from "axios";
 
 
 
@@ -10,7 +11,7 @@ function Cards() {
   const [data, setData] = useState([]);
   const [IsModalVisible, setIsModalVisible] = useState(false);
   const carousel = useRef(null);
-  
+  let idUsuario = window.localStorage.getItem("idUsuario");
 
 
   useEffect(() => {
@@ -40,6 +41,10 @@ function Cards() {
   const addCarrinho = (id,name) => {
     if (window.localStorage.getItem("logado") == "true") {
       console.log("adicionou produto id: " + id +  "Produto: "+ name + "Tamanho escolhido: " + tamanho +  "Quantidade " +quantidade+  "e usuario: " + window.localStorage.getItem("idUsuario")   )
+      axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
+            .then((response) => {
+              console.log(response.data);
+            })
 
     } else {
       console.log("vai logar FDP")
