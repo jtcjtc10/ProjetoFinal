@@ -60,6 +60,7 @@ export default function Login() {
                         icon: 'error'
                     });
                     window.localStorage.setItem("logado", false)
+                    window.localStorage.removeItem("idUsuario") 
                 }
             })     
             .catch((error) => {
