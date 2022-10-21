@@ -93,7 +93,7 @@ function Cards() {
                          <option value={t2}>{t2}</option>
                          <option value={t3}>{t3}</option>
                          <option value={t4}>{t4}</option>
-                         <option value={t5}>{t4}</option>
+                         <option value={t5}>{t5}</option>
                          <option value={t6}>{t6}</option>
                          <option value={t7}>{t7}</option>
                          <option value={t8}>{t8}</option>
