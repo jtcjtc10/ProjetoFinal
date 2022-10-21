@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import "../DadosPedidos.css";
 import "../Cadastro/Cad.css";
 import "./Carrinho.css";
@@ -8,11 +8,29 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 export default function Cadastro() {
+    const [logado, setLogado] = useState();
+
+    const changeLogado = (props) => {
+        if(props === 0){
+            console.log("changeLogado igual a 0")
+            setLogado(0)
+        }
+    }
+
+    useEffect(() => {    
+        console.log("testando useeffect")    
+        if (window.localStorage.getItem("logado") == "true") {
+            setLogado(1)
+        } else if(window.localStorage.getItem("logado") == "false"){
+            setLogado(0)
+        }
+    }, [])
+
     return (
         <>
             <div className="container-fluid bg-carrinho">
                 <div className="row justify-content-center">
-                    <Header />
+                    <Header login={logado} logadoFunc={changeLogado}/>
                     <div className="row section-carrinho justify-content-center">
                         <div className="row col-sm-12">
                             <h1 className="titulo-carrinho">Meu Carrinho</h1>

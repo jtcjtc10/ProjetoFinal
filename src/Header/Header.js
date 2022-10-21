@@ -18,6 +18,9 @@ function Header(props) {
         props.logadoFunc(0)
         window.localStorage.setItem("logado", false)
         setLogado(0)
+        window.location.href="/"
+        window.localStorage.removeItem("logado")
+        window.localStorage.removeItem("idUsuario") 
     }
 
     useEffect(() => {
