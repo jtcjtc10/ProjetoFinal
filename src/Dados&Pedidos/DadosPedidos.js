@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./DadosPedidos.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -17,6 +17,24 @@ export default function DadosPedidos() {
     const [tTelefone, setTxtTelefone] = React.useState("");
     const [tSenha, setTxtSenha] = React.useState("");
     const [tConfirmSenha, setTxtConfirmSenha] = React.useState("");
+
+    const [logado, setLogado] = useState();
+
+    const changeLogado = (props) => {
+        if(props === 0){
+            console.log("changeLogado igual a 0")
+            setLogado(0)
+        }
+    }
+
+    useEffect(() => {    
+        console.log("testando useeffect")    
+        if (window.localStorage.getItem("logado") == "true") {
+            setLogado(1)
+        } else if(window.localStorage.getItem("logado") == "false"){
+            setLogado(0)
+        }
+    }, [])
 
     const MySwal = withReactContent(Swal);
     const form = {
@@ -136,7 +154,7 @@ export default function DadosPedidos() {
  
             <div className="container-fluid bg-meus-dados">
                 <div className="row justify-content-center">
-                    <Header />
+                    <Header login={logado} logadoFunc={changeLogado}/>
                     <div className="row justify-content-center section-meus-dados">
                         <div className="col-lg-5 col-md-8 col-sm-10 modal-meus-dados">
                             <h1 className="titulo-meus-dados">Meus Dados</h1>

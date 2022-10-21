@@ -59,7 +59,7 @@ export default function Login() {
                         text: 'Os dados inseridos estão incorretos!',
                         icon: 'error'
                     });
-                    window.localStorage.setItem("logado", false)
+                    window.localStorage.removeItem("logado")
                     window.localStorage.removeItem("idUsuario") 
                 }
             })     
