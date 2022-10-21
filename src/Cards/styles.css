@@ -157,3 +157,32 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+.image1{
+    height: 350px;
+    width: max-content;
+    display: inline-block;
+
+}
+
+.imagemodal{
+    
+    height: 100%;
+    margin: auto;
+    display: block;
+}
+.tamanhobutton{
+    display: flex;
+}
+.quantbutton{
+    display: flex;
+    margin-top: 2%;
+}
+.quanttenis{
+    margin-left: 12%;
+    border-radius: 8px;
+}
+.tamanhotenis{
+    margin-left: 17%;
+    border-radius: 8px;
+}
