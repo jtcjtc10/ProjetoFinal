@@ -1,14 +1,10 @@
 import { useEffect, useState, useRef, Component } from 'react';
 import './styles.css';
-import Modal from '../modal/modal';
-
 
 function Cards() {
   const [data, setData] = useState([]);
   const [IsModalVisible, setIsModalVisible] = useState(false);
   const carousel = useRef(null);
-
-
 
   useEffect(() => {
     fetch('http://localhost:3000/static/shoes.json')
@@ -37,8 +33,6 @@ function Cards() {
       console.log("vai logar FDP")
     }
   }
-
-
 
   return (
     <div className="container">
@@ -80,9 +74,6 @@ function Cards() {
                     </div>
                   </div>
                 </div>
-
-
-
               </div>
             </div>
           );
@@ -90,10 +81,10 @@ function Cards() {
       </div>
       <div className="buttons">
         <button onClick={handleLeftClick}>
-          <img src="/static/images/216151_right_chevron_icon.png" alt="Scroll Left" />
+          <img src="/static/images/expand-icon.png" alt="Scroll Left" />
         </button>
         <button onClick={handleRightClick}>
-          <img src="/static/images/216151_right_chevron_icon.png" alt="Scroll Right" />
+          <img src="/static/images/expand-icon.png" alt="Scroll Right" />
         </button>
       </div>
     </div>
