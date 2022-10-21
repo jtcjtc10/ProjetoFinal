@@ -57,10 +57,10 @@ function Cards2() {
       </div>
       <div className="buttons">
         <button onClick={handleLeftClick}>
-          <img src="/static/images/216151_right_chevron_icon.png" alt="Scroll Left" />
+          <img src="/static/images/expand-icon.png" alt="Scroll Left" />
         </button>
         <button onClick={handleRightClick}>
-          <img src="/static/images/216151_right_chevron_icon.png" alt="Scroll Right" />
+          <img src="/static/images/expand-icon.png" alt="Scroll Right" />
         </button>
       </div>
     </div>
