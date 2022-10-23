@@ -65,8 +65,7 @@ function Cards() {
               //setListaTamanhos([...listaTamanhos, response.data[i][0]]);
               tamanhos[i]= response.data[i][0];
             }
-          }
-           
+          }           
         }
         setListaTamanhos(tamanhos);
         console.log(listaTamanhos);
@@ -115,9 +114,9 @@ function Cards() {
                         <div className="tamanhobutton">
                           <div className="texttamanho"><h4>Selecione o Tamanho</h4></div>
                         <select name="tamanho" className="tamanhotenis" onChange={(e) => setTxtTamanho(e.target.value)} value={tamanho} >
-                        { listaTamanhos.map((lista)=> {
-                         //<option value=""></option>
-                         <option value={lista}>{lista}</option>
+                        {listaTamanhos.map((lista, i)=> {
+                         <option value=""></option>
+                         return <option key={i} value={lista}>{lista}</option>                         
                          {/* <option value={t2}>{t2}</option>
                          <option value={t3}>{t3}</option>
                          <option value={t4}>{t4}</option>
@@ -126,6 +125,7 @@ function Cards() {
                          <option value={t7}>{t7}</option>
                          <option value={t8}>{t8}</option> */} 
                         })}
+                        {/* <option value={"lista"}>{"teste"}</option> */}
                         </select>
                         </div>
                         <div className="quantbutton">
@@ -140,8 +140,9 @@ function Cards() {
                         </div>
                       </div>
                       <div class="modal-footer" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setTxtTamanho()}}>Fechar</button>
+                        {/* <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button> */}
+                        <button type="button" class="btn btn-outline-success" onClick={() => {console.log(listaTamanhos)}} >Adicionar ao Carrinho</button>
                       </div>
                     </div>
                   </div>
