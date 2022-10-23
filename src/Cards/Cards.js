@@ -10,6 +10,8 @@ function Cards() {
   const [quantidade, setTxtQuantidade] = useState(1);
   const [data, setData] = useState([]);
   const [IsModalVisible, setIsModalVisible] = useState(false);
+  const tamanhos = [];
+  const [listaTamanhos , setListaTamanhos] = useState(tamanhos);
   const carousel = useRef(null);
   let idUsuario = window.localStorage.getItem("idUsuario");
 
@@ -51,6 +53,31 @@ function Cards() {
     }
   }
   
+  const puxarTamanhos = (name) => {
+    console.log(name);
+    // console.log(listaTamanhos);
+    if(window.localStorage.getItem("logado")== "true"){
+      axios.get("http://localhost:8080/verificaQuantidade/"+name)
+      .then((response) => {
+        for (let i=0; i< response.data.length; i++){
+          for (let j=0; j<response.data[i].length; j++){
+            if (response.data[i][0]!== null){
+              //setListaTamanhos([...listaTamanhos, response.data[i][0]]);
+              tamanhos[i]= response.data[i][0];
+            }
+          }
+           
+        }
+        setListaTamanhos(tamanhos);
+        console.log(listaTamanhos);
+        
+        //console.log(tamanhos);
+      }).catch((error) =>{
+        console.log(error)
+      });
+    }
+  }
+  
 
 
   return (
@@ -72,7 +99,7 @@ function Cards() {
                 <span className="name">{name}</span>
                 <span className="oldPrice">R$ {oldPrice}</span>
                 {/* <button type="button" className='btn btn-outline-success' data-bs-toggle="modal"  data-bs-target={"#staticBackdrop"+id} ><span className="price">{price}</span></button> */}
-                <button type="button" className="btn btn-outline-secondary" data-bs-toggle="modal"  data-bs-target={"#staticBackdrop"+id} >Comprar</button>
+                <button type="button" className="btn btn-outline-secondary" onClick={() => {puxarTamanhos(name)}} data-bs-toggle="modal"  data-bs-target={"#staticBackdrop"+id} >Comprar</button>
 
                 <div class="modal fade" id={"staticBackdrop" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -88,15 +115,17 @@ function Cards() {
                         <div className="tamanhobutton">
                           <div className="texttamanho"><h4>Selecione o Tamanho</h4></div>
                         <select name="tamanho" className="tamanhotenis" onChange={(e) => setTxtTamanho(e.target.value)} value={tamanho} >
-                         <option value=""></option>
-                         <option value={t1}>{t1}</option>
-                         <option value={t2}>{t2}</option>
+                        { listaTamanhos.map((lista)=> {
+                         //<option value=""></option>
+                         <option value={lista}>{lista}</option>
+                         {/* <option value={t2}>{t2}</option>
                          <option value={t3}>{t3}</option>
                          <option value={t4}>{t4}</option>
                          <option value={t5}>{t5}</option>
                          <option value={t6}>{t6}</option>
                          <option value={t7}>{t7}</option>
-                         <option value={t8}>{t8}</option>
+                         <option value={t8}>{t8}</option> */} 
+                        })}
                         </select>
                         </div>
                         <div className="quantbutton">
@@ -112,7 +141,7 @@ function Cards() {
                       </div>
                       <div class="modal-footer" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id,name)}} >Adicionar ao Carrinho</button>
+                        <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button>
                       </div>
                     </div>
                   </div>
