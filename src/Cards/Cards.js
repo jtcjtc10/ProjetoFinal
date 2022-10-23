@@ -88,7 +88,7 @@ function Cards() {
       </div>
       <div className="carousel" ref={carousel}>
         {data.map((item) => {
-          const { id, name, price, oldPrice, image, t1, t2, t3, t4, t5, t6, t7, t8, q1,q2,q3,q4,q5 } = item;
+          const { id, name, price, oldPrice, image, q1,q2,q3,q4,q5 } = item;
           return (
             <div className="item" key={id}>
               <div className="image">
@@ -117,13 +117,6 @@ function Cards() {
                         {listaTamanhos.map((lista, i)=> {
                          <option value=""></option>
                          return <option key={i} value={lista}>{lista}</option>                         
-                         {/* <option value={t2}>{t2}</option>
-                         <option value={t3}>{t3}</option>
-                         <option value={t4}>{t4}</option>
-                         <option value={t5}>{t5}</option>
-                         <option value={t6}>{t6}</option>
-                         <option value={t7}>{t7}</option>
-                         <option value={t8}>{t8}</option> */} 
                         })}
                         {/* <option value={"lista"}>{"teste"}</option> */}
                         </select>
