@@ -11,22 +11,18 @@ function Cards2() {
   const [data, setData] = useState([]);
   const [IsModalVisible, setIsModalVisible] = useState(false);
   const tamanhos = [];
+  const quantidades = [];
   const [listaTamanhos , setListaTamanhos] = useState(tamanhos);
+  const [listaQuantidades , setListaQuantidades] = useState(quantidades);
   const carousel = useRef(null);
   let idUsuario = window.localStorage.getItem("idUsuario");
-
 
   useEffect(() => {
     fetch('http://localhost:3000/static/shoes2.json')
       .then((response) => response.json())
       .then(setData);
   }, []);
-
-  useEffect(() => {
-
-
-    
-  }, []);
+  
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
@@ -34,7 +30,6 @@ function Cards2() {
 
   const handleRightClick = (e) => {
     e.preventDefault();
-
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
 
@@ -54,30 +49,41 @@ function Cards2() {
   }
   
   const puxarTamanhos = (name) => {
-    console.log(name);
-    // console.log(listaTamanhos);
     if(window.localStorage.getItem("logado")== "true"){
       axios.get("http://localhost:8080/verificaQuantidade/"+name)
       .then((response) => {
-        for (let i=0; i< response.data.length; i++){
-          for (let j=0; j<response.data[i].length; j++){
+        for (let i=0; i < response.data.length; i++){
+          for (let j=0; j < response.data[i].length; j++){                        
             if (response.data[i][0]!== null){
-              //setListaTamanhos([...listaTamanhos, response.data[i][0]]);
-              tamanhos[i]= response.data[i][0];
-            }
+              tamanhos[i] = response.data[i][0];
+              quantidades[i] = response.data[i][1];
+            }            
           }           
         }
-        setListaTamanhos(tamanhos);
-        console.log(listaTamanhos);
-        
-        //console.log(tamanhos);
+        let t = tamanhos.sort()
+        setListaTamanhos(t);
+        let q = quantidades.sort()
+        let novoArr = []
+        for(let i = 0; i <= q.length; i++){
+          if(q[i] == null){
+          }else{
+            novoArr.push(q[i])
+          }
+        }
+        let quantity = Math.max(...novoArr)        
+        let arrNum = []        
+        function teste(quant){
+          for(let i = 1; i <= quant; i++){
+            arrNum.push(i)
+          }
+        }
+        teste(quantity)
+        setListaQuantidades(arrNum);        
       }).catch((error) =>{
         console.log(error)
       });
     }
   }
-  
-
 
   return (
     <div className="container">
@@ -88,7 +94,7 @@ function Cards2() {
       </div>
       <div className="carousel-cards2" ref={carousel}>
         {data.map((item) => {
-          const { id, name, price, oldPrice, image, q1,q2,q3,q4,q5 } = item;
+          const { id, name, price, oldPrice, image } = item;
           
           return (
             <div className="item" key={id}>
@@ -114,29 +120,24 @@ function Cards2() {
                         </div>
                         <div className="tamanhobutton">
                           <div className="texttamanho"><h4>Selecione o Tamanho</h4></div>
-                        <select name="tamanho" className="tamanhotenis" onChange={(e) => setTxtTamanho(e.target.value)} value={tamanho} >
-                        {listaTamanhos.map((lista, i)=> {
-                         <option value=""></option>
-                         return <option key={i} value={lista}>{lista}</option>                         
-                        })}
-                        {/* <option value={"lista"}>{"teste"}</option> */}
-                        </select>
-                        </div>
+                            <select name="tamanho" className="tamanhotenis" onChange={(e) => setTxtTamanho(e.target.value)} value={tamanho} >
+                            {listaTamanhos.map((lista, i)=> {
+                              return <option key={i} value={lista}>{lista}</option>                         
+                            })}
+                            </select>
+                          </div>
                         <div className="quantbutton">
                           <div className="texttamanho"><h4>Selecione a quantidade</h4></div>
-                        <select name="quantidade" className="quanttenis" onChange={(e) => setTxtQuantidade(e.target.value)} value={quantidade}>                         
-                         <option value={q1}>{q1}</option>
-                         <option value={q2}>{q2}</option>
-                         <option value={q3}>{q3}</option>
-                         <option value={q4}>{q4}</option>
-                         <option value={q5}>{q5}</option>
-                        </select>
+                            <select name="quantidade" className="quanttenis" onChange={(e) => setTxtQuantidade(e.target.value)} value={quantidade}>                         
+                            {listaQuantidades.map((quantidade, i) => {
+                              return <option key={i} value={quantidade}>{quantidade}</option>
+                            })}           
+                            </select>
                         </div>
                       </div>
                       <div class="modal-footer" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setTxtTamanho()}}>Fechar</button>
-                        {/* <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button> */}
-                        <button type="button" class="btn btn-outline-success" onClick={() => {console.log(listaTamanhos)}} >Adicionar ao Carrinho</button>
+                        <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button>                        
                       </div>
                     </div>
                   </div>

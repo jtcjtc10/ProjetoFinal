@@ -48,7 +48,6 @@ function Cards() {
   }
   
   const puxarTamanhos = (name) => {
-    console.log(name);
     if(window.localStorage.getItem("logado")== "true"){
       axios.get("http://localhost:8080/verificaQuantidade/"+name)
       .then((response) => {
@@ -63,16 +62,21 @@ function Cards() {
         let t = tamanhos.sort()
         setListaTamanhos(t);
         let q = quantidades.sort()
-        q.reduce((prev, current) => {
-          q = prev > current ? prev : current
-        })
-        let arrNum = []
+        let novoArr = []
+        for(let i = 0; i <= q.length; i++){
+          if(q[i] == null){
+          }else{
+            novoArr.push(q[i])
+          }
+        }
+        let quantity = Math.max(...novoArr)        
+        let arrNum = []        
         function teste(quant){
           for(let i = 1; i <= quant; i++){
             arrNum.push(i)
           }
         }
-        teste(q)
+        teste(quantity)
         setListaQuantidades(arrNum);        
       }).catch((error) =>{
         console.log(error)
@@ -89,7 +93,7 @@ function Cards() {
       </div>
       <div className="carousel" ref={carousel}>
         {data.map((item) => {
-          const { id, name, price, oldPrice, image, q1,q2,q3,q4,q5 } = item;
+          const { id, name, price, oldPrice, image } = item;
          
           return (
             <div className="item" key={id}>
