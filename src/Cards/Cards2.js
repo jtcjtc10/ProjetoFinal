@@ -83,12 +83,13 @@ function Cards2() {
     <div className="container">
       <div className="logo text-center">
         <br /><br />
-        <h1 className="title-card">Jordans</h1>
+        <h1 className="title-card">AIR JORDAN</h1>
         <br />
       </div>
       <div className="carousel-cards2" ref={carousel}>
         {data.map((item) => {
           const { id, name, price, oldPrice, image, q1,q2,q3,q4,q5 } = item;
+          
           return (
             <div className="item" key={id}>
               <div className="image">

@@ -19,10 +19,8 @@ function Cards() {
     fetch('http://localhost:3000/static/shoes.json')
       .then((response) => response.json())
       .then(setData);
-  }, []);
-
-  useEffect(() => {
-    
+      
+     
   }, []);
 
   const handleLeftClick = (e) => {
@@ -92,6 +90,7 @@ function Cards() {
       <div className="carousel" ref={carousel}>
         {data.map((item) => {
           const { id, name, price, oldPrice, image, q1,q2,q3,q4,q5 } = item;
+         
           return (
             <div className="item" key={id}>
               <div className="image">
@@ -137,9 +136,6 @@ function Cards() {
                     </div>
                   </div>
                 </div>
-
-
-
               </div>
             </div>
           );

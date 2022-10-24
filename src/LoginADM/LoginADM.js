@@ -1,5 +1,5 @@
 import React from "react";
-import './styles.css';
+import './loginadm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -10,7 +10,7 @@ import { BsAlignTop } from "react-icons/bs";
 
 import axios from "axios";
 
-export default function Login() {
+export default function LoginADM() {
     const [tLogin, setTxtLogin] = React.useState("");
     const [tPassword, setTxtPassword] = React.useState("");
 
@@ -70,24 +70,24 @@ export default function Login() {
 
     return (
         <>
-            <div className="container-fluid bg-login">
+            <div className="container-fluid bg-login1">
                 <div className="row justify-content-center">
-                    <Header />
+                    
                     <div className="row justify-content-center align-items-center section-login">
-                        <div className="col-sm-8 col-md-6 col-lg-5 modal-login text-center">
-                            <h1 className="titulo-login">LOGIN</h1>
+                        <div className="col-sm-8 col-md-6 col-lg-5 modal-login1 text-center">
+                            <h1 className="titulo-login">LOGIN ADMINISTRATIVO</h1>
                             <form id="login_conta">
                                 <div className="row mb-3 mt-3 justify-content-center">
                                     <label for="login" className="col-sm-10 col-form-label label-login">Usuário</label>
                                     <div className="col-sm-10">
-                                        <input type="email" className="form-control input-login" id="login"
+                                        <input type="email" className="form-control input-login1" id="login"
                                             onChange={(e) => setTxtLogin(e.target.value)} value={tLogin} placeholder="E-mail" />
                                     </div>
                                 </div>
                                 <div className="row mb-3 justify-content-center">
                                     <label for="senha" className="col-sm-10 col-form-label label-login">Senha</label>
                                     <div className="col-sm-10">
-                                        <input type="password" className="form-control input-login" id="senha"
+                                        <input type="password" className="form-control input-login1" id="senha"
                                             onChange={(e) => setTxtPassword(e.target.value)} value={tPassword} placeholder="Senha" />
                                     </div>
                                 </div>
@@ -103,12 +103,9 @@ export default function Login() {
                                     </div>
                                 </div>
                             </form>
-                            <a href="#" className="esqueci-senha-login">Esqueci minha senha</a>
-                            <a href="http://localhost:3000/cadastro" className="cadastre-se-login">Não tem uma conta? Cadastre-se já!</a>
-                            <a href="http://localhost:3000/loginADM" className="cadastre-se-login">É um Administrador? Clique Aqui.</a>
                         </div>
                     </div>
-                    <Footer />
+                    
                 </div>
             </div>
         </>

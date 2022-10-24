@@ -1,17 +1,8 @@
-label{
-    color:white;
-}
 
-span{
-    color:white;
-}
 
-legend{
-    color: white;
-}
-
-.bg-login{ 
-    background-image: url("../../public/images/jordan1-bg-new.png");
+.bg-login1{ 
+    
+    background-color: #fdfdfd;
     background-size: cover;
     position: relative;
     width: 100%;
@@ -26,11 +17,11 @@ legend{
     margin-bottom: 30px;
 }
 
-.modal-login{
+.modal-login1{
     justify-content: center !important;
     align-items: center !important;
     padding: 2% 0% 4% 0%;
-    background-color: rgb(255, 255, 255);
+    background-color:#d3d3d3;
     border-radius: 20px;
     margin-top: 2.5%;
     margin-bottom: 2.5%;
@@ -50,8 +41,8 @@ legend{
     justify-self: flex-start;
 }
 
-.input-login{
-    background-color: #F3F3F3 !important;
+.input-login1{
+    background-color: #FFFFFF !important;
     border-width: 0px !important;
     border-radius: 10px !important;
 }
@@ -85,5 +76,5 @@ legend{
     text-decoration: none;
     font-weight: bolder;
     display: block;
-    margin-top: 10%;
+    margin-top: 4%;
 }
