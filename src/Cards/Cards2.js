@@ -7,7 +7,7 @@ import withReactContent from "sweetalert2-react-content";
 
 function Cards2() {
   const [tamanho, setTxtTamanho] = useState();
-  const [quantidade, setTxtQuantidade] = useState(1);
+  const [quantidade, setTxtQuantidade] = useState(" 1");
   const [data, setData] = useState([]);
   const tamanhos = [];
   const quantidades = [];

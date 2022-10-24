@@ -7,7 +7,7 @@ import withReactContent from "sweetalert2-react-content";
 
 function Cards() {
   const [tamanho, setTxtTamanho] = useState();
-  const [quantidade, setTxtQuantidade] = useState(1);
+  const [quantidade, setTxtQuantidade] = useState("1 ");
   const [data, setData] = useState([]);
   const tamanhos = [];
   const quantidades = [];
@@ -36,7 +36,7 @@ function Cards() {
 
   if (!data || !data.length) return null;
 
-  const addCarrinho = (id,name) => {
+  const addCarrinho = (id,name,quantidade,tamanho) => {
     if (window.localStorage.getItem("logado") == "true") {
       console.log("adicionou produto id: " + id +  "Produto: "+ name + "Tamanho escolhido: " + tamanho +  "Quantidade " +quantidade+  "e usuario: " + window.localStorage.getItem("idUsuario")   )
       axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
@@ -153,7 +153,7 @@ function Cards() {
                       </div>
                       <div class="modal-footer" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setTxtTamanho()}}>Fechar</button>
-                        <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button>                        
+                        <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name, quantidade, tamanho)}} >Adicionar ao Carrinho</button>                        
                       </div>
                     </div>
                   </div>
