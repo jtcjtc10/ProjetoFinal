@@ -6,15 +6,19 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 function Cards() {
-  const [tamanho, setTxtTamanho] = useState();
-  const [quantidade, setTxtQuantidade] = useState("1 ");
+  const [tamanho, setTxtTamanho] = useState("");
+  const [quantidade, setTxtQuantidade] = useState("");
   const [data, setData] = useState([]);
   const tamanhos = [];
   const quantidades = [];
   const [listaTamanhos , setListaTamanhos] = useState(tamanhos);
   const [listaQuantidades , setListaQuantidades] = useState(quantidades);
   const carousel = useRef(null);
+  const [arrayDados, setArrayDados] = useState([])
+  const dados = []
   let idUsuario = window.localStorage.getItem("idUsuario");
+  const arrayObj = []
+  let objDoArray = {}
 
   const MySwal = withReactContent(Swal);
 
@@ -36,22 +40,43 @@ function Cards() {
 
   if (!data || !data.length) return null;
 
-  const addCarrinho = (id,name,quantidade,tamanho) => {
-    if (window.localStorage.getItem("logado") == "true") {
-      console.log("adicionou produto id: " + id +  "Produto: "+ name + "Tamanho escolhido: " + tamanho +  "Quantidade " +quantidade+  "e usuario: " + window.localStorage.getItem("idUsuario")   )
-      axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
-            .then((response) => {
-              console.log(response.data);
-            })
-    } else {
-      
-    }
+  const addCarrinho = (id,name) => {  
+      if(tamanho == "" || tamanho == undefined){
+        alert("tamanho vazio" + " " + quantidade)
+        console.log("tamanho vazio" + " " + quantidade)
+      }else{
+        console.log(id, name, quantidade, tamanho)  
+        console.log("adicionou produto id: " + id +  "Produto: "+ name + "Tamanho escolhido: " + tamanho +  "Quantidade " +quantidade+  "e usuario: " + window.localStorage.getItem("idUsuario")   )
+        axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
+          .then((response) => {
+            console.log(response.data);
+            MySwal.fire({
+              title: 'Parabéns!',
+              text: 'Produto adicionado ao carrinho de compras!',
+              icon: 'success'
+            });
+          }).catch((error) => {
+            console.log(error);
+            MySwal.fire({
+              title: 'Que pena!',
+              text: 'Não possuímos essa quantidade de produtos inserida.',
+              icon: 'warning'
+            });
+          })    
+      }
   }
   
   const puxarTamanhos = (name) => {
     if(window.localStorage.getItem("logado") == "true"){
       axios.get("http://localhost:8080/verificaQuantidade/"+name)
-      .then((response) => {
+      .then((response) => {               
+        for(let i = 0; i < response.data.length; i++){
+          if(response.data[i][0] !== null){
+            // console.log(response.data[i])            
+            dados[i] = response.data[i]
+          }
+        }
+        setArrayDados(dados)
         for (let i=0; i < response.data.length; i++){
           for (let j=0; j < response.data[i].length; j++){                        
             if (response.data[i][0]!== null){
@@ -60,7 +85,6 @@ function Cards() {
             }            
           }           
         }
-        console.log(tamanhos)
         let t = tamanhos.sort()
         setListaTamanhos(t);
         let q = quantidades.sort()
@@ -79,8 +103,7 @@ function Cards() {
           }
         }
         teste(quantity)
-        setListaQuantidades(arrNum);                
-        console.log(quantidades)     
+        setListaQuantidades(arrNum);
       }).catch((error) =>{
         console.log(error)
       });
@@ -97,6 +120,21 @@ function Cards() {
         icon: 'error'
       });
     }
+  }
+
+
+  const setVazio = () => {
+    setTxtTamanho("")
+    setTxtQuantidade("")
+    let arrayTeste = arrayDados.filter((i) => {return i})     
+    for(let i = 0; i < arrayTeste.length; i++){      
+      objDoArray = {
+        tamanho: arrayTeste[i][0],
+        quantidade: arrayTeste[i][1]
+      }
+      arrayObj.push(objDoArray)
+    }
+    console.log(arrayObj)
   }
 
   return (
@@ -137,6 +175,7 @@ function Cards() {
                         <div className="tamanhobutton">
                           <div className="texttamanho"><h4>Selecione o Tamanho</h4></div>
                           <select name="tamanho" className="tamanhotenis" onChange={(e) => setTxtTamanho(e.target.value)} value={tamanho} >
+                          <option defaultValue=""></option>
                           {listaTamanhos.map((lista, i) => {
                             return <option key={i} value={lista}>{lista}</option>                         
                           })}
@@ -145,6 +184,7 @@ function Cards() {
                         <div className="quantbutton">
                           <div className="texttamanho"><h4>Selecione a quantidade</h4></div>
                           <select name="quantidade" className="quanttenis" onChange={(e) => setTxtQuantidade(e.target.value)} value={quantidade}>                         
+                          <option defaultValue=""></option>
                           {listaQuantidades.map((quantidade, i) => {
                             return <option key={i} value={quantidade}>{quantidade}</option>
                           })}                          
@@ -152,8 +192,8 @@ function Cards() {
                         </div>
                       </div>
                       <div class="modal-footer" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setTxtTamanho()}}>Fechar</button>
-                        <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name, quantidade, tamanho)}} >Adicionar ao Carrinho</button>                        
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setVazio()}}>Fechar</button>
+                        <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button>                        
                       </div>
                     </div>
                   </div>
