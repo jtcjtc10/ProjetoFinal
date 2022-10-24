@@ -20,13 +20,10 @@ function Cards() {
     fetch('http://localhost:3000/static/shoes.json')
       .then((response) => response.json())
       .then(setData);
+      
+     
   }, []);
 
-  useEffect(() => {
-
-
-    
-  }, []);
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
@@ -89,6 +86,7 @@ function Cards() {
       <div className="carousel" ref={carousel}>
         {data.map((item) => {
           const { id, name, price, oldPrice, image, q1,q2,q3,q4,q5 } = item;
+         
           return (
             <div className="item" key={id}>
               <div className="image">
