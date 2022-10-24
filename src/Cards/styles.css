@@ -162,7 +162,6 @@
     height: 350px;
     width: max-content;
     display: inline-block;
-
 }
 
 .imagemodal{
@@ -185,4 +184,8 @@
 .tamanhotenis{
     margin-left: 17%;
     border-radius: 8px;
+}
+
+.containerCardHeight{
+    height: 40rem !important;
 }

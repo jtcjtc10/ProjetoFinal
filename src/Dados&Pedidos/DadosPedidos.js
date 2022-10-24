@@ -37,6 +37,7 @@ export default function DadosPedidos() {
     }, [])
 
     const MySwal = withReactContent(Swal);
+    
     const form = {
         nome_usuario: tNome,
         cpf_usuario: tCpf,
@@ -65,9 +66,8 @@ export default function DadosPedidos() {
 
     const verificaDados = (e) => {
         e.preventDefault();
-        //console.log(tNome, tCpf, tRg, tEndereco, tEmail, tTelefone, tSenha, tConfirmSenha);
-        if (tNome == "" || tEndereco == "" || tEmail == "" || tTelefone == "") {
-            
+        
+        if (tNome == "" || tEndereco == "" || tEmail == "" || tTelefone == "") {            
             MySwal.fire({
                 title: 'Atenção!',
                 text: 'Você deve preencher todos os campos.',
@@ -104,15 +104,13 @@ export default function DadosPedidos() {
  
 
     return (
-        <>
- 
+        <> 
             <div className="container-fluid bg-meus-dados">
                 <div className="row justify-content-center">
                     <Header login={logado} logadoFunc={changeLogado}/>
                     <div className="row justify-content-center section-meus-dados">
                         <div className="col-lg-5 col-md-8 col-sm-10 modal-meus-dados">
-                            <h1 className="titulo-meus-dados">Meus Dados</h1>
-                            {/* <p>Por favor, preencha os dados abaixo para completar seu cadastro!</p> */}
+                            <h1 className="titulo-meus-dados">Meus Dados</h1>                            
                             <form id="registro">
                                 <div className="row col-sm-12 ms-1 mb-3 justify-content-center">
                                     <div className="row col-sm-6 justify-content-center">
@@ -163,22 +161,7 @@ export default function DadosPedidos() {
                                                 <input type="number" className="form-control input-meus-dados" id="telefone"
                                                     onChange={(e) => setTxtTelefone(e.target.value)} value={tTelefone} placeholder="Alterar telefone" />
                                             </div>
-                                        </div>
-                                        {/* <div className="row mb-2 justify-content-center">
-                                            <label for="senha" className="col-sm-12 col-form-label label-meus-dados">Senha</label>
-                                            <div className="col-sm-12">
-                                                <input type="password" className="form-control input-meus-dados" id="senha"
-                                                    onChange={(e) => setTxtSenha(e.target.value)} value={tSenha} placeholder="Senha" />
-                                            </div>
-                                        </div>
-                                        <div className="row mb-2 justify-content-center">
-                                            <label for="confirmarSenha" className="col-sm-12 col-form-label label-meus-dados">Confirmar
-                                                Senha</label>
-                                            <div className="col-sm-12">
-                                                <input type="password" className="form-control input-meus-dados" id="confirmarSenha"
-                                                    onChange={(e) => setTxtConfirmSenha(e.target.value)} value={tConfirmSenha} placeholder="Confirmar senha" />
-                                            </div>
-                                        </div> */}
+                                        </div>                                        
                                     </div>
                                 </div>
                                 <div className="row justify-content-center text-center">

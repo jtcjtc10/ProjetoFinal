@@ -1,13 +1,14 @@
 
-import { useEffect, useState, useRef, Component } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './styles.css';
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function Cards() {
   const [tamanho, setTxtTamanho] = useState();
   const [quantidade, setTxtQuantidade] = useState(1);
   const [data, setData] = useState([]);
-  const [IsModalVisible, setIsModalVisible] = useState(false);
   const tamanhos = [];
   const quantidades = [];
   const [listaTamanhos , setListaTamanhos] = useState(tamanhos);
@@ -15,12 +16,12 @@ function Cards() {
   const carousel = useRef(null);
   let idUsuario = window.localStorage.getItem("idUsuario");
 
+  const MySwal = withReactContent(Swal);
+
   useEffect(() => {
     fetch('http://localhost:3000/static/shoes.json')
       .then((response) => response.json())
-      .then(setData);
-      
-     
+      .then(setData);    
   }, []);
 
   const handleLeftClick = (e) => {
@@ -43,12 +44,12 @@ function Cards() {
               console.log(response.data);
             })
     } else {
-      console.log("vai logar FDP")
+      
     }
   }
   
   const puxarTamanhos = (name) => {
-    if(window.localStorage.getItem("logado")== "true"){
+    if(window.localStorage.getItem("logado") == "true"){
       axios.get("http://localhost:8080/verificaQuantidade/"+name)
       .then((response) => {
         for (let i=0; i < response.data.length; i++){
@@ -59,6 +60,7 @@ function Cards() {
             }            
           }           
         }
+        console.log(tamanhos)
         let t = tamanhos.sort()
         setListaTamanhos(t);
         let q = quantidades.sort()
@@ -77,15 +79,28 @@ function Cards() {
           }
         }
         teste(quantity)
-        setListaQuantidades(arrNum);        
+        setListaQuantidades(arrNum);                
+        console.log(quantidades)     
       }).catch((error) =>{
         console.log(error)
+      });
+    }else{
+      
+    }
+  }
+
+  const deveValidar = () => {
+    if(window.localStorage.getItem("logado") !== "true"){
+      MySwal.fire({
+        title: 'Atenção!',
+        text: 'Prezado usuário, realize login para efetuar sua compra!',
+        icon: 'error'
       });
     }
   }
 
   return (
-    <div className="container">
+    <div className="container containerCardHeight">
       <div className="logo text-center">
         <br /><br />
         <h1 className="title-card">CLÁSSICOS DA NIKE</h1>
@@ -102,9 +117,12 @@ function Cards() {
               </div>
               <div className="info">
                 <span className="name">{name}</span>
-                <span className="oldPrice">R$ {oldPrice}</span>                
+                <span className="oldPrice">R$ {oldPrice}</span>
+                {window.localStorage.getItem("logado") == "true" ?                 
                 <button type="button" className="btn btn-outline-secondary" onClick={() => {puxarTamanhos(name)}} data-bs-toggle="modal"  data-bs-target={"#staticBackdrop"+id} >Comprar</button>
-
+                :
+                <button type="button" className="btn btn-outline-secondary" onClick={() => {deveValidar()}}>Comprar</button>
+                }
                 <div class="modal fade" id={"staticBackdrop" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">

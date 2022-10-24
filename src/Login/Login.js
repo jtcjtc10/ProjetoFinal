@@ -3,28 +3,20 @@ import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { BiLock, BiEnvelope, BiRightArrowAlt } from "react-icons/bi";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { BsAlignTop } from "react-icons/bs";
 
 import axios from "axios";
 
 export default function Login() {
     const [tLogin, setTxtLogin] = React.useState("");
-    const [tPassword, setTxtPassword] = React.useState("");
-
-    const form = {        
-        email_usuario: tLogin,        
-        senha_usuario: tPassword
-    }
+    const [tPassword, setTxtPassword] = React.useState("");   
 
     const MySwal = withReactContent(Swal);
 
     const verificaEntrada = (e) => {
         e.preventDefault();
-        // console.log(tLogin, tPassword);
-
+       
         if (tLogin === "" || tPassword === "") {
             MySwal.fire({
                 title: 'Atenção!',
@@ -33,38 +25,28 @@ export default function Login() {
             });
         } else {
             entrar();
-        }
-        /*MySwal.fire({
-        title: <p>Hello World</p>,
-        didOpen: () => {
-            // `MySwal` is a subclass of `Swal` with all the same instance & static methods
-            MySwal.showLoading()
-        },
-        }).then(() => {
-        return MySwal.fire(<p>Shorthand works too</p>)
-        })*/
+        }        
     }
 
     const entrar = () => {
         axios.post("http://localhost:8080/login", {tLogin, tPassword})
-            .then((response) => {
-                // console.log(response.data)
-                if(response.data){
-                    window.location.href="/"                    
-                    window.localStorage.setItem("logado", true)    
-                    window.localStorage.setItem("idUsuario", response.data)                                  
-                }else if(!response.data){
-                    MySwal.fire({
-                        title: 'Atenção!',
-                        text: 'Os dados inseridos estão incorretos!',
-                        icon: 'error'
-                    });
-                    window.localStorage.removeItem("logado")
-                    window.localStorage.removeItem("idUsuario") 
-                }
-            })     
-            .catch((error) => {
-                console.log(error)
+        .then((response) => {
+            if(response.data){
+                window.location.href="/"                    
+                window.localStorage.setItem("logado", true)    
+                window.localStorage.setItem("idUsuario", response.data)                                  
+            }else if(!response.data){
+                MySwal.fire({
+                    title: 'Atenção!',
+                    text: 'Os dados inseridos estão incorretos!',
+                    icon: 'error'
+                });
+                window.localStorage.removeItem("logado")
+                window.localStorage.removeItem("idUsuario") 
+            }
+        })     
+        .catch((error) => {
+            console.log(error)
         })          
     }
 
@@ -94,11 +76,7 @@ export default function Login() {
                                 <div className="row justify-content-center">
                                     <div className="col-sm-10">
                                         <button type="button" className="mt-3 btn-login col-sm-12" onClick={verificaEntrada}>
-                                            <span className="btn-texto-login">ENTRAR</span>
-                                            {/*<BiRightArrowAlt 
-                                        color={"white"}
-                                        size={24}
-                                    /> */}
+                                            <span className="btn-texto-login">ENTRAR</span>                                            
                                         </button>
                                     </div>
                                 </div>

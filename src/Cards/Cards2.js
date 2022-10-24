@@ -1,21 +1,22 @@
 
-import { useEffect, useState, useRef, Component } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './styles.css';
 import axios from "axios";
-
-
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function Cards2() {
   const [tamanho, setTxtTamanho] = useState();
   const [quantidade, setTxtQuantidade] = useState(1);
   const [data, setData] = useState([]);
-  const [IsModalVisible, setIsModalVisible] = useState(false);
   const tamanhos = [];
   const quantidades = [];
   const [listaTamanhos , setListaTamanhos] = useState(tamanhos);
   const [listaQuantidades , setListaQuantidades] = useState(quantidades);
   const carousel = useRef(null);
   let idUsuario = window.localStorage.getItem("idUsuario");
+
+  const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     fetch('http://localhost:3000/static/shoes2.json')
@@ -42,7 +43,6 @@ function Cards2() {
             .then((response) => {
               console.log(response.data);
             })
-
     } else {
       console.log("vai logar FDP")
     }
@@ -85,8 +85,18 @@ function Cards2() {
     }
   }
 
+  const deveValidar = () => {
+    if(window.localStorage.getItem("logado") !== "true"){
+      MySwal.fire({
+        title: 'Atenção!',
+        text: 'Prezado usuário, realize login para efetuar sua compra!',
+        icon: 'error'
+      });
+    }
+  }
+
   return (
-    <div className="container">
+    <div className="container containerCardHeight">
       <div className="logo text-center">
         <br /><br />
         <h1 className="title-card">AIR JORDAN</h1>
@@ -104,9 +114,11 @@ function Cards2() {
               <div className="info">
                 <span className="name">{name}</span>
                 <span className="oldPrice">R$ {oldPrice}</span>
-                {/* <button type="button" className='btn btn-outline-success' data-bs-toggle="modal"  data-bs-target={"#staticBackdrop"+id} ><span className="price">{price}</span></button> */}
+                {window.localStorage.getItem("logado") == "true" ?
                 <button type="button" className="btn btn-outline-secondary" onClick={() => {puxarTamanhos(name)}} data-bs-toggle="modal"  data-bs-target={"#staticBackdrop2"+id} >Comprar</button>
-
+                :
+                <button type="button" className="btn btn-outline-secondary" onClick={() => {deveValidar()}}>Comprar</button>
+                }
                 <div class="modal fade" id={"staticBackdrop2" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -142,9 +154,6 @@ function Cards2() {
                     </div>
                   </div>
                 </div>
-
-
-
               </div>
             </div>
           );

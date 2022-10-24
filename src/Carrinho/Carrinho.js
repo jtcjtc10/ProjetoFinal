@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import "../DadosPedidos.css";
 import "../Cadastro/Cad.css";
 import "./Carrinho.css";
 import { BsFillTrashFill } from "react-icons/bs";
@@ -26,6 +25,10 @@ export default function Cadastro() {
         }
     }, [])
 
+    const excluirItem = (id) => {
+        alert("Excluindo item")
+    }
+
     return (
         <>
             <div className="container-fluid bg-carrinho">
@@ -47,23 +50,14 @@ export default function Cadastro() {
                                                 <p className="carrinho-titulo">Nike Jordan Fly Black Edition</p>
                                             </div>
                                             <div className="col-1">
-                                                <BsFillTrashFill size={26} color="black" onClick={""} />
+                                                <BsFillTrashFill size={26} color="black" onClick={() => {excluirItem()}} />
                                             </div>
                                         </div>
                                         <p className="carrinho-desc">Tênis espetacular desenvolvido com a melhor tecnologia do mercado, utilizando couro de cabra cega.</p>
                                         <div className="mb-1">
                                             <span className="span-carrinho-normal">Tamanho: </span>
                                             <select name="tamanho">
-                                                <option value={36}>36</option>
-                                                <option value={37}>37</option>
-                                                <option value={38}>38</option>
-                                                <option value={39}>39</option>
-                                                <option value={40}>40</option>
-                                                <option value={41}>41</option>
-                                                <option value={42}>42</option>
-                                                <option value={43}>43</option>
-                                                <option value={44}>44</option>
-                                                <option value={45}>45</option>
+                                                <option value={36}>36</option>                                                
                                             </select>
                                         </div>
                                         <span className="span-carrinho-normal">Quantidade: </span>
@@ -75,7 +69,7 @@ export default function Cadastro() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                            
                             <div className="modal-carrinho d-block">
                                 <div className="row justify-content-around my-1 mx-1">
                                     <div className="col-4 ms-1 mt-2 imagem-carrinho">
@@ -87,23 +81,14 @@ export default function Cadastro() {
                                                 <p className="carrinho-titulo">Nike Jordan Fly Black Edition</p>
                                             </div>
                                             <div className="col-1">
-                                                <BsFillTrashFill size={26} color="black" onClick={""} />
+                                                <BsFillTrashFill size={26} color="black" onClick={() => {excluirItem()}} />
                                             </div>
                                         </div>
                                         <p className="carrinho-desc">Tênis espetacular desenvolvido com a melhor tecnologia do mercado, utilizando couro de cabra cega.</p>
                                         <div className="mb-1">
                                             <span className="span-carrinho-normal">Tamanho: </span>
                                             <select name="tamanho">
-                                                <option value={36}>36</option>
-                                                <option value={37}>37</option>
-                                                <option value={38}>38</option>
-                                                <option value={39}>39</option>
-                                                <option value={40}>40</option>
-                                                <option value={41}>41</option>
-                                                <option value={42}>42</option>
-                                                <option value={43}>43</option>
-                                                <option value={44}>44</option>
-                                                <option value={45}>45</option>
+                                                <option value={36}>36</option>                                                
                                             </select>
                                         </div>
                                         <span className="span-carrinho-normal">Quantidade: </span>
@@ -115,10 +100,10 @@ export default function Cadastro() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
                         <div className="row col-sm-12 col-md-12 col-lg-4 my-2 mx-1 justify-content-center">
-                            <div className="modal-carrinho">
+                            <div className="modal-carrinhoDados">
                                 <p className="p-carrinho my-1">Endereço de entrega</p>
                                 <div className="col-sm-12">
                                     <input type="text" className="form-control input-carrinho mb-3" />
