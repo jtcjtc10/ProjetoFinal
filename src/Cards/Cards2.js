@@ -7,7 +7,7 @@ import axios from "axios";
 
 function Cards2() {
   const [tamanho, setTxtTamanho] = useState();
-  const [quantidade, setTxtQuantidade] = useState(1);
+  const [quantidade, setTxtQuantidade] = useState(" 1");
   const [data, setData] = useState([]);
   const [IsModalVisible, setIsModalVisible] = useState(false);
   const tamanhos = [];

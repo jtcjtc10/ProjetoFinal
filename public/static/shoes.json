@@ -28,7 +28,7 @@
   },
   {
     "id": "3",
-    "name": "Nike Classic 1 " ,
+    "name": "Nike Classic 1" ,
     "price": "Comprar",
     "oldPrice": 349.99,
     "image": "images/imagesC/pngwing.com (3).png",
@@ -40,7 +40,7 @@
   },
   {
     "id": "4",
-    "name": "Nike Revolution 8 " ,
+    "name": "Nike Revolution 8" ,
     "price": "Comprar",
     "oldPrice": 799.99,
     "image": "images/imagesC/pngwing.com (4).png",
@@ -52,7 +52,7 @@
   },
   {
     "id": "5",
-    "name": "Nike Air Max 3 " ,
+    "name": "Nike Air Max 3" ,
     "price": "Comprar",
     "oldPrice": 499.99,
     "image": "images/imagesC/pngwing.com (5).png",
@@ -64,7 +64,7 @@
   },
   {
     "id": "6",
-    "name": "Tênis Nike Revolution 4 " ,
+    "name": "Tênis Nike Revolution 4" ,
     "price": "Comprar",
     "oldPrice": 349.99,
     "image": "images/imagesC/pngwing.com (6).png",
@@ -76,7 +76,7 @@
   },
   {
     "id": "7",
-    "name": "Nike Casual M1 " ,
+    "name": "Nike Casual M1" ,
     "price": "Comprar",
     "oldPrice": 249.99,
     "image": "images/imagesC/pngwing.com (7).png",
@@ -88,7 +88,7 @@
   },
   {
     "id": "8",
-    "name": "Nike Air Max Red 3 " ,
+    "name": "Nike Air Max Red 3" ,
     "price": "Comprar",
     "oldPrice": 449.99,
     "image": "images/imagesC/pngwing.com (8).png",
