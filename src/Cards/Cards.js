@@ -39,15 +39,29 @@ function Cards() {
   };
 
   if (!data || !data.length) return null;
-
+   
   const addCarrinho = (id,name) => {  
-      if(tamanho == "" || tamanho == undefined){
-        alert("tamanho vazio" + " " + quantidade)
-        console.log("tamanho vazio" + " " + quantidade)
-      }else{
-        console.log(id, name, quantidade, tamanho)  
-        console.log("adicionou produto id: " + id +  "Produto: "+ name + "Tamanho escolhido: " + tamanho +  "Quantidade " +quantidade+  "e usuario: " + window.localStorage.getItem("idUsuario")   )
-        axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
+    if(tamanho == "" || tamanho == undefined){
+      MySwal.fire({
+        title: 'Por favor!',
+        text: 'Informe o tamanho e quantidade a ser adquirida!',
+        icon: 'warning'
+      });
+    }else{
+      let arrayTeste = arrayDados.filter((i) => {return i}) 
+        for(let i = 0; i < arrayTeste.length; i++){      
+          objDoArray = {
+            tamanho: arrayTeste[i][0],
+            quantidade: arrayTeste[i][1]
+          }          
+          arrayObj.push(objDoArray)
+        }
+        for(let i = 0; i < arrayObj.length; i++){
+          if(arrayObj[i].tamanho == tamanho){
+            if(arrayObj[i].quantidade >= quantidade){
+              arrayObj[i].quantidade = arrayObj[i].quantidade - quantidade;
+
+          axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
           .then((response) => {
             console.log(response.data);
             MySwal.fire({
@@ -63,6 +77,15 @@ function Cards() {
               icon: 'warning'
             });
           })    
+            }else{
+              MySwal.fire({
+                title: 'Que Pena!',
+                text: 'Nosso estoque desse produto acabou!',
+                icon: 'warning'
+              });
+            }
+          }
+        }        
       }
   }
   
@@ -72,7 +95,6 @@ function Cards() {
       .then((response) => {               
         for(let i = 0; i < response.data.length; i++){
           if(response.data[i][0] !== null){
-            // console.log(response.data[i])            
             dados[i] = response.data[i]
           }
         }
@@ -103,7 +125,7 @@ function Cards() {
           }
         }
         teste(quantity)
-        setListaQuantidades(arrNum);
+        setListaQuantidades(arrNum);        
       }).catch((error) =>{
         console.log(error)
       });
@@ -122,19 +144,9 @@ function Cards() {
     }
   }
 
-
   const setVazio = () => {
     setTxtTamanho("")
-    setTxtQuantidade("")
-    let arrayTeste = arrayDados.filter((i) => {return i})     
-    for(let i = 0; i < arrayTeste.length; i++){      
-      objDoArray = {
-        tamanho: arrayTeste[i][0],
-        quantidade: arrayTeste[i][1]
-      }
-      arrayObj.push(objDoArray)
-    }
-    console.log(arrayObj)
+    setTxtQuantidade("")    
   }
 
   return (

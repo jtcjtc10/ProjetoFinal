@@ -5,25 +5,31 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
+//copia do card 1 pra ser usada no 2
+
 function Cards2() {
-  const [tamanho, setTxtTamanho] = useState();
-  const [quantidade, setTxtQuantidade] = useState(" 1");
+  const [tamanho, setTxtTamanho] = useState("");
+  const [quantidade, setTxtQuantidade] = useState("");
   const [data, setData] = useState([]);
   const tamanhos = [];
   const quantidades = [];
   const [listaTamanhos , setListaTamanhos] = useState(tamanhos);
   const [listaQuantidades , setListaQuantidades] = useState(quantidades);
   const carousel = useRef(null);
+  const [arrayDados, setArrayDados] = useState([])
+  const dados = []
   let idUsuario = window.localStorage.getItem("idUsuario");
+  const arrayObj = []
+  let objDoArray = {}
 
   const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     fetch('http://localhost:3000/static/shoes2.json')
       .then((response) => response.json())
-      .then(setData);
+      .then(setData);    
   }, []);
-  
+
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
@@ -35,23 +41,66 @@ function Cards2() {
   };
 
   if (!data || !data.length) return null;
+  
+  const addCarrinho = (id,name) => {  
+    if(tamanho == "" || tamanho == undefined){
+      MySwal.fire({
+        title: 'Por favor!',
+        text: 'Informe o tamanho e quantidade a ser adquirida!',
+        icon: 'warning'
+      });
+    }else{
+      let arrayTeste = arrayDados.filter((i) => {return i}) 
+        for(let i = 0; i < arrayTeste.length; i++){      
+          objDoArray = {
+            tamanho: arrayTeste[i][0],
+            quantidade: arrayTeste[i][1]
+          }          
+          arrayObj.push(objDoArray)
+        }
+        for(let i = 0; i < arrayObj.length; i++){
+          if(arrayObj[i].tamanho == tamanho){
+            if(arrayObj[i].quantidade >= quantidade){
+              arrayObj[i].quantidade = arrayObj[i].quantidade - quantidade;
 
-  const addCarrinho = (id,name) => {
-    if (window.localStorage.getItem("logado") == "true") {
-      console.log("adicionou produto id: " + id +  "Produto: "+ name + "Tamanho escolhido: " + tamanho +  "Quantidade " +quantidade+  "e usuario: " + window.localStorage.getItem("idUsuario")   )
-      axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
-            .then((response) => {
-              console.log(response.data);
-            })
-    } else {
-      console.log("vai logar FDP")
-    }
+          axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
+          .then((response) => {
+            console.log(response.data);
+            MySwal.fire({
+              title: 'Parabéns!',
+              text: 'Produto adicionado ao carrinho de compras!',
+              icon: 'success'
+            });
+          }).catch((error) => {
+            console.log(error);
+            MySwal.fire({
+              title: 'Que pena!',
+              text: 'Não possuímos essa quantidade de produtos inserida.',
+              icon: 'warning'
+            });
+          })    
+            }else{
+              MySwal.fire({
+                title: 'Que Pena!',
+                text: 'Nosso estoque desse produto acabou!',
+                icon: 'warning'
+              });
+            }
+          }
+        }        
+      }
   }
   
   const puxarTamanhos = (name) => {
-    if(window.localStorage.getItem("logado")== "true"){
+    if(window.localStorage.getItem("logado") == "true"){
       axios.get("http://localhost:8080/verificaQuantidade/"+name)
-      .then((response) => {
+      .then((response) => {               
+        for(let i = 0; i < response.data.length; i++){
+          if(response.data[i][0] !== null){
+            dados[i] = response.data[i]
+          }
+        }
+        setArrayDados(dados)
         for (let i=0; i < response.data.length; i++){
           for (let j=0; j < response.data[i].length; j++){                        
             if (response.data[i][0]!== null){
@@ -82,6 +131,8 @@ function Cards2() {
       }).catch((error) =>{
         console.log(error)
       });
+    }else{
+      
     }
   }
 
@@ -95,6 +146,13 @@ function Cards2() {
     }
   }
 
+  const setVazio = () => {
+    setTxtTamanho("")
+    setTxtQuantidade("")    
+  }
+
+////////////////////////////////////////////////////////////////////////////
+
   return (
     <div className="container containerCardHeight">
       <div className="logo text-center">
@@ -103,9 +161,9 @@ function Cards2() {
         <br />
       </div>
       <div className="carousel-cards2" ref={carousel}>
-        {data.map((item) => {
+      {data.map((item) => {
           const { id, name, price, oldPrice, image } = item;
-          
+         
           return (
             <div className="item" key={id}>
               <div className="image">
@@ -114,7 +172,7 @@ function Cards2() {
               <div className="info">
                 <span className="name">{name}</span>
                 <span className="oldPrice">R$ {oldPrice}</span>
-                {window.localStorage.getItem("logado") == "true" ?
+                {window.localStorage.getItem("logado") == "true" ?                 
                 <button type="button" className="btn btn-outline-secondary" onClick={() => {puxarTamanhos(name)}} data-bs-toggle="modal"  data-bs-target={"#staticBackdrop2"+id} >Comprar</button>
                 :
                 <button type="button" className="btn btn-outline-secondary" onClick={() => {deveValidar()}}>Comprar</button>
@@ -132,23 +190,25 @@ function Cards2() {
                         </div>
                         <div className="tamanhobutton">
                           <div className="texttamanho"><h4>Selecione o Tamanho</h4></div>
-                            <select name="tamanho" className="tamanhotenis" onChange={(e) => setTxtTamanho(e.target.value)} value={tamanho} >
-                            {listaTamanhos.map((lista, i)=> {
-                              return <option key={i} value={lista}>{lista}</option>                         
-                            })}
-                            </select>
-                          </div>
+                          <select name="tamanho" className="tamanhotenis" onChange={(e) => setTxtTamanho(e.target.value)} value={tamanho} >
+                          <option defaultValue=""></option>
+                          {listaTamanhos.map((lista, i) => {
+                            return <option key={i} value={lista}>{lista}</option>                         
+                          })}
+                          </select>
+                        </div>
                         <div className="quantbutton">
                           <div className="texttamanho"><h4>Selecione a quantidade</h4></div>
-                            <select name="quantidade" className="quanttenis" onChange={(e) => setTxtQuantidade(e.target.value)} value={quantidade}>                         
-                            {listaQuantidades.map((quantidade, i) => {
-                              return <option key={i} value={quantidade}>{quantidade}</option>
-                            })}           
-                            </select>
+                          <select name="quantidade" className="quanttenis" onChange={(e) => setTxtQuantidade(e.target.value)} value={quantidade}>                         
+                          <option defaultValue=""></option>
+                          {listaQuantidades.map((quantidade, i) => {
+                            return <option key={i} value={quantidade}>{quantidade}</option>
+                          })}                          
+                          </select>
                         </div>
                       </div>
                       <div class="modal-footer" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setTxtTamanho()}}>Fechar</button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setVazio()}}>Fechar</button>
                         <button type="button" class="btn btn-outline-success" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button>                        
                       </div>
                     </div>
