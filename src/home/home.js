@@ -44,7 +44,7 @@ export default function Home() {
                             <div className="text1">
                                 <h2>Nike Air Jordan Retro On!</h2>
                                 <h4>Cores Vivas estão no Nosso DNA</h4>
-                                <h4>Conheça nosso modelos</h4>
+                                <h4>Conheça nossos modelos</h4>
                             </div>
                         </div>
                     </div>

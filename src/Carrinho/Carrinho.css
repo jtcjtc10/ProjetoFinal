@@ -35,13 +35,14 @@ legend {
     font-family: "Montserrat", sans-serif;
     font-weight: bolder;
     margin-bottom: 0 !important;
-    margin-left: 3rem;
+    padding-left: 4rem;
 }
 
 .modal-carrinho {
     justify-content: center;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
+    
 }
 
 .modal-carrinhoDados {
@@ -53,11 +54,9 @@ legend {
 
 .imagem-carrinho {
     width: 150px;
-    /* background-image: url("../../public/images/jordan1-bg.png") ; */
     background-size: cover;
     position: relative;
     height: 150px;
-    background-color: black;
 }
 
 .dados-carrinho {

@@ -67,7 +67,7 @@ export default function Cadastro() {
                     } else if (response.data == false) {
                         MySwal.fire({
                             title: 'Atenção!',
-                            text: 'O e-mail inserido já se encontra sendo utilizado!',
+                            text: 'Os dados inseridos já se encontram sendo utilizados!',
                             icon: 'error'
                         });
                     }
