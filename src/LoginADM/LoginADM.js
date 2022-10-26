@@ -50,7 +50,7 @@ export default function LoginADM() {
             .then((response) => {
                 // console.log(response.data)
                 if(response.data){
-                    window.location.href="/"                    
+                    window.location.href="/TelaADM"                    
                     window.localStorage.setItem("logado", true)    
                     window.localStorage.setItem("idUsuario", response.data)                                  
                 }else if(!response.data){

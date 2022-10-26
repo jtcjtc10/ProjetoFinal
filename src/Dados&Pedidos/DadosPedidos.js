@@ -116,9 +116,9 @@ export default function DadosPedidos() {
                                     <div className="row col-sm-6 justify-content-center">
                                         <div className="row mb-2 mt-3 justify-content-center">
                                             <label for="nome" className="col-sm-12 col-form-label label-meus-dados">Nome</label>
-                                            <h6>Informaçoes Atuais: {dados.nome_usuario}</h6>
+                                            <h6>{dados.nome_usuario}</h6>
                                             <div className="col-sm-12">  
-                                                <input type="text" className="form-control input-meus-dados" id="nome"
+                  git                              <input type="text" className="form-control input-meus-dados" id="nome"
                                                     onChange={(e) => setTxtNome(e.target.value)} value={tNome} placeholder="Alterar nome" />
                                             </div>
                                         </div>
@@ -140,7 +140,7 @@ export default function DadosPedidos() {
                                     <div className="row col-sm-6 justify-content-center">
                                         <div className="row mb-2 mt-3 justify-content-center">
                                             <label for="email" className="col-sm-12 col-form-label label-meus-dados">E-mail</label>
-                                            <h6>Informaçoes Atuais: {dados.email_usuario}</h6>
+                                            <h6>{dados.email_usuario}</h6>
                                             <div className="col-sm-12">
                                                 <input type="email" className="form-control input-meus-dados" id="email"
                                                     onChange={(e) => setTxtEmail(e.target.value)} value={tEmail} placeholder="Alterar e-mail" />
@@ -148,7 +148,7 @@ export default function DadosPedidos() {
                                         </div>
                                         <div className="row mb-2 justify-content-center">
                                             <label for="endereco" className="col-sm-12 col-form-label label-meus-dados">Endereço</label>
-                                            <h6>Informaçoes Atuais: {dados.endereco_usuario}</h6>
+                                            <h6> {dados.endereco_usuario}</h6>
                                             <div className="col-sm-12">
                                                 <input type="text" className="form-control input-meus-dados" id="endereco"
                                                     onChange={(e) => setTxtEndereco(e.target.value)} value={tEndereco} placeholder="Alterar endereço" />
@@ -156,7 +156,7 @@ export default function DadosPedidos() {
                                         </div>
                                         <div className="row mb-2 justify-content-center">
                                             <label for="telefone" className="col-sm-12 col-form-label label-meus-dados">Telefone</label>
-                                            <h6>Informaçoes Atuais: {dados.telefone_usuario}</h6>
+                                            <h6> {dados.telefone_usuario}</h6>
                                             <div className="col-sm-12">
                                                 <input type="number" className="form-control input-meus-dados" id="telefone"
                                                     onChange={(e) => setTxtTelefone(e.target.value)} value={tTelefone} placeholder="Alterar telefone" />
