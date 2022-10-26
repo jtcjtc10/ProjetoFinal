@@ -18,6 +18,7 @@ export default function Cadastro() {
     const [total, setTotal] = useState();
     const [endereco, setEndereco] = useState("")
     const [cupom, setCupom] = useState("")
+    const [enderecoUsuario, setEnderecoUsuario] = useState("")
     let idUsuario = window.localStorage.getItem("idUsuario");
     let objProduto = {};  
     let arrayBanco = [];
@@ -30,15 +31,25 @@ export default function Cadastro() {
         }
     }
 
+    const userData = () => {
+        axios.get("http://localhost:8080/dados/" + idUsuario)
+            .then((response) => {
+                setEnderecoUsuario(response.data.endereco_usuario);
+            }).catch((error) => {
+                console.log(error);
+            })
+    }
+
     const forNosTenis = (data) => {
         for (let i = 0; i < data.length; i++) {
             objProduto = {
                 codigoProduto: data[i][0],
                 nomeProduto: data[i][1],
-                tamanhoProduto: data[i][2],
-                precoProduto: data[i][3],
-                quantidadeProduto: data[i][4],
-                imagemProduto: data[i][5]
+                descricaoProduto: data[i][2],
+                tamanhoProduto: data[i][3],
+                precoProduto: data[i][4],
+                quantidadeProduto: data[i][5],
+                imagemProduto: data[i][6]
             }
             arrayBanco.push(objProduto);
         }
@@ -49,7 +60,7 @@ export default function Cadastro() {
         axios.get("http://localhost:8080/produtoCarrinho/" + idUsuario)
             .then((response) => {                
                 forNosTenis(response.data)  
-                subtotal()              
+                subtotal()
             }).catch((error) => {
                 console.log(error);
             })
@@ -57,7 +68,8 @@ export default function Cadastro() {
 
     const subtotal = () => {
         for (let i=0; i< arrayProdutos.length; i++){           
-            soma = soma + parseFloat(arrayProdutos[i].precoProduto) * parseFloat(arrayProdutos[i].quantidadeProduto);            
+            soma = soma + parseFloat(arrayProdutos[i].precoProduto) * parseFloat(arrayProdutos[i].quantidadeProduto);
+            userData()            
         }
         setTotal(soma.toFixed(2));
     }
@@ -144,14 +156,14 @@ export default function Cadastro() {
                                                         <VscTrash className="trashIcon" size={26} color="black" onClick={() => { excluirItem(produto.codigoProduto) }} />
                                                     </div>
                                                 </div>
-                                                <p className="carrinho-desc">Tênis espetacular desenvolvido com a melhor tecnologia do mercado, utilizando couro de cabra cega.</p>
+                                                <p className="carrinho-desc">{produto.descricaoProduto}</p>
                                                 <div className="mb-1">
                                                     <span className="span-carrinho-normal">Tamanho: {produto.tamanhoProduto}</span>                                                    
                                                 </div>
                                                 <span className="span-carrinho-normal">Quantidade: {produto.quantidadeProduto}</span>                                                
                                                 <div className="row justify-content-end">
                                                     <div className="col-sm-5 text-end">
-                                                        <span className="carrinho-titulo">R$ {(parseFloat(produto.precoProduto) * parseInt(produto.quantidadeProduto)).toFixed(2)}</span>
+                                                        <span className="carrinho-preco">R$ {(parseFloat(produto.precoProduto) * parseInt(produto.quantidadeProduto)).toFixed(2)}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,7 +176,7 @@ export default function Cadastro() {
                             <div className="modal-carrinhoDados">
                                 <p className="p-carrinho my-1">Endereço de entrega</p>
                                 <div className="col-sm-12">
-                                    <input type="text" value={endereco} onChange={(e) => {setEndereco(e.target.value)}} className="form-control input-carrinho mb-3" />
+                                    <input type="text" value={enderecoUsuario} onChange={(e) => {setEndereco(e.target.value)}} className="form-control input-carrinho mb-3" />
                                 </div>
                                 <p className="p-carrinho mb-1">Observações</p>
                                 <div className="col-sm-12">
