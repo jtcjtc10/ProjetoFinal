@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../Cadastro/Cad.css";
 import "./Carrinho.css";
 import { BsFillTrashFill } from "react-icons/bs";
+import { VscTrash } from "react-icons/vsc";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -13,12 +14,14 @@ const MySwal = withReactContent(Swal);
 
 export default function Cadastro() {
     const [logado, setLogado] = useState();
-    let idUsuario = window.localStorage.getItem("idUsuario");
     const [arrayProdutos, setArrayProdutos] = useState([]);
+    const [total, setTotal] = useState();
+    const [endereco, setEndereco] = useState("")
+    const [cupom, setCupom] = useState("")
+    let idUsuario = window.localStorage.getItem("idUsuario");
     let objProduto = {};  
     let arrayBanco = [];
     let soma = 0
-    const [total, setTotal] = useState();
 
     const changeLogado = (props) => {
         if (props === 0) {
@@ -85,6 +88,36 @@ export default function Cadastro() {
         })
     }
 
+    const finalizarCompra = () => {
+        if(endereco == ""){
+            MySwal.fire({
+                title: 'Atenção!',
+                text: 'Você deve preencher o endereço de entrega!',
+                icon: 'warning'
+            });
+        } else if(endereco !== "" && cupom == ""){  
+            MySwal.fire({
+                title: 'Uhuuu!',
+                text: 'Agradecemos pela compra. Volte Sempre!',
+                icon: 'success'
+            });
+            setCupom("")            
+        } else if(endereco !== "" && cupom !== ""){
+            MySwal.fire({
+                title: 'Que pena!',
+                text: 'O cupom inserido é inválido!',
+                icon: 'warning'
+            })  
+            setCupom("")            
+        } else{
+            MySwal.fire({
+                title: 'Uhuuu!',
+                text: 'Agradecemos pela compra. Volte Sempre!',
+                icon: 'success'
+            });
+        }       
+    }
+
     return (
         <>
             <div className="container-fluid bg-carrinho">
@@ -108,28 +141,22 @@ export default function Cadastro() {
                                                         <p className="carrinho-titulo">{produto.nomeProduto}</p>
                                                     </div>
                                                     <div className="col-1">
-                                                        <BsFillTrashFill size={26} color="black" onClick={() => { excluirItem(produto.codigoProduto) }} />
+                                                        <VscTrash className="trashIcon" size={26} color="black" onClick={() => { excluirItem(produto.codigoProduto) }} />
                                                     </div>
                                                 </div>
                                                 <p className="carrinho-desc">Tênis espetacular desenvolvido com a melhor tecnologia do mercado, utilizando couro de cabra cega.</p>
                                                 <div className="mb-1">
-                                                    <span className="span-carrinho-normal">Tamanho: {produto.tamanhoProduto}</span>
-                                                    {/* <select name="tamanho">
-                                                        <option value={produto.tamanhoProduto}>{produto.tamanhoProduto}</option>
-                                                    </select> */}
+                                                    <span className="span-carrinho-normal">Tamanho: {produto.tamanhoProduto}</span>                                                    
                                                 </div>
-                                                <span className="span-carrinho-normal">Quantidade: {produto.quantidadeProduto}</span>
-                                                {/* <input size={1} value={produto.quantidadeProduto}></input> */}
+                                                <span className="span-carrinho-normal">Quantidade: {produto.quantidadeProduto}</span>                                                
                                                 <div className="row justify-content-end">
                                                     <div className="col-sm-5 text-end">
                                                         <span className="carrinho-titulo">R$ {(parseFloat(produto.precoProduto) * parseInt(produto.quantidadeProduto)).toFixed(2)}</span>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-
                                 )
                             })}
                         </div>
@@ -137,7 +164,7 @@ export default function Cadastro() {
                             <div className="modal-carrinhoDados">
                                 <p className="p-carrinho my-1">Endereço de entrega</p>
                                 <div className="col-sm-12">
-                                    <input type="text" className="form-control input-carrinho mb-3" />
+                                    <input type="text" value={endereco} onChange={(e) => {setEndereco(e.target.value)}} className="form-control input-carrinho mb-3" />
                                 </div>
                                 <p className="p-carrinho mb-1">Observações</p>
                                 <div className="col-sm-12">
@@ -166,7 +193,7 @@ export default function Cadastro() {
                                             <p className="p-div-carrinho mb-0">Cupom</p>
                                         </div>
                                         <div className="col-sm-4 col-md-4 col-lg-6">
-                                            <input className="form-control input-carrinho2 mb-3" />
+                                            <input placeholder="Insira seu cupom" maxLength={8} value={cupom} onChange={(e) => {setCupom(e.target.value)}} className="form-control input-carrinho2 mb-3" />
                                         </div>
                                     </div>
                                     <div className="col-sm-12 row">
@@ -181,7 +208,7 @@ export default function Cadastro() {
                                 <hr />
                                 <div className="row justify-content-center text-center">
                                     <div className="col-sm-8 col-md-6 col-lg-8">
-                                        <button type="submit" className="btn-finalizar col-sm-12" onClick={""}>
+                                        <button type="submit" className="btn-finalizar col-sm-12" onClick={() => {finalizarCompra()}}>
                                             <span className="span-btn-finalizar">FINALIZAR</span>
                                         </button>
                                     </div>

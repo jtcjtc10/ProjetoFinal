@@ -19,7 +19,7 @@ function Cards() {
   let idUsuario = window.localStorage.getItem("idUsuario");
   const arrayObj = []
   let objDoArray = {}
-
+  
   const MySwal = withReactContent(Swal);
 
   useEffect(() => {
@@ -44,10 +44,16 @@ function Cards() {
     if(tamanho == "" || tamanho == undefined){
       MySwal.fire({
         title: 'Por favor!',
-        text: 'Informe o tamanho e quantidade a ser adquirida!',
+        text: 'Informe o tamanho do tênis!',
         icon: 'warning'
       });
-    }else{
+    } else if(quantidade == "" || quantidade == undefined){
+      MySwal.fire({
+        title: 'Por favor!',
+        text: 'Informe a quantidade de tênis!',
+        icon: 'warning'
+      });
+    } else{
       let arrayTeste = arrayDados.filter((i) => {return i}) 
         for(let i = 0; i < arrayTeste.length; i++){      
           objDoArray = {
@@ -60,23 +66,22 @@ function Cards() {
           if(arrayObj[i].tamanho == tamanho){
             if(arrayObj[i].quantidade >= quantidade){
               arrayObj[i].quantidade = arrayObj[i].quantidade - quantidade;
-
-          axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
-          .then((response) => {
-            console.log(response.data);
-            MySwal.fire({
-              title: 'Parabéns!',
-              text: 'Produto adicionado ao carrinho de compras!',
-              icon: 'success'
-            });
-          }).catch((error) => {
-            console.log(error);
-            MySwal.fire({
-              title: 'Que pena!',
-              text: 'Não possuímos essa quantidade de produtos inserida.',
-              icon: 'warning'
-            });
-          })    
+              axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
+              .then((response) => {
+                console.log(response.data);
+                MySwal.fire({
+                  title: 'Parabéns!',
+                  text: 'Produto adicionado ao carrinho de compras!',
+                  icon: 'success'
+                });
+              }).catch((error) => {
+                console.log(error);
+                MySwal.fire({
+                  title: 'Que pena!',
+                  text: 'Não possuímos essa quantidade de produtos inserida.',
+                  icon: 'warning'
+                });
+              })    
             }else{
               MySwal.fire({
                 title: 'Que Pena!',

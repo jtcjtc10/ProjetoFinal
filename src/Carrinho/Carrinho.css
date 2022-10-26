@@ -136,3 +136,7 @@ legend {
     text-decoration: none;
     cursor: pointer;
 }
+
+.trashIcon{
+    cursor: pointer;
+}
