@@ -2,20 +2,23 @@ import React, { useState, useEffect } from "react";
 import "../Cadastro/Cad.css";
 import "./Carrinho.css";
 import { BsFillTrashFill } from "react-icons/bs";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 
+const MySwal = withReactContent(Swal);
+
 export default function Cadastro() {
     const [logado, setLogado] = useState();
     let idUsuario = window.localStorage.getItem("idUsuario");
     const [arrayProdutos, setArrayProdutos] = useState([]);
-    const [valorSubtotal, setValorSubtotal] = useState(0);
-    let objProduto = {};
+    let objProduto = {};  
     let arrayBanco = [];
-    let soma = 0;
-    const [total, setTotal]= useState();
+    let soma = 0
+    const [total, setTotal] = useState();
 
     const changeLogado = (props) => {
         if (props === 0) {
@@ -24,52 +27,62 @@ export default function Cadastro() {
         }
     }
 
+    const forNosTenis = (data) => {
+        for (let i = 0; i < data.length; i++) {
+            objProduto = {
+                codigoProduto: data[i][0],
+                nomeProduto: data[i][1],
+                tamanhoProduto: data[i][2],
+                precoProduto: data[i][3],
+                quantidadeProduto: data[i][4],
+                imagemProduto: data[i][5]
+            }
+            arrayBanco.push(objProduto);
+        }
+        setArrayProdutos(arrayBanco);        
+    }
+
     const puxarProdutos = () => {
         axios.get("http://localhost:8080/produtoCarrinho/" + idUsuario)
-            .then((response) => {
-                //console.log(response.data.length);
-                for (let i = 0; i < response.data.length; i++) {
-                    objProduto = {
-                        codigoProduto: response.data[i][0],
-                        nomeProduto: response.data[i][1],
-                        tamanhoProduto: response.data[i][2],
-                        precoProduto: response.data[i][3],
-                        quantidadeProduto: response.data[i][4],
-                        imagemProduto: response.data[i][5]
-                    }
-                    arrayBanco.push(objProduto);
-                }
-                setArrayProdutos(arrayBanco);
-                // setTimeout(() =>{
-                // }, 1000)
-                subtotal();
-
-                //console.log(arrayProdutos);
+            .then((response) => {                
+                forNosTenis(response.data)  
+                subtotal()              
             }).catch((error) => {
                 console.log(error);
             })
     }
 
     const subtotal = () => {
-        for (let i=0; i< arrayProdutos.length; i++){
-            soma = soma + parseFloat(arrayProdutos[i].precoProduto);
-            //setValorSubtotal(valorSubtotal+ arrayProdutos[i].precoProduto);
+        for (let i=0; i< arrayProdutos.length; i++){           
+            soma = soma + parseFloat(arrayProdutos[i].precoProduto) * parseFloat(arrayProdutos[i].quantidadeProduto);            
         }
         setTotal(soma.toFixed(2));
-        //console.log(valorSubtotal);
     }
 
     useEffect(() => {
         if (window.localStorage.getItem("logado") == "true") {
             setLogado(1)
-            puxarProdutos();
         } else if (window.localStorage.getItem("logado") == "false") {
             setLogado(0)
         }
     }, [])
 
-    const excluirItem = (id) => {
-        alert("Excluindo item")
+    useEffect(() => {
+        puxarProdutos();
+    })
+
+    const excluirItem = (idProduto) => {
+        axios.delete("http://localhost:8080/deletar/" + idUsuario + "/" + idProduto)
+        .then(() => {                
+            MySwal.fire({
+                title: 'Atenção!',
+                text: 'Produto excluido com sucesso!',
+                icon: 'success'
+            });
+            puxarProdutos();    
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 
     return (
@@ -87,7 +100,7 @@ export default function Cadastro() {
                                     <div className="modal-carrinho d-block">
                                         <div className="row justify-content-around my-1 mx-1">
                                             <div className="col-4 ms-1 mt-2 imagem-carrinho">
-                                                <img className= "imagem-carrinho" src={produto.imagemProduto}/>
+                                                <img className="imagem-carrinho" src={produto.imagemProduto} />
                                             </div>
                                             <div key={index} className="col-sm-8 col-md-8 col-lg-8 dados-carrinho">
                                                 <div className="row">
@@ -95,7 +108,7 @@ export default function Cadastro() {
                                                         <p className="carrinho-titulo">{produto.nomeProduto}</p>
                                                     </div>
                                                     <div className="col-1">
-                                                        <BsFillTrashFill size={26} color="black" onClick={() => {}} />
+                                                        <BsFillTrashFill size={26} color="black" onClick={() => { excluirItem(produto.codigoProduto) }} />
                                                     </div>
                                                 </div>
                                                 <p className="carrinho-desc">Tênis espetacular desenvolvido com a melhor tecnologia do mercado, utilizando couro de cabra cega.</p>
@@ -161,7 +174,7 @@ export default function Cadastro() {
                                             <p className="p-div-carrinho mb-0">Valor Total</p>
                                         </div>
                                         <div className="col-sm-6">
-                                            <p className="p-div-carrinho">{"R$ 0,00"}</p>
+                                            <p className="p-div-carrinho">R$ {total}</p>
                                         </div>
                                     </div>
                                 </div>
