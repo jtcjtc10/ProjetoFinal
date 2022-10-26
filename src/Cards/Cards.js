@@ -19,7 +19,7 @@ function Cards() {
   let idUsuario = window.localStorage.getItem("idUsuario");
   const arrayObj = []
   let objDoArray = {}
-
+  
   const MySwal = withReactContent(Swal);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function Cards() {
     if (tamanho == "" || tamanho == undefined) {
       MySwal.fire({
         title: 'Por favor!',
-        text: 'Informe o tamanho e quantidade a ser adquirida!',
+        text: 'Informe o tamanho do tênis!',
         icon: 'warning'
       });
     } else {
