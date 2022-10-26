@@ -1,0 +1,73 @@
+
+
+.section-meus-dados {
+    margin: 64px 0px;
+}
+
+.bg-meus-dados2 {
+    background-color: #d3d3d3;
+}
+
+.titulo-meus-dados2 {
+    font-size: 24px;
+    font-weight: bolder;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.modal-meus-dados {
+    justify-content: center;
+    padding: 2% 0% 4% 0%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: 30px 10px 30px 10px;
+}
+
+.label-meus-dados {
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-self: flex-start;
+}
+
+.input-meus-dados {
+    background-color: #F3F3F3 !important;
+    border-width: 0px !important;
+    border-radius: 10px !important;
+}
+
+.btn-atualizar-dados {
+    background-color: #CD0D0D;
+    align-items: center;
+    height: 35px;
+    border-width: 0px;
+    border-radius: 11px;
+}
+
+.btn-texto-atualizar-dados {
+    color: #FFFFFF;
+    justify-self: center;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.rowPedidos {
+    padding-left: 2.5rem !important;
+}
+
+.tPedidos {
+    font-weight: bold;
+}
+
+.pPedidos {
+    font-weight: normal;
+}
+
+.tagSmall {
+    color: green;
+}

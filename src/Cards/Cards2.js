@@ -223,8 +223,8 @@ function Cards2() {
                         </div>
                       </div>
                       <div class="modal-footer" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => { setVazio() }}>Fechar</button>
-                        <button type="button" class="btn btn-outline-success" onClick={() => { addCarrinho(id, name) }} >Adicionar ao Carrinho</button>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setVazio()}}>Fechar</button>
+                        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button>                        
                       </div>
                     </div>
                   </div>
