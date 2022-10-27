@@ -5,8 +5,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-//copia do card 1 pra ser usada no 2
-
 function Cards2() {
   const [tamanho, setTxtTamanho] = useState("");
   const [quantidade, setTxtQuantidade] = useState("");
@@ -165,8 +163,6 @@ function Cards2() {
     setTxtTamanho("")
     setTxtQuantidade("")
   }
-
-  ////////////////////////////////////////////////////////////////////////////
 
   return (
     <div className="container containerCardHeight">

@@ -34,19 +34,10 @@ export default function LoginADM() {
         } else {
             entrar();
         }
-        /*MySwal.fire({
-        title: <p>Hello World</p>,
-        didOpen: () => {
-            // `MySwal` is a subclass of `Swal` with all the same instance & static methods
-            MySwal.showLoading()
-        },
-        }).then(() => {
-        return MySwal.fire(<p>Shorthand works too</p>)
-        })*/
     }
 
     const entrar = () => {
-        axios.post("http://localhost:8080/login", {tLogin, tPassword})
+        axios.post("http://localhost:8080/loginadm", {tLogin, tPassword})
             .then((response) => {
                 // console.log(response.data)
                 if(response.data){

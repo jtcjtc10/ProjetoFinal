@@ -119,6 +119,8 @@ export default function DadosPedidos() {
                                             <div className="col-sm-12">  
                                                 <input type="text" className="form-control input-meus-dados" id="nome"
                                                 onChange={(e) => setTxtNome(e.target.value)} value={tNome} placeholder="Alterar nome" />
+                                            <input type="text" className="form-control input-meus-dados" id="nome"
+                                                    onChange={(e) => setTxtNome(e.target.value)} value={tNome} placeholder="Alterar nome" />
                                             </div>
                                         </div>
                                         <div className="row mb-2 justify-content-center">

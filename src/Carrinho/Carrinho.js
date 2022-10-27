@@ -18,11 +18,19 @@ export default function Cadastro() {
     const [total, setTotal] = useState();
     const [endereco, setEndereco] = useState("")
     const [cupom, setCupom] = useState("")
+    const [enderecoUsuario, setEnderecoUsuario] = useState("")
     let idUsuario = window.localStorage.getItem("idUsuario");
     let objProduto = {};  
     let arrayBanco = [];
     let soma = 0
-    const [numPedido, setNumPedido] =  useState()
+    const [numPedido, setNumPedido] =  useState()    
+
+    let dataFinalizaPedido = {
+        "numPedido": numPedido,
+        "idUsuario": idUsuario,
+        "endereco": endereco,
+        "total": total
+    }
 
     const getRandomNumber = () => {
         let res = Math.floor(Math.random() * (1000000000 - 0 + 1)) + 0
@@ -35,15 +43,25 @@ export default function Cadastro() {
         }
     }
 
+    const userData = () => {
+        axios.get("http://localhost:8080/dados/" + idUsuario)
+            .then((response) => {
+                setEnderecoUsuario(response.data.endereco_usuario);
+            }).catch((error) => {
+                console.log(error);
+            })
+    }
+
     const forNosTenis = (data) => {
         for (let i = 0; i < data.length; i++) {
             objProduto = {
                 codigoProduto: data[i][0],
                 nomeProduto: data[i][1],
-                tamanhoProduto: data[i][2],
-                precoProduto: data[i][3],
-                quantidadeProduto: data[i][4],
-                imagemProduto: data[i][5]
+                descricaoProduto: data[i][2],
+                tamanhoProduto: data[i][3],
+                precoProduto: data[i][4],
+                quantidadeProduto: data[i][5],
+                imagemProduto: data[i][6]
             }
             arrayBanco.push(objProduto);
         }
@@ -59,11 +77,18 @@ export default function Cadastro() {
         }).catch((error) => {
             console.log(error);
         })
+            // .then((response) => {                
+            //     forNosTenis(response.data)  
+            //     subtotal()
+            // }).catch((error) => {
+            //     console.log(error);
+            // })
     }
 
     const subtotal = () => {
         for (let i=0; i< arrayProdutos.length; i++){           
-            soma = soma + parseFloat(arrayProdutos[i].precoProduto) * parseFloat(arrayProdutos[i].quantidadeProduto);            
+            soma = soma + parseFloat(arrayProdutos[i].precoProduto) * parseFloat(arrayProdutos[i].quantidadeProduto);
+            userData()            
         }
         setTotal(soma.toFixed(2));
     }
@@ -71,6 +96,7 @@ export default function Cadastro() {
     useEffect(() => {
         if (window.localStorage.getItem("logado") == "true") {
             setLogado(1)
+            getRandomNumber()
         } else if (window.localStorage.getItem("logado") == "false") {
             setLogado(0)
         }
@@ -95,35 +121,76 @@ export default function Cadastro() {
     }
 
     const finalizarCompra = () => {
-        if(endereco == ""){
+        if(total == "" || total == 0 || total == null || total == undefined){
             MySwal.fire({
                 title: 'Atenção!',
-                text: 'Você deve preencher o endereço de entrega!',
+                text: 'Você deve inserir produtos, antes de finalizar sua compra!',
                 icon: 'warning'
             });
-        } else if(endereco !== "" && cupom == ""){   
-            getRandomNumber()           
-            MySwal.fire({
-                title: 'Uhuuu!',
-                text: 'Agradecemos pela compra. Volte Sempre!',   
-                html: `<p><b>Agradecemos pela compra. Volte Sempre!</b></p><p><b>Número do Pedido:</b> ${ numPedido}</p>`,             
-                icon: 'success'
-            });
-            setCupom("")            
-        } else if(endereco !== "" && cupom !== ""){
-            MySwal.fire({
-                title: 'Que pena!',
-                text: 'O cupom inserido é inválido!',
-                icon: 'warning'
-            })  
-            setCupom("")            
-        } else{
-            MySwal.fire({
-                title: 'Uhuuu!',
-                text: 'Agradecemos pela compra. Volte Sempre!',
-                icon: 'success'
-            });
-        }       
+        }else{
+
+            if(endereco == ""){
+                MySwal.fire({
+                    title: 'Atenção!',
+                    text: 'Você deve preencher o endereço de entrega!',
+                    icon: 'warning'
+                });
+            } else if(endereco !== "" && cupom == ""){   
+                getRandomNumber()         
+                setCupom("") 
+
+                axios.post("http://localhost:8080/finalizarPedido/", dataFinalizaPedido)
+                .then((response) => {                
+                    if(response.data === true){
+                        MySwal.fire({
+                            title: 'Uhuuu!',
+                            text: 'Agradecemos pela compra. Volte Sempre!',   
+                            html: `<p><b>Agradecemos pela compra. Volte Sempre!</b></p><p><b>Número do Pedido:</b> ${numPedido}</p>`,             
+                            icon: 'success'
+                        });
+                    }else{
+                        MySwal.fire({
+                            title: 'Que pena!',
+                            text: 'Não foi possível realizar sua compra, devido instabilidade do sistema! Tente novamente mais tarde!',   
+                            icon: 'error'
+                        });
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                })
+            } else if(endereco !== "" && cupom !== ""){
+                MySwal.fire({
+                    title: 'Que pena!',
+                    text: 'O cupom inserido é inválido!',
+                    icon: 'warning'
+                })  
+                setCupom("")            
+            } else{
+                getRandomNumber()         
+                setCupom("") 
+                
+                axios.post("http://localhost:8080/finalizarPedido/", dataFinalizaPedido)
+                .then((response) => {                
+                    console.log(response.data)   
+                    if(response.data === true){
+                        MySwal.fire({
+                            title: 'Uhuuu!',
+                            text: 'Agradecemos pela compra. Volte Sempre!',   
+                            html: `<p><b>Agradecemos pela compra. Volte Sempre!</b></p><p><b>Número do Pedido:</b> ${numPedido}</p>`,             
+                            icon: 'success'
+                        });
+                    }else{
+                        MySwal.fire({
+                            title: 'Que pena!',
+                            text: 'Não foi possível realizar sua compra, devido instabilidade do sistema! Tente novamente mais tarde!',   
+                            icon: 'error'
+                        });
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                })
+            }       
+        }
     }
 
     return (
@@ -152,14 +219,14 @@ export default function Cadastro() {
                                                         <VscTrash className="trashIcon" size={26} color="black" onClick={() => { excluirItem(produto.codigoProduto) }} />
                                                     </div>
                                                 </div>
-                                                <p className="carrinho-desc">Tênis espetacular desenvolvido com a melhor tecnologia do mercado, utilizando couro de cabra cega.</p>
+                                                <p className="carrinho-desc">{produto.descricaoProduto}</p>
                                                 <div className="mb-1">
                                                     <span className="span-carrinho-normal">Tamanho: {produto.tamanhoProduto}</span>                                                    
                                                 </div>
                                                 <span className="span-carrinho-normal">Quantidade: {produto.quantidadeProduto}</span>                                                
                                                 <div className="row justify-content-end">
                                                     <div className="col-sm-5 text-end">
-                                                        <span className="carrinho-titulo">R$ {(parseFloat(produto.precoProduto) * parseInt(produto.quantidadeProduto)).toFixed(2)}</span>
+                                                        <span className="carrinho-preco">R$ {(parseFloat(produto.precoProduto) * parseInt(produto.quantidadeProduto)).toFixed(2)}</span>
                                                     </div>
                                                 </div>
                                             </div>
