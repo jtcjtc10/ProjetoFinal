@@ -22,10 +22,15 @@ export default function Cadastro() {
     let objProduto = {};  
     let arrayBanco = [];
     let soma = 0
+    const [numPedido, setNumPedido] =  useState()
+
+    const getRandomNumber = () => {
+        let res = Math.floor(Math.random() * (1000000000 - 0 + 1)) + 0
+        setNumPedido(res)
+    }
 
     const changeLogado = (props) => {
         if (props === 0) {
-            console.log("changeLogado igual a 0")
             setLogado(0)
         }
     }
@@ -47,12 +52,13 @@ export default function Cadastro() {
 
     const puxarProdutos = () => {
         axios.get("http://localhost:8080/produtoCarrinho/" + idUsuario)
-            .then((response) => {                
-                forNosTenis(response.data)  
-                subtotal()              
-            }).catch((error) => {
-                console.log(error);
-            })
+        .then((response) => {                
+            forNosTenis(response.data)  
+            subtotal()  
+            getRandomNumber()            
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 
     const subtotal = () => {
@@ -95,10 +101,12 @@ export default function Cadastro() {
                 text: 'Você deve preencher o endereço de entrega!',
                 icon: 'warning'
             });
-        } else if(endereco !== "" && cupom == ""){  
+        } else if(endereco !== "" && cupom == ""){   
+            getRandomNumber()           
             MySwal.fire({
                 title: 'Uhuuu!',
-                text: 'Agradecemos pela compra. Volte Sempre!',
+                text: 'Agradecemos pela compra. Volte Sempre!',   
+                html: `<p><b>Agradecemos pela compra. Volte Sempre!</b></p><p><b>Número do Pedido:</b> ${ numPedido}</p>`,             
                 icon: 'success'
             });
             setCupom("")            

@@ -137,7 +137,7 @@ function Cards2() {
           let quantity = Math.max(...novoArr)
           let arrNum = []
           function teste(quant) {
-            for (let i = 1; i <= quant; i++) {
+            for (let i = 1; i <= 4; i++) {
               arrNum.push(i)
             }
           }

@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from 'react';
 import './styles.css';
 import axios from "axios";
@@ -19,7 +18,7 @@ function Cards() {
   let idUsuario = window.localStorage.getItem("idUsuario");
   const arrayObj = []
   let objDoArray = {}
-  
+
   const MySwal = withReactContent(Swal);
 
   useEffect(() => {
@@ -44,52 +43,9 @@ function Cards() {
     if (tamanho == "" || tamanho == undefined) {
       MySwal.fire({
         title: 'Por favor!',
-        text: 'Informe o tamanho do tênis!',
+        text: 'Informe o tamanho e quantidade a ser adquirida!',
         icon: 'warning'
       });
-<<<<<<< HEAD
-    } else if(quantidade == "" || quantidade == undefined){
-      MySwal.fire({
-        title: 'Por favor!',
-        text: 'Informe a quantidade de tênis!',
-        icon: 'warning'
-      });
-    } else{
-      let arrayTeste = arrayDados.filter((i) => {return i}) 
-        for(let i = 0; i < arrayTeste.length; i++){      
-          objDoArray = {
-            tamanho: arrayTeste[i][0],
-            quantidade: arrayTeste[i][1]
-          }          
-          arrayObj.push(objDoArray)
-        }
-        for(let i = 0; i < arrayObj.length; i++){
-          if(arrayObj[i].tamanho == tamanho){
-            if(arrayObj[i].quantidade >= quantidade){
-              arrayObj[i].quantidade = arrayObj[i].quantidade - quantidade;
-              axios.post("http://localhost:8080/addCarrinho", {idUsuario, name, quantidade, tamanho})
-              .then((response) => {
-                console.log(response.data);
-                MySwal.fire({
-                  title: 'Parabéns!',
-                  text: 'Produto adicionado ao carrinho de compras!',
-                  icon: 'success'
-                });
-              }).catch((error) => {
-                console.log(error);
-                MySwal.fire({
-                  title: 'Que pena!',
-                  text: 'Não possuímos essa quantidade de produtos inserida.',
-                  icon: 'warning'
-                });
-              })    
-            }else{
-              MySwal.fire({
-                title: 'Que Pena!',
-                text: 'Nosso estoque desse produto acabou!',
-                icon: 'warning'
-              });
-=======
     } else {
       let arrayTeste = arrayDados.filter((i) => { return i })
       for (let i = 0; i < arrayTeste.length; i++) {
@@ -154,7 +110,6 @@ function Cards() {
           for (let i = 0; i < response.data.length; i++) {
             if (response.data[i][0] !== null) {
               dados[i] = response.data[i]
->>>>>>> 56111e0517ed61ceb7bf0654eb6c4ea2053273eb
             }
           }
           setArrayDados(dados)
@@ -179,7 +134,7 @@ function Cards() {
           let quantity = Math.max(...novoArr)
           let arrNum = []
           function teste(quant) {
-            for (let i = 1; i <= quant; i++) {
+            for (let i = 1; i <= 4; i++) {
               arrNum.push(i)
             }
           }

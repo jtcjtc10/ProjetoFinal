@@ -100,8 +100,7 @@ export default function DadosPedidos() {
                 console.log(error)
             });
         }
-    }
- 
+    } 
 
     return (
         <> 
@@ -118,8 +117,8 @@ export default function DadosPedidos() {
                                             <label for="nome" className="col-sm-12 col-form-label label-meus-dados">Nome</label>
                                             <h6>{dados.nome_usuario}</h6>
                                             <div className="col-sm-12">  
-                  git                              <input type="text" className="form-control input-meus-dados" id="nome"
-                                                    onChange={(e) => setTxtNome(e.target.value)} value={tNome} placeholder="Alterar nome" />
+                                                <input type="text" className="form-control input-meus-dados" id="nome"
+                                                onChange={(e) => setTxtNome(e.target.value)} value={tNome} placeholder="Alterar nome" />
                                             </div>
                                         </div>
                                         <div className="row mb-2 justify-content-center">
