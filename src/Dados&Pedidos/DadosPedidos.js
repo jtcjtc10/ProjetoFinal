@@ -17,6 +17,9 @@ export default function DadosPedidos() {
     const [tTelefone, setTxtTelefone] = React.useState("");
     const [tSenha, setTxtSenha] = React.useState("");
     const [tConfirmSenha, setTxtConfirmSenha] = React.useState("");
+    const [arrayPedidos, setArrayPedidos] = useState([]);
+    let objPedido = {};  
+    let arrayBanco = [];
 
     const [logado, setLogado] = useState();
 
@@ -48,6 +51,7 @@ export default function DadosPedidos() {
     };
     const [dados, setDados] = React.useState("");
 
+
     React.useEffect(() => {
         axios.get("http://localhost:8080/dados/"+window.localStorage.getItem("idUsuario"))
             .then((response) => {
@@ -63,6 +67,39 @@ export default function DadosPedidos() {
             // setTxtTelefone(dados.telefone_usuario);
         
     }, []); 
+
+  
+    React.useEffect(() => {
+        axios.get("http://localhost:8080/dadospedido/"+window.localStorage.getItem("idUsuario"))
+            .then((response) => {
+                meuspedidos(response.data)                                
+            }).catch((error) =>{ 
+                console.log(error) 
+            });
+    }); 
+
+    const meuspedidos = (data) => {
+        for (let i = 0; i < data.length; i++) {
+            objPedido = {
+                codigoPedido: data[i][0],
+                numeroPedido: data[i][1],
+                idUsario: data[i][2],
+                quantPedido: data[i][3],
+                endPedido: data[i][4],
+                valorPedido: data[i][5],
+                dataPedido: data[i][6]
+                
+            }
+         
+             arrayBanco.push(objPedido);
+        }
+       
+        
+       setArrayPedidos(arrayBanco);  
+       console.log(setArrayPedidos)      
+    }
+
+
 
     const verificaDados = (e) => {
         e.preventDefault();
@@ -119,8 +156,6 @@ export default function DadosPedidos() {
                                             <div className="col-sm-12">  
                                                 <input type="text" className="form-control input-meus-dados" id="nome"
                                                 onChange={(e) => setTxtNome(e.target.value)} value={tNome} placeholder="Alterar nome" />
-                                            <input type="text" className="form-control input-meus-dados" id="nome"
-                                                    onChange={(e) => setTxtNome(e.target.value)} value={tNome} placeholder="Alterar nome" />
                                             </div>
                                         </div>
                                         <div className="row mb-2 justify-content-center">
@@ -175,13 +210,16 @@ export default function DadosPedidos() {
                             </form> 
                         </div>
                         <div className="col-lg-5 col-md-8 col-sm-10 modal-meus-dados">
-                            <h1 className="titulo-meus-dados">Meus Pedidos</h1>
-                            <div className="row rowPedidos">
+                        <h1  className="titulo-meus-dados">Meus Pedidos</h1> 
+                        {arrayPedidos.map((Pedido, index) => {
+                            return  (
+                                <div>                                                    
+                            <div key={index} className="row rowPedidos">
                                 <div className="col-sm">
-                                    <p className="tPedidos">Pedido: <small className="pPedidos">{123456}</small></p>
+                                    <p className="tPedidos">Pedido: <small className="pPedidos">{Pedido.numeroPedido}</small></p>
                                 </div>
                                 <div className="col-sm">
-                                    <p className="tPedidos">Nº itens: <small className="pPedidos">{2}</small></p>
+                                    <p className="tPedidos">Nº itens: <small className="pPedidos">{Pedido.quantPedido}</small></p>
                                 </div>
                                 <div className="col-sm">
                                     <p className="tPedidos">Status: <small className="tagSmall">Aprovado</small></p>
@@ -192,10 +230,13 @@ export default function DadosPedidos() {
                                     <p className="tPedidos">Entrega: <small className="pPedidos">A caminho</small></p>
                                 </div>
                                 <div className="col-sm">
-                                    <p className="tPedidos">Endereço: <small className="pPedidos">Rua das Mercês, 856, Prado, Belo Horizonte, MG</small></p>
+                                    <p className="tPedidos">Endereço: <small className="pPedidos">{Pedido.endPedido}</small></p>
                                 </div>
                             </div>
                             <hr></hr>
+                            </div>
+                            )
+                        })}
                         </div>
                     </div>
                     <Footer />
