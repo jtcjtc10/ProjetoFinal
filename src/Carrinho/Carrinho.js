@@ -141,17 +141,23 @@ export default function Cadastro() {
 
                 axios.post("http://localhost:8080/finalizarPedido/", dataFinalizaPedido)
                 .then((response) => {                
-                    if(response.data === true){
+                    if(response.data === 0){
                         MySwal.fire({
                             title: 'Uhuuu!',
                             text: 'Agradecemos pela compra. Volte Sempre!',   
                             html: `<p><b>Agradecemos pela compra. Volte Sempre!</b></p><p><b>Número do Pedido:</b> ${numPedido}</p>`,             
                             icon: 'success'
                         });
-                    }else{
+                    }else if(response.data === 1){
                         MySwal.fire({
                             title: 'Que pena!',
                             text: 'Não foi possível realizar sua compra, devido instabilidade do sistema! Tente novamente mais tarde!',   
+                            icon: 'error'
+                        });
+                    }else {
+                        MySwal.fire({
+                            title: 'Que pena!',
+                            text: 'Não foi possível realizar sua compra! Estoque indisponível!',   
                             icon: 'error'
                         });
                     }
@@ -172,17 +178,23 @@ export default function Cadastro() {
                 axios.post("http://localhost:8080/finalizarPedido/", dataFinalizaPedido)
                 .then((response) => {                
                     console.log(response.data)   
-                    if(response.data === true){
+                    if(response.data === 0){
                         MySwal.fire({
                             title: 'Uhuuu!',
                             text: 'Agradecemos pela compra. Volte Sempre!',   
                             html: `<p><b>Agradecemos pela compra. Volte Sempre!</b></p><p><b>Número do Pedido:</b> ${numPedido}</p>`,             
                             icon: 'success'
                         });
-                    }else{
+                    }else if(response.data === 1){
                         MySwal.fire({
                             title: 'Que pena!',
                             text: 'Não foi possível realizar sua compra, devido instabilidade do sistema! Tente novamente mais tarde!',   
+                            icon: 'error'
+                        });
+                    }else{
+                        MySwal.fire({
+                            title: 'Que pena!',
+                            text: 'Não foi possível realizar sua compra! Estoque indisponível!',   
                             icon: 'error'
                         });
                     }
