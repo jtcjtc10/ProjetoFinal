@@ -16,20 +16,12 @@ export default function Home() {
     }
 
     useEffect(() => {    
-        console.log("testando useeffect")    
         if (window.localStorage.getItem("logado") == "true") {
             setLogado(1)
         } else if(window.localStorage.getItem("logado") == "false"){
             setLogado(0)
         }
-    }, [])
-
-    // const teste = () => {
-    //     console.log(window.localStorage.getItem("logado"))
-    //     console.log("esta logado: " +logado)
-    // }
-
-    
+    }, [])    
 
     return (
         <>
@@ -65,8 +57,7 @@ export default function Home() {
                             </div>
                             <div className=" main1-1">
                                 <img className="img2" src="/images/jordan1-orange.png" />
-                            </div>
-                            {/* <button onClick={() => {teste()}}>teste login</button> */}
+                            </div>                            
                         </div>
                     </div>
                     <Footer />

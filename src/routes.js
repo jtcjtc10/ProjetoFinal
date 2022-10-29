@@ -9,7 +9,6 @@ import DadosPedidos from "./Dados&Pedidos/DadosPedidos";
 import Carrinho from "./Carrinho/Carrinho";
 import TelaADM from "./TelaADM/TelaADM";
 
-
 function Rotas(){
     return(
         <Router>

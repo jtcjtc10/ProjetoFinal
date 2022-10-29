@@ -4,9 +4,6 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import axios from "axios";
 
-
-// import api from "../api"
-
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
@@ -48,7 +45,7 @@ export default function Cadastro() {
                 icon: 'warning'
             });
         } else {
-            axios.post("http://localhost:8080/cadastro", form)
+            axios.post("http://localhost:8080/api/cadastro", form)
                 .then((response) => {
                     console.log(response.data)
                     if (response.data == true) {
@@ -82,7 +79,6 @@ export default function Cadastro() {
     }
     return (
         <>
-
             <div className="container-fluid body-cadastro">
                 <div className="row justify-content-center">
                     <Header />

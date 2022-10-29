@@ -3,11 +3,6 @@ import './loginadm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { BiLock, BiEnvelope, BiRightArrowAlt } from "react-icons/bi";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import { BsAlignTop } from "react-icons/bs";
-
 import axios from "axios";
 
 export default function LoginADM() {
@@ -23,7 +18,6 @@ export default function LoginADM() {
 
     const verificaEntrada = (e) => {
         e.preventDefault();
-        // console.log(tLogin, tPassword);
 
         if (tLogin === "" || tPassword === "") {
             MySwal.fire({
@@ -37,9 +31,8 @@ export default function LoginADM() {
     }
 
     const entrar = () => {
-        axios.post("http://localhost:8080/loginadm", {tLogin, tPassword})
-            .then((response) => {
-                // console.log(response.data)
+        axios.post("http://localhost:8080/api/loginadm", {tLogin, tPassword})
+            .then((response) => {                
                 if(response.data){
                     window.location.href="/TelaADM"                    
                     window.localStorage.setItem("logado", true)    
@@ -85,11 +78,7 @@ export default function LoginADM() {
                                 <div className="row justify-content-center">
                                     <div className="col-sm-10">
                                         <button type="button" className="mt-3 btn-login col-sm-12" onClick={verificaEntrada}>
-                                            <span className="btn-texto-login">ENTRAR</span>
-                                            {/*<BiRightArrowAlt 
-                                        color={"white"}
-                                        size={24}
-                                    /> */}
+                                            <span className="btn-texto-login">ENTRAR</span>                                       
                                         </button>
                                     </div>
                                 </div>

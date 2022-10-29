@@ -61,7 +61,7 @@ function Cards2() {
           if (arrayObj[i].quantidade >= quantidade) {
             arrayObj[i].quantidade = arrayObj[i].quantidade - quantidade;
 
-            axios.post("http://localhost:8080/addExisteCarrinho", { idUsuario, name, quantidade, tamanho })
+            axios.post("http://localhost:8080/api/addExisteCarrinho", { idUsuario, name, quantidade, tamanho })
               .then((response) => {
                 if (response.data == true) {
                   MySwal.fire({
@@ -70,7 +70,7 @@ function Cards2() {
                     icon: 'success'
                   });
                 } else {
-                  axios.post("http://localhost:8080/addCarrinho", { idUsuario, name, quantidade, tamanho })
+                  axios.post("http://localhost:8080/api/addCarrinho", { idUsuario, name, quantidade, tamanho })
                     .then((response) => {
                       console.log(response.data);
                       MySwal.fire({
@@ -106,7 +106,7 @@ function Cards2() {
 
   const puxarTamanhos = (name) => {
     if (window.localStorage.getItem("logado") == "true") {
-      axios.get("http://localhost:8080/verificaQuantidade/" + name)
+      axios.get("http://localhost:8080/api/verificaQuantidade/" + name)
         .then((response) => {
           for (let i = 0; i < response.data.length; i++) {
             if (response.data[i][0] !== null) {

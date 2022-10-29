@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Cadastro/Cad.css";
 import "./Carrinho.css";
-import { BsFillTrashFill } from "react-icons/bs";
 import { VscTrash } from "react-icons/vsc";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -44,7 +43,7 @@ export default function Cadastro() {
     }
 
     const userData = () => {
-        axios.get("http://localhost:8080/dados/" + idUsuario)
+        axios.get("http://localhost:8080/api/dados/" + idUsuario)
             .then((response) => {
                 setEnderecoUsuario(response.data.endereco_usuario);
             }).catch((error) => {
@@ -69,20 +68,14 @@ export default function Cadastro() {
     }
 
     const puxarProdutos = () => {
-        axios.get("http://localhost:8080/produtoCarrinho/" + idUsuario)
+        axios.get("http://localhost:8080/api/produtoCarrinho/" + idUsuario)
         .then((response) => {                
             forNosTenis(response.data)  
             subtotal()  
             getRandomNumber()            
         }).catch((error) => {
             console.log(error);
-        })
-            // .then((response) => {                
-            //     forNosTenis(response.data)  
-            //     subtotal()
-            // }).catch((error) => {
-            //     console.log(error);
-            // })
+        })           
     }
 
     const subtotal = () => {
@@ -107,7 +100,7 @@ export default function Cadastro() {
     })
 
     const excluirItem = (idProduto) => {
-        axios.delete("http://localhost:8080/deletar/" + idUsuario + "/" + idProduto)
+        axios.delete("http://localhost:8080/api/deletar/" + idUsuario + "/" + idProduto)
         .then(() => {                
             MySwal.fire({
                 title: 'Atenção!',
@@ -128,7 +121,6 @@ export default function Cadastro() {
                 icon: 'warning'
             });
         }else{
-
             if(endereco == ""){
                 MySwal.fire({
                     title: 'Atenção!',
@@ -139,7 +131,7 @@ export default function Cadastro() {
                 getRandomNumber()         
                 setCupom("") 
 
-                axios.post("http://localhost:8080/finalizarPedido/", dataFinalizaPedido)
+                axios.post("http://localhost:8080/api/finalizarPedido/", dataFinalizaPedido)
                 .then((response) => {                
                     if(response.data === 0){
                         MySwal.fire({
@@ -148,6 +140,7 @@ export default function Cadastro() {
                             html: `<p><b>Agradecemos pela compra. Volte Sempre!</b></p><p><b>Número do Pedido:</b> ${numPedido}</p>`,             
                             icon: 'success'
                         });
+                        setEndereco("")    
                     }else if(response.data === 1){
                         MySwal.fire({
                             title: 'Que pena!',
@@ -175,7 +168,7 @@ export default function Cadastro() {
                 getRandomNumber()         
                 setCupom("") 
                 
-                axios.post("http://localhost:8080/finalizarPedido/", dataFinalizaPedido)
+                axios.post("http://localhost:8080/api/finalizarPedido/", dataFinalizaPedido)
                 .then((response) => {                
                     console.log(response.data)   
                     if(response.data === 0){
@@ -185,6 +178,7 @@ export default function Cadastro() {
                             html: `<p><b>Agradecemos pela compra. Volte Sempre!</b></p><p><b>Número do Pedido:</b> ${numPedido}</p>`,             
                             icon: 'success'
                         });
+                        setEndereco("") 
                     }else if(response.data === 1){
                         MySwal.fire({
                             title: 'Que pena!',
@@ -217,7 +211,7 @@ export default function Cadastro() {
                         <div className="row col-sm-12 col-md-12 col-lg-7 my-2 mx-1 d-grid gap-2 justify-content-center">
                             {arrayProdutos.map((produto, index) => {
                                 return (
-                                    <div className="modal-carrinho d-block">
+                                    <div key={index} className="modal-carrinho d-block">
                                         <div className="row justify-content-around my-1 mx-1">
                                             <div className="col-4 ms-1 mt-2 imagem-carrinho">
                                                 <img className="imagem-carrinho" src={produto.imagemProduto} />

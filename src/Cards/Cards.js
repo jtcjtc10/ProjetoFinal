@@ -60,7 +60,7 @@ function Cards() {
           if (arrayObj[i].quantidade >= quantidade) {
             arrayObj[i].quantidade = arrayObj[i].quantidade - quantidade;
 
-            axios.post("http://localhost:8080/addExisteCarrinho", { idUsuario, name, quantidade, tamanho })
+            axios.post("http://localhost:8080/api/addExisteCarrinho", { idUsuario, name, quantidade, tamanho })
               .then((response) => {
                 if (response.data == true) {
                   MySwal.fire({
@@ -68,8 +68,9 @@ function Cards() {
                     text: 'Produto adicionado ao carrinho de compras!',
                     icon: 'success'
                   });
+                  setVazio()
                 } else {
-                  axios.post("http://localhost:8080/addCarrinho", { idUsuario, name, quantidade, tamanho })
+                  axios.post("http://localhost:8080/api/addCarrinho", { idUsuario, name, quantidade, tamanho })
                     .then((response) => {
                       console.log(response.data);
                       MySwal.fire({
@@ -77,6 +78,7 @@ function Cards() {
                         text: 'Produto adicionado ao carrinho de compras!',
                         icon: 'success'
                       });
+                      setVazio()
                     }).catch((error) => {
                       console.log(error);
                       MySwal.fire({
@@ -105,7 +107,7 @@ function Cards() {
 
   const puxarTamanhos = (name) => {
     if (window.localStorage.getItem("logado") == "true") {
-      axios.get("http://localhost:8080/verificaQuantidade/" + name)
+      axios.get("http://localhost:8080/api/verificaQuantidade/" + name)
         .then((response) => {
           for (let i = 0; i < response.data.length; i++) {
             if (response.data[i][0] !== null) {
@@ -192,7 +194,7 @@ function Cards() {
                     <div class="modal-content">
                       <div class="modal-header" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">{name}</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => {setVazio()}}></button>
                       </div>
                       <div class="modal-body " Style='margin: auto;'>
                         <div className="image1">

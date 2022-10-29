@@ -15,8 +15,6 @@ export default function DadosPedidos() {
     const [tEndereco, setTxtEndereco] = React.useState("");
     const [tEmail, setTxtEmail] = React.useState("");
     const [tTelefone, setTxtTelefone] = React.useState("");
-    const [tSenha, setTxtSenha] = React.useState("");
-    const [tConfirmSenha, setTxtConfirmSenha] = React.useState("");
     const [arrayPedidos, setArrayPedidos] = useState([]);
     let objPedido = {};  
     let arrayBanco = [];
@@ -31,7 +29,6 @@ export default function DadosPedidos() {
     }
 
     useEffect(() => {    
-        console.log("testando useeffect")    
         if (window.localStorage.getItem("logado") == "true") {
             setLogado(1)
         } else if(window.localStorage.getItem("logado") == "false"){
@@ -53,29 +50,22 @@ export default function DadosPedidos() {
 
 
     React.useEffect(() => {
-        axios.get("http://localhost:8080/dados/"+window.localStorage.getItem("idUsuario"))
-            .then((response) => {
-                setDados(response.data); 
-            }).catch((error) =>{ 
-                console.log(error) 
-            });
-            // setTxtNome(dados.nome_usuario);
-            // setTxtCpf(dados.cpf_usuario);
-            // setTxtRg(dados.rg_usuario);
-            // setTxtEmail(dados.email_usuario);
-            // setTxtEndereco(dados.endereco_usuario);
-            // setTxtTelefone(dados.telefone_usuario);
-        
+        axios.get("http://localhost:8080/api/dados/"+window.localStorage.getItem("idUsuario"))
+        .then((response) => {
+            setDados(response.data); 
+        }).catch((error) =>{ 
+            console.log(error) 
+        });
     }, []); 
 
   
     React.useEffect(() => {
-        axios.get("http://localhost:8080/dadospedido/"+window.localStorage.getItem("idUsuario"))
-            .then((response) => {
-                meuspedidos(response.data)                                
-            }).catch((error) =>{ 
-                console.log(error) 
-            });
+        axios.get("http://localhost:8080/api/dadospedido/"+window.localStorage.getItem("idUsuario"))
+        .then((response) => {
+            meuspedidos(response.data)                                
+        }).catch((error) =>{ 
+            console.log(error) 
+        });
     }); 
 
     const meuspedidos = (data) => {
@@ -87,19 +77,12 @@ export default function DadosPedidos() {
                 quantPedido: data[i][3],
                 endPedido: data[i][4],
                 valorPedido: data[i][5],
-                dataPedido: data[i][6]
-                
-            }
-         
-             arrayBanco.push(objPedido);
-        }
-       
-        
-       setArrayPedidos(arrayBanco);  
-       console.log(setArrayPedidos)      
+                dataPedido: data[i][6]                
+            }         
+            arrayBanco.push(objPedido);
+        }           
+        setArrayPedidos(arrayBanco);  
     }
-
-
 
     const verificaDados = (e) => {
         e.preventDefault();
@@ -117,7 +100,7 @@ export default function DadosPedidos() {
                 icon: 'warning'
             });
         } else{
-            axios.put("http://localhost:8080/alteracao/"+window.localStorage.getItem("idUsuario"),form)
+            axios.put("http://localhost:8080/api/alteracao/"+window.localStorage.getItem("idUsuario"),form)
             .then((response) => {
                 console.log(response.data);
                 if(response.data === true){
@@ -183,7 +166,7 @@ export default function DadosPedidos() {
                                             </div>
                                         </div>
                                         <div className="row mb-2 justify-content-center">
-                                            <label for="endereco" className="col-sm-12 col-form-label label-meus-dados">Endereço</label>
+                                            <label for="endereco" className="col-sm-12 col-form-label label-meus-dados">Endereço Residencial</label>
                                             <h6> {dados.endereco_usuario}</h6>
                                             <div className="col-sm-12">
                                                 <input type="text" className="form-control input-meus-dados" id="endereco"
@@ -213,27 +196,27 @@ export default function DadosPedidos() {
                         <h1  className="titulo-meus-dados">Meus Pedidos</h1> 
                         {arrayPedidos.map((Pedido, index) => {
                             return  (
-                                <div>                                                    
-                            <div key={index} className="row rowPedidos">
-                                <div className="col-sm">
-                                    <p className="tPedidos">Pedido: <small className="pPedidos">{Pedido.numeroPedido}</small></p>
+                            <div key={index}>                                                    
+                                <div className="row rowPedidos">
+                                    <div className="col-sm">
+                                        <p className="tPedidos">Pedido: <small className="pPedidos">{Pedido.numeroPedido}</small></p>
+                                    </div>
+                                    <div className="col-sm">
+                                        <p className="tPedidos">Nº itens: <small className="pPedidos">{Pedido.quantPedido}</small></p>
+                                    </div>
+                                    <div className="col-sm">
+                                        <p className="tPedidos">Status: <small className="tagSmall">Aprovado</small></p>
+                                    </div>
                                 </div>
-                                <div className="col-sm">
-                                    <p className="tPedidos">Nº itens: <small className="pPedidos">{Pedido.quantPedido}</small></p>
+                                <div className="row rowPedidos">
+                                    <div className="col-sm-4">
+                                        <p className="tPedidos">Entrega: <small className="pPedidos">A caminho</small></p>
+                                    </div>
+                                    <div className="col-sm">
+                                        <p className="tPedidos">Endereço de Entrega: <small className="pPedidos">{Pedido.endPedido}</small></p>
+                                    </div>
                                 </div>
-                                <div className="col-sm">
-                                    <p className="tPedidos">Status: <small className="tagSmall">Aprovado</small></p>
-                                </div>
-                            </div>
-                            <div className="row rowPedidos">
-                                <div className="col-sm">
-                                    <p className="tPedidos">Entrega: <small className="pPedidos">A caminho</small></p>
-                                </div>
-                                <div className="col-sm">
-                                    <p className="tPedidos">Endereço: <small className="pPedidos">{Pedido.endPedido}</small></p>
-                                </div>
-                            </div>
-                            <hr></hr>
+                                <hr></hr>
                             </div>
                             )
                         })}

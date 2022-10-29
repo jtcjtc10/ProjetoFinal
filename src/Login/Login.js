@@ -29,7 +29,7 @@ export default function Login() {
     }
 
     const entrar = () => {
-        axios.post("http://localhost:8080/login", {tLogin, tPassword})
+        axios.post("http://localhost:8080/api/login", {tLogin, tPassword})
         .then((response) => {
             if(response.data){
                 window.location.href="/"                    
@@ -41,11 +41,11 @@ export default function Login() {
                     text: 'Os dados inseridos estão incorretos!',
                     icon: 'error'
                 });
+                setTxtPassword("")
                 window.localStorage.removeItem("logado")
                 window.localStorage.removeItem("idUsuario") 
             }
-        })     
-        .catch((error) => {
+        }).catch((error) => {
             console.log(error)
         })          
     }

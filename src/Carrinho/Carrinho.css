@@ -41,8 +41,8 @@ legend {
 .modal-carrinho {
     justify-content: center;
     background-color: rgb(255, 255, 255);
-    border-radius: 20px;
-    
+    max-height: 285px;
+    border-radius: 20px;    
 }
 
 .modal-carrinhoDados {

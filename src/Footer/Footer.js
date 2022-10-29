@@ -1,8 +1,5 @@
 import React from "react";
 import "./Footer.css";
-import { BsFillPersonFill } from "react-icons/bs";
-import { BsFillCartFill } from "react-icons/bs";
-import { BsSearch } from "react-icons/bs";
 
 function Footer() {
     return (
