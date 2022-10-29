@@ -55,8 +55,7 @@ export default function LoginADM() {
     return (
         <>
             <div className="container-fluid bg-login1">
-                <div className="row justify-content-center">
-                    
+                <div className="row justify-content-center">                    
                     <div className="row justify-content-center align-items-center section-login">
                         <div className="col-sm-8 col-md-6 col-lg-5 modal-login1 text-center">
                             <h1 className="titulo-login">LOGIN ADMINISTRATIVO</h1>
@@ -84,8 +83,7 @@ export default function LoginADM() {
                                 </div>
                             </form>
                         </div>
-                    </div>
-                    
+                    </div>                    
                 </div>
             </div>
         </>
