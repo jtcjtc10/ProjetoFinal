@@ -189,7 +189,7 @@ function Cards(props) {
                           <img className='imagemodal' src={item.imagem_produto} alt={item.nome_produto} />
                         </div>
                         <div className="tamanhobutton">
-                          <div className="texttamanho"><h5>Selecione o tamanho</h5></div>
+                          <div className="texttamanho"><h5>Selecione o tamanho:</h5></div>
                           <select name="tamanho" className="tamanhotenis" onChange={(e) => setTxtTamanho(e.target.value)} value={tamanho} >
                             <option defaultValue=""></option>
                             {listaTamanhos.map((lista, i) => {
@@ -198,7 +198,7 @@ function Cards(props) {
                           </select>
                         </div>
                         <div className="quantbutton">
-                          <div className="texttamanho"><h5>Selecione a quantidade</h5></div>
+                          <div className="texttamanho"><h5>Selecione a quantidade:</h5></div>
                           <select name="quantidade" className="quanttenis" onChange={(e) => setTxtQuantidade(e.target.value)} value={quantidade}>
                             <option defaultValue=""></option>
                             {listaQuantidades.map((quantidade, i) => {
