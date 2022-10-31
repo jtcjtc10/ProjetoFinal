@@ -1,12 +1,12 @@
 # E-Commerce XMarket
-Este é um site funcional que simula uma empresa de revenda de tênis Nike chamada XMarket. \
+Este é um site localhost que simula uma empresa de revenda de tênis Nike chamada XMarket. \
 O site é referente ao projeto final do programa Araujo Tech, uma parceria entre a Drogaria Araujo e a Gama Academy que visa contratar e treinar novos desenvolvedores back-end em Java.
 
 ## Desenvolvedores
 Guilherme Pedrosa - https://github.com/gpedrosadev \
 João Victor Ferreira - https://github.com/jtcjtc10 \
 Kayane Costa Martins - https://github.com/kayane-developer \
-Kleuber Jacob - https://github.com/KleuberJacob \
+Kleuber Jacob - https://github.com/KleuberJacob 
 
 
 ## Tecnologias Utilizadas
@@ -14,59 +14,23 @@ Kleuber Jacob - https://github.com/KleuberJacob \
 <img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/mysql/mysql-original-wordmark.svg"/>
 <img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original-wordmark.svg" />
 <img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" />
-<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original-wordmark.svg" /> \
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original-wordmark.svg" /> 
 
-### `npm test`
+## Links úteis
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Back-end do site: https://github.com/KleuberJacob/BackendProjetoFinal 
 
-### `npm run build`
+## Funcionalidades do Site
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Cadastro de usuários \
+- Login de usuários \
+- Inserção de produtos no carrinho \
+- Exclusão de produtos no carrinho \
+- Visualização de produtos \
+- Visualização de dados do usuário \
+- Alteração de dados do usuário \
+- Visualização de pedidos feitos pelo usuário \
+- Realização da compra \
+- Login de administradores \
+- Geração de relátorio de pedidos \
+- Inserção de novos produtos no estoque \
