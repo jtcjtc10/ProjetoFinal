@@ -14,8 +14,8 @@ Kleuber Jacob - https://github.com/KleuberJacob
 <img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/mysql/mysql-original-wordmark.svg"/>
 <img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original-wordmark.svg" />
 <img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" />
-<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original-wordmark.svg" /> \\\
-
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original-wordmark.svg" />
+<br/>
 ## Links úteis
 
 Back-end do site: https://github.com/KleuberJacob/BackendProjetoFinal 
