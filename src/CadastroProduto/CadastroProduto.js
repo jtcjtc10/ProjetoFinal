@@ -67,6 +67,7 @@ export default function CadastroProduto() {
                             allowEscapeKey: false,
                             allowOutsideClick: false
                         })
+                        
                     } else if (response.data === false) {
                         MySwal.fire({
                             title: 'Atenção!',
@@ -90,8 +91,8 @@ export default function CadastroProduto() {
                     <HeaderADM login={logado} logadoFunc={changeLogado}/>
                     <div className="row justify-content-center align-items-center section-cadastro">
                         <div className="col-lg-6 col-md-8 col-sm-10 modal-cadastro1 text-center">
-                            <h1 className="titulo-login">Cadastro de Produto</h1>
-                            <p>Cadastre aqui o prduto desejado</p>
+                            <h1 className="titulo-login">REGISTRAR PRODUTO</h1>
+                            <p>Cadastre aqui o produto desejado!</p>
                             <form id="registro">
                                 <div className="row col-sm-12 ms-1 mb-3 justify-content-center">
                                     <div className="row col-sm-6 justify-content-center">
@@ -143,7 +144,7 @@ export default function CadastroProduto() {
                                         <div className="row mb-2 justify-content-center">
                                             <label for="tamanho" className="col-sm-12 col-form-label label-cadastro1">Imagem</label>
                                             <div className="col-sm-12">
-                                                <input type="number" className="form-control input-cadastro1" id="tamanho"
+                                                <input type="text" className="form-control input-cadastro1" id="tamanho"
                                                     onChange={(e) => setTxtImagem(e.target.value)} value={tImagem} placeholder="URL da Imagem" />
                                             </div>
                                         </div>
@@ -153,8 +154,8 @@ export default function CadastroProduto() {
                                 </div>
                                 <div className="row justify-content-center">
                                     <div className="col-sm-6">
-                                        <button type="submit" className="mt-3 btn-login col-sm-12" onClick={() => {cadastrarProduto()}}>
-                                            <span className="btn-cadastrar1">REGISTRAR PRODUTO</span>
+                                        <button type="submit" className="mt-3 btn-login col-sm-12" onClick={cadastrarProduto}>
+                                            <span className="btn-cadastrar1">CADASTRAR PRODUTO</span>
                                         </button>
                                     </div>
                                 </div>
