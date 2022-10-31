@@ -7,7 +7,7 @@ import LoginADM from './LoginADM/LoginADM';
 import Cadastro from './Cadastro/Cadastro';
 import DadosPedidos from "./Dados&Pedidos/DadosPedidos";
 import Carrinho from "./Carrinho/Carrinho";
-import TelaADM from "./TelaADM/TelaADM";
+import Relatorio from "./Relatorio/Relatorio";
 
 function Rotas(){
     return(
@@ -18,7 +18,7 @@ function Rotas(){
                 <Route path="/loginADM" exact element={<LoginADM/>}></Route>
                 <Route path="/cadastro" exact element={<Cadastro/>}></Route>
                 <Route path="/dados_pedidos" exact element={<DadosPedidos/>}></Route>
-                <Route path="/TelaADM" exact element={<TelaADM/>}></Route>
+                <Route path="/Relatorio" exact element={<Relatorio/>}></Route>
                 <Route path="/carrinho" exact element={<Carrinho/>}></Route>               
             </Routes>
         </Router>

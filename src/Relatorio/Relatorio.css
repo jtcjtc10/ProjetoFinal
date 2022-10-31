@@ -1,14 +1,14 @@
 
 
-.section-meus-dados {
+.section-relatorio {
     margin: 64px 0px;
 }
 
-.bg-meus-dados2 {
-    background-color: #d3d3d3;
+.bg-relatorio {
+    background-image: linear-gradient(to right, #FFC9C9 , #EFEFEF);
 }
 
-.titulo-meus-dados2 {
+.titulo-relatorio {
     font-size: 24px;
     font-weight: bolder;
     color: black;
@@ -17,7 +17,15 @@
     text-align: center;
 }
 
-.modal-meus-dados {
+.subtitulo-relatorio {
+    font-size: 16px;
+    font-weight: bolder;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.modal-relatorio {
     justify-content: center;
     padding: 2% 0% 4% 0%;
     background-color: rgb(255, 255, 255);
@@ -25,7 +33,7 @@
     margin: 30px 10px 30px 10px;
 }
 
-.label-meus-dados {
+.label-relatorio {
     color: black;
     font-family: 'Montserrat';
     font-weight: bold;
@@ -34,13 +42,13 @@
     justify-self: flex-start;
 }
 
-.input-meus-dados {
+.input-relatorio {
     background-color: #F3F3F3 !important;
     border-width: 0px !important;
     border-radius: 10px !important;
 }
 
-.btn-atualizar-dados {
+.btn-relatorio {
     background-color: #CD0D0D;
     align-items: center;
     height: 35px;
@@ -48,7 +56,7 @@
     border-radius: 11px;
 }
 
-.btn-texto-atualizar-dados {
+.btn-texto-relatorio {
     color: #FFFFFF;
     justify-self: center;
     font-size: 14px;
