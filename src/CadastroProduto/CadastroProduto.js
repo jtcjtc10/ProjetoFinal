@@ -103,7 +103,7 @@ export default function CadastroProduto() {
                                         </div>
                                         <div className="row mb-2 justify-content-start">
                                             <label for="tipoProduto" className="col-sm-12 col-form-label label-cadastro1">Tipo</label>                                            
-                                            <select name="tipo" className="tipoTenisCadastro" value={tTipoProduto} onChange={(e) => setTxtTipoProduto(e.target.value)}>
+                                            <select name="tipo" className="tipoTenisCadastro form-control input-cadastro1" value={tTipoProduto} onChange={(e) => setTxtTipoProduto(e.target.value)}>
                                                 <option value={""}></option>
                                                 <option value={"Clássico"}>Clássico</option>
                                                 <option value={"Air Jordan"}>Air Jordan</option>                                               
