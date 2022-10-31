@@ -14,6 +14,7 @@ export default function CadastroProduto() {
     const [tPreco, setTxtPreco] = React.useState("");
     const [tTamanho, setTxtTamanho] = React.useState("");
     const [tQuantidade, setTxtQuantidade] = React.useState("");
+    const [tImagem, setTxtImagem] = React.useState("");
 
 
     const form = {
@@ -22,7 +23,8 @@ export default function CadastroProduto() {
         descricao: tDescricao,
         preco: tPreco,
         tamanho: tTamanho,
-        quantidade: tQuantidade
+        quantidade: tQuantidade,
+        imagem: tImagem
     }
 
     const MySwal = withReactContent(Swal);
@@ -83,46 +85,22 @@ export default function CadastroProduto() {
                     <div className="row justify-content-center align-items-center section-cadastro">
                         <div className="col-lg-6 col-md-8 col-sm-10 modal-cadastro1 text-center">
                             <h1 className="titulo-login">Cadastro de Produto</h1>
-                            <p>Preencha as Informações do Produto Para cadastrar</p>
+                            <p>Cadastre aqui o prduto desejado</p>
                             <form id="registro">
                                 <div className="row col-sm-12 ms-1 mb-3 justify-content-center">
                                     <div className="row col-sm-6 justify-content-center">
                                         <div className="row mb-2 mt-3 justify-content-center">
-                                            <label for="nomeProduto" className="col-sm-12 col-form-label label-cadastro1">Nome do Produto</label>
+                                            <label for="nomeProduto" className="col-sm-12 col-form-label label-cadastro1">Produto</label>
                                             <div className="col-sm-12">
                                                 <input type="text" className="form-control input-cadastro1" id="nomeProduto"
                                                     onChange={(e) => setTxtNomeProduto(e.target.value)} value={tNomeProduto} placeholder="Nome" />
                                             </div>
                                         </div>
                                         <div className="row mb-2 justify-content-center">
-                                            <label for="tipoProduto" className="col-sm-12 col-form-label label-cadastro1">Tipo do Produto</label>
+                                            <label for="tipoProduto" className="col-sm-12 col-form-label label-cadastro1">Tipo</label>
                                             <div className="col-sm-12">
                                                 <input type="text" className="form-control input-cadastro1" id="tipoProduto"
                                                     onChange={(e) => setTxtTipoProduto(e.target.value)} value={tTipoProduto} placeholder="Tipo" />
-                                            </div>
-                                        </div>
-                                        <div className="row mb-2 justify-content-center">
-                                            <label for="descricao" className="col-sm-12 col-form-label label-cadastro1">Descrição do Produto</label>
-                                            <div className="col-sm-12">
-                                                <input type="text" className="form-control input-cadastro1" id="descricao"
-                                                    onChange={(e) => setTxtDescricao(e.target.value)} value={tDescricao} placeholder="Descrição" />
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div className="row col-sm-6 justify-content-center">
-                                        <div className="row mb-2 mt-3 justify-content-center">
-                                            <label for="Preco" className="col-sm-12 col-form-label label-cadastro">Preço do Produto</label>
-                                            <div className="col-sm-12">
-                                                <input type="number" className="form-control input-cadastro1" id="Preco"
-                                                    onChange={(e) => setTxtPreco(e.target.value)} value={tPreco} placeholder="Preço" />
-                                            </div>
-                                        </div>
-                                        <div className="row mb-2 justify-content-center">
-                                            <label for="tamanho" className="col-sm-12 col-form-label label-cadastro1">Tamanho Do Tenis</label>
-                                            <div className="col-sm-12">
-                                                <input type="number" className="form-control input-cadastro1" id="tamanho"
-                                                    onChange={(e) => setTxtTamanho(e.target.value)} value={tTamanho} placeholder="Tamanho" />
                                             </div>
                                         </div>
                                         <div className="row mb-2 justify-content-center">
@@ -132,13 +110,45 @@ export default function CadastroProduto() {
                                                     onChange={(e) => setTxtQuantidade(e.target.value)} value={tQuantidade} placeholder="Quantidade" />
                                             </div>
                                         </div>
+                                        <div className="row mb-2 justify-content-center">
+                                            <label for="descricao" className="col-sm-12 col-form-label label-cadastro1">Descrição </label>
+                                            <div className="col-sm-12">
+                                                <input type="text" className="form-control input-cadastro1" id="descricao"
+                                                    onChange={(e) => setTxtDescricao(e.target.value)} value={tDescricao} placeholder="Descrição" />
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div className="row col-sm-6 justify-content-center">
+                                        <div className="row mb-2 mt-3 justify-content-center">
+                                            <label for="Preco" className="col-sm-12 col-form-label label-cadastro">Preço</label>
+                                            <div className="col-sm-12">
+                                                <input type="number" className="form-control input-cadastro1" id="Preco"
+                                                    onChange={(e) => setTxtPreco(e.target.value)} value={tPreco} placeholder="Preço" />
+                                            </div>
+                                        </div>
+                                        <div className="row mb-2 justify-content-center">
+                                            <label for="tamanho" className="col-sm-12 col-form-label label-cadastro1">Tamanho</label>
+                                            <div className="col-sm-12">
+                                                <input type="number" className="form-control input-cadastro1" id="tamanho"
+                                                    onChange={(e) => setTxtTamanho(e.target.value)} value={tTamanho} placeholder="Tamanho" />
+                                            </div>
+                                        </div>
+                                        <div className="row mb-2 justify-content-center">
+                                            <label for="tamanho" className="col-sm-12 col-form-label label-cadastro1">Imagem</label>
+                                            <div className="col-sm-12">
+                                                <input type="number" className="form-control input-cadastro1" id="tamanho"
+                                                    onChange={(e) => setTxtImagem(e.target.value)} value={tImagem} placeholder="URL da Imagem" />
+                                            </div>
+                                        </div>
+                                        
             
                                     </div>
                                 </div>
                                 <div className="row justify-content-center">
                                     <div className="col-sm-6">
                                         <button type="submit" className="mt-3 btn-login col-sm-12" onClick={""}>
-                                            <span className="btn-cadastrar1">CADASTRAR PRODUTO</span>
+                                            <span className="btn-cadastrar1">REGISTRAR PRODUTO</span>
                                         </button>
                                     </div>
                                 </div>
