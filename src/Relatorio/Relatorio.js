@@ -64,7 +64,7 @@ export default function Relatorio() {
                 if (diffInDays < 0) {
                     MySwal.fire({
                         title: 'Atenção!',
-                        text: 'O campo Data Final precisa ser mais recente que a Data Inicial.',
+                        text: 'O campo data final precisa ser mais recente que a data inicial.',
                         icon: 'warning'
                     });
                 } else {
@@ -79,7 +79,7 @@ export default function Relatorio() {
         <>
             <div className="container-fluid bg-relatorio">
                 <div className="row justify-content-center">
-                <HeaderADM login={logado}/>
+                <HeaderADM login={logado} logadoFunc={changeLogado}/>
                     <div className="row justify-content-center section-relatorio">
                         <div className="col-lg-5 col-md-8 col-sm-10 modal-relatorio">
                             <h1 className="titulo-relatorio">RELATÓRIO</h1>

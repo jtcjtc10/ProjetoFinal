@@ -1,8 +1,7 @@
 
 
-.bg-login1{ 
-    
-    background-color: #fdfdfd;
+.bg-login-adm{ 
+    background-image: linear-gradient(to right, #FFC9C9 , #EFEFEF);
     background-size: cover;
     position: relative;
     width: 100%;
@@ -21,13 +20,13 @@
     justify-content: center !important;
     align-items: center !important;
     padding: 2% 0% 4% 0%;
-    background-color:#d3d3d3;
+    background-color:#ffffff;
     border-radius: 20px;
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
-.section-login{
+.section-login-adm{
     margin: 20px 0px;
     height: 100%;
 }
@@ -42,7 +41,7 @@
 }
 
 .input-login1{
-    background-color: #FFFFFF !important;
+    background-color: #ececec !important;
     border-width: 0px !important;
     border-radius: 10px !important;
 }
