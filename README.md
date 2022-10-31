@@ -22,15 +22,15 @@ Back-end do site: https://github.com/KleuberJacob/BackendProjetoFinal
 
 ## Funcionalidades do Site
 
-- Cadastro de usuários \
-- Login de usuários \
-- Inserção de produtos no carrinho \
-- Exclusão de produtos no carrinho \
-- Visualização de produtos \
-- Visualização de dados do usuário \
-- Alteração de dados do usuário \
-- Visualização de pedidos feitos pelo usuário \
-- Realização da compra \
-- Login de administradores \
-- Geração de relátorio de pedidos \
-- Inserção de novos produtos no estoque \
+- Cadastro de usuários 
+- Login de usuários 
+- Inserção de produtos no carrinho 
+- Exclusão de produtos no carrinho 
+- Visualização de produtos 
+- Visualização de dados do usuário 
+- Alteração de dados do usuário 
+- Visualização de pedidos feitos pelo usuário 
+- Realização da compra 
+- Login de administradores 
+- Geração de relátorio de pedidos 
+- Inserção de novos produtos no estoque 
