@@ -16,13 +16,13 @@ export default function Relatorio(props) {
             setLogado(0)
         }
     }
-    
-    const saida = () => {        
+
+    const saida = () => {
         props.logadoFunc(0)
         window.localStorage.setItem("logado", false)
-        setLogado(0)        
+        setLogado(0)
         window.localStorage.removeItem("logado")
-        window.localStorage.removeItem("idUsuario") 
+        window.localStorage.removeItem("idUsuario")
         MySwal.fire({
             title: 'Aguardamos seu retorno!',
             text: 'Agradecemos por utilizar a plataforma.',
@@ -31,15 +31,15 @@ export default function Relatorio(props) {
             allowOutsideClick: false
         }).then(() => {
             setTimeout(() => {
-                window.location.href="/"
+                window.location.href = "/"
             }, 1000)
         })
     }
 
     useEffect(() => {
-        if(props.login == 1){
+        if (props.login == 1) {
             setLogado(1)
-        }else{
+        } else {
             setLogado(0)
         }
     }, [saida])
@@ -85,7 +85,17 @@ export default function Relatorio(props) {
                 var url = 'http://localhost:8080/api/reportFilter/2/' + tDataInicial + '/' + current_date
                 window.open(url, '_blank')
             } else {
-                window.open('http://localhost:8080/api/reportFilter/2' + tDataInicial + '/' + tDataFinal, '_blank')
+                const diffInMs = new Date(tDataFinal) - new Date(tDataInicial)
+                const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+                if (diffInDays < 0) {
+                    MySwal.fire({
+                        title: 'Atenção!',
+                        text: 'O campo Data Final precisa ser mais recente que a Data Inicial.',
+                        icon: 'warning'
+                    });
+                } else {
+                    window.open('http://localhost:8080/api/reportFilter/2/' + tDataInicial + '/' + tDataFinal, '_blank')
+                }
             }
         }
     }
@@ -98,15 +108,15 @@ export default function Relatorio(props) {
                     <div className="row justify-content-center section-relatorio">
                         <div className="col-lg-5 col-md-8 col-sm-10 modal-relatorio">
                             <h1 className="titulo-relatorio">RELATÓRIO</h1>
-                            <p className="text-center">Emita um relatório para controlar o fluxo de <br/>pedidos do site!</p>
+                            <p className="text-center">Emita um relatório para controlar o fluxo de <br />pedidos do site!</p>
                             <div className="row col-sm-12 ms-1 mb-3 my-3 justify-content-center">
                                 <div className="row col-sm-5 mx-1 my-3">
                                     <h1 className="subtitulo-relatorio">Data Inicial:</h1>
-                                    <input className="form-control" type="date" onChange={(e) => setTxtDataInicial(e.target.value)} value={tDataInicial} />
+                                    <input className="form-control text-center" type="date" onChange={(e) => setTxtDataInicial(e.target.value)} value={tDataInicial} />
                                 </div>
                                 <div className="row col-sm-5 mx-1 my-3">
                                     <h1 className="subtitulo-relatorio">Data Final:</h1>
-                                    <input className="form-control" type="date" onChange={(e) => setTxtDataFinal(e.target.value)} value={tDataFinal} />
+                                    <input className="form-control text-center" type="date" onChange={(e) => setTxtDataFinal(e.target.value)} value={tDataFinal} />
                                 </div>
 
                             </div>
