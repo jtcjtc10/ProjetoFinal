@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import axios from "axios";
+import HeaderADM from "../Header/HeaderADM";
+import Footer from "../Footer/Footer";
 
 export default function LoginADM() {
     const [tLogin, setTxtLogin] = React.useState("");
@@ -54,9 +56,10 @@ export default function LoginADM() {
 
     return (
         <>
-            <div className="container-fluid bg-login1">
-                <div className="row justify-content-center">                    
-                    <div className="row justify-content-center align-items-center section-login">
+            <div className="container-fluid bg-login-adm">
+                <div className="row justify-content-center">
+                    <HeaderADM />                    
+                    <div className="row justify-content-center align-items-center section-login-adm">
                         <div className="col-sm-8 col-md-6 col-lg-5 modal-login1 text-center">
                             <h1 className="titulo-login">LOGIN ADMINISTRATIVO</h1>
                             <form id="login_conta">
@@ -83,7 +86,8 @@ export default function LoginADM() {
                                 </div>
                             </form>
                         </div>
-                    </div>                    
+                    </div>
+                    <Footer/>
                 </div>
             </div>
         </>
