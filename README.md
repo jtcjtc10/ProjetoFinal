@@ -1,7 +1,8 @@
 # E-Commerce XMarket
 Este é um site localhost que simula uma empresa de revenda de tênis Nike chamada XMarket. \
 O site é referente ao projeto final do programa Araujo Tech, uma parceria entre a Drogaria Araujo e a Gama Academy que visa contratar e treinar novos desenvolvedores back-end em Java. \
-Repositório back-end do site: https://github.com/KleuberJacob/BackendProjetoFinal 
+Repositório back-end do site: https://github.com/KleuberJacob/BackendProjetoFinal \
+Protótipo, organização e modelo do database do projeto: https://docs.google.com/document/d/1t15G-UGRwvSbmyrPG7ycpA7qrkGFEsIx_69IIHhDhtU/edit?usp=sharing
 
 ## Desenvolvedores
 Guilherme Pedrosa - https://github.com/gpedrosadev \
@@ -23,7 +24,6 @@ Kleuber Jacob - https://github.com/KleuberJacob
 - Login de administradores 
 - Geração de relátorio de pedidos 
 - Inserção de novos produtos no estoque 
-
 
 ## Tecnologias Utilizadas
 <img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" />
