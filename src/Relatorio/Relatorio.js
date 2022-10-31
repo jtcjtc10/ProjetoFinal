@@ -6,7 +6,7 @@ import HeaderADM from "../Header/HeaderADM";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 
-export default function Relatorio(props) {
+export default function Relatorio() {
     const [logado, setLogado] = useState();
     const [tDataInicial, setTxtDataInicial] = React.useState("");
     const [tDataFinal, setTxtDataFinal] = React.useState("");
@@ -17,33 +17,6 @@ export default function Relatorio(props) {
             setLogado(0)
         }
     }
-
-    const saida = () => {
-        props.logadoFunc(0)
-        window.localStorage.setItem("logado", false)
-        setLogado(0)
-        window.localStorage.removeItem("logado")
-        window.localStorage.removeItem("idUsuario")
-        MySwal.fire({
-            title: 'Aguardamos seu retorno!',
-            text: 'Agradecemos por utilizar a plataforma.',
-            icon: 'success',
-            allowEscapeKey: false,
-            allowOutsideClick: false
-        }).then(() => {
-            setTimeout(() => {
-                window.location.href = "/"
-            }, 1000)
-        })
-    }
-
-    useEffect(() => {
-        if (props.login == 1) {
-            setLogado(1)
-        } else {
-            setLogado(0)
-        }
-    }, [saida])
 
     useEffect(() => {
         console.log("testando useeffect")
