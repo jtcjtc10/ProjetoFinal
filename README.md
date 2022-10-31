@@ -9,14 +9,6 @@ João Victor Ferreira - https://github.com/jtcjtc10 \
 Kayane Costa Martins - https://github.com/kayane-developer \
 Kleuber Jacob - https://github.com/KleuberJacob 
 
-
-## Tecnologias Utilizadas
-<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" />
-<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/mysql/mysql-original-wordmark.svg"/>
-<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original-wordmark.svg" />
-<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" />
-<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original-wordmark.svg" />
-
 ## Funcionalidades do Site
 
 - Cadastro de usuários 
@@ -31,3 +23,11 @@ Kleuber Jacob - https://github.com/KleuberJacob
 - Login de administradores 
 - Geração de relátorio de pedidos 
 - Inserção de novos produtos no estoque 
+
+
+## Tecnologias Utilizadas
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" />
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/mysql/mysql-original-wordmark.svg"/>
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original-wordmark.svg" />
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" />
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original-wordmark.svg" />
