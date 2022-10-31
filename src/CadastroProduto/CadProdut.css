@@ -74,3 +74,8 @@ legend{
     font-weight: bold;
     font-family: 'Montserrat';
 }
+
+.tipoTenisCadastro{
+    width: 10rem;
+    margin-left: .5rem;
+}

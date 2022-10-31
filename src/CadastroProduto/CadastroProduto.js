@@ -37,7 +37,6 @@ export default function CadastroProduto() {
     const MySwal = withReactContent(Swal);
 
     useEffect(() => {
-        console.log("testando useeffect")
         if (window.localStorage.getItem("logado") == "true") {
             setLogado(1)
         } else if (window.localStorage.getItem("logado") == "false") {
@@ -47,6 +46,8 @@ export default function CadastroProduto() {
 
     const cadastrarProduto = (e) => {
         e.preventDefault();
+
+        // console.log(form)
 
         if (tNomeProduto === "" || tTipoProduto === "" || tDescricao === "" || tPreco === "" || tTamanho === "" || tQuantidade === "" || tImagem === "") {
             MySwal.fire({
@@ -58,29 +59,26 @@ export default function CadastroProduto() {
             });
         } else {
             axios.post("http://localhost:8080/api/cadastroProduto", form)
-                .then((response) => {
-                    console.log(response.data)
-                    if (response.data === true) {
-                        MySwal.fire({
-                            title: 'Produto cadastrado!',
-                            icon: 'success',
-                            allowEscapeKey: false,
-                            allowOutsideClick: false
-                        })
-                        
-                    } else if (response.data === false) {
-                        MySwal.fire({
-                            title: 'Atenção!',
-                            text: 'Esse produto já existe!',
-                            icon: 'error'
-                        });
-                    }
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
-            // }
-            // });
+            .then((response) => {
+                console.log(response.data)
+                if (response.data === true) {
+                    MySwal.fire({
+                        title: 'Produto cadastrado com sucesso!',
+                        icon: 'success',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false
+                    })                        
+                } else if (response.data === false) {
+                    MySwal.fire({
+                        title: 'Atenção!',
+                        text: 'Esse produto já existe!',
+                        icon: 'error'
+                    });
+                }
+            })
+            .catch((error) => {
+                console.log(error)
+            })            
         }
 
     }
@@ -103,12 +101,13 @@ export default function CadastroProduto() {
                                                     onChange={(e) => setTxtNomeProduto(e.target.value)} value={tNomeProduto} placeholder="Nome" />
                                             </div>
                                         </div>
-                                        <div className="row mb-2 justify-content-center">
-                                            <label for="tipoProduto" className="col-sm-12 col-form-label label-cadastro1">Tipo</label>
-                                            <div className="col-sm-12">
-                                                <input type="text" className="form-control input-cadastro1" id="tipoProduto"
-                                                    onChange={(e) => setTxtTipoProduto(e.target.value)} value={tTipoProduto} placeholder="Tipo" />
-                                            </div>
+                                        <div className="row mb-2 justify-content-start">
+                                            <label for="tipoProduto" className="col-sm-12 col-form-label label-cadastro1">Tipo</label>                                            
+                                            <select name="tipo" className="tipoTenisCadastro" value={tTipoProduto} onChange={(e) => setTxtTipoProduto(e.target.value)}>
+                                                <option value={""}></option>
+                                                <option value={"Clássico"}>Clássico</option>
+                                                <option value={"Air Jordan"}>Air Jordan</option>                                               
+                                            </select>                                                
                                         </div>
                                         <div className="row mb-2 justify-content-center">
                                             <label for="quantidade" className="col-sm-12 col-form-label label-cadastro1">Quantidade</label>

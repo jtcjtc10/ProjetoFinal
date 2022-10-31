@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { BsFillPersonFill } from "react-icons/bs";
-import { BsFillCartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -25,7 +24,7 @@ function HeaderADM(props) {
             allowOutsideClick: false
         }).then(() => {
             setTimeout(() => {
-                window.location.href="/"
+                window.location.href="/login_adm"
             }, 1000)
         })
     }
@@ -43,8 +42,8 @@ function HeaderADM(props) {
             {logado == 1 && 
                 <div className="container-fluid backgroundHeader">
                     <div className="col-sm">
-                        <Link to={"/"}>
-                            <a className="navbar-brand" href="#"><img src="images/logo.png" className=" w-20" width={85}></img></a>
+                        <Link>
+                            <a className="navbar-brand"><img src="images/logo.png" className=" w-20" width={85}></img></a>
                         </Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>

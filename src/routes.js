@@ -16,7 +16,7 @@ function Rotas(){
             <Routes>
                 <Route path="/" exact element={<Home/>}></Route>
                 <Route path="/login" exact element={<Login/>}></Route>
-                <Route path="/loginADM" exact element={<LoginADM/>}></Route>
+                <Route path="/login_adm" exact element={<LoginADM/>}></Route>
                 <Route path="/cadastro" exact element={<Cadastro/>}></Route>
                 <Route path="/dados_pedidos" exact element={<DadosPedidos/>}></Route>
                 <Route path="/Relatorio" exact element={<Relatorio/>}></Route>

@@ -36,7 +36,7 @@ export default function LoginADM() {
         axios.post("http://localhost:8080/api/loginadm", {tLogin, tPassword})
             .then((response) => {                
                 if(response.data){
-                    window.location.href="/Relatorio"                    
+                    window.location.href="/relatorio"                    
                     window.localStorage.setItem("logado", true)    
                     window.localStorage.setItem("idUsuario", response.data)                                  
                 }else if(!response.data){
