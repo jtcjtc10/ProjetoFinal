@@ -3,7 +3,7 @@ import "./TelaADM.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-import Header from "../Header/Header";
+import HeaderADM from "../Header/HeaderADM";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 
@@ -107,7 +107,7 @@ export default function TelaADM() {
     const generateReport = () => {
         if (tDataInicial == "") {
             if (tDataFinal == "") {
-                window.open('http://localhost:8080/report/1', '_blank');
+                window.open('http://localhost:8080/api/report/1', '_blank');
             } else {
                 MySwal.fire({
                     title: 'Atenção!',
@@ -120,10 +120,10 @@ export default function TelaADM() {
                 var date = new Date();
 	            var current_date = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+ date.getDate();
                 setTxtDataFinal(current_date)
-                var url = 'http://localhost:8080/reportFilter/2/' + tDataInicial + '/' + current_date
+                var url = 'http://localhost:8080/api/reportFilter/2/' + tDataInicial + '/' + current_date
                 window.open(url, '_blank')
             } else {
-                window.open('http://localhost:8080/reportFilter/2' + tDataInicial + '/' + tDataFinal, '_blank')
+                window.open('http://localhost:8080/api/reportFilter/2' + tDataInicial + '/' + tDataFinal, '_blank')
             }
         }
     }
@@ -133,9 +133,13 @@ export default function TelaADM() {
         <>
             <div className="container-fluid bg-meus-dados2">
                 <div className="row justify-content-center">
+                <HeaderADM login={logado}/>
                     <div className="row justify-content-center section-meus-dados">
                         <div className="col-lg-5 col-md-8 col-sm-10 modal-meus-dados">
                             <h1 className="titulo-meus-dados2">Relatorio De Vendas</h1>
+
+                         
+                            
                             <div className="row col-sm-12 ms-1 mb-3 justify-content-center">
                                 <div>
                                     <h1 className="titulo-meus-dados2">Selecione o periodo</h1>

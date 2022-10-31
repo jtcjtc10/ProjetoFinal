@@ -5,6 +5,7 @@ import Home from './home/home';
 import Login from './Login/Login';
 import LoginADM from './LoginADM/LoginADM';
 import Cadastro from './Cadastro/Cadastro';
+import CadastroProduto from './CadastroProduto/CadastroProduto';
 import DadosPedidos from "./Dados&Pedidos/DadosPedidos";
 import Carrinho from "./Carrinho/Carrinho";
 import TelaADM from "./TelaADM/TelaADM";
@@ -19,7 +20,9 @@ function Rotas(){
                 <Route path="/cadastro" exact element={<Cadastro/>}></Route>
                 <Route path="/dados_pedidos" exact element={<DadosPedidos/>}></Route>
                 <Route path="/TelaADM" exact element={<TelaADM/>}></Route>
-                <Route path="/carrinho" exact element={<Carrinho/>}></Route>               
+                <Route path="/carrinho" exact element={<Carrinho/>}></Route>
+                <Route path="/cadastroProduto" exact element={<CadastroProduto/>}></Route>
+
             </Routes>
         </Router>
     )
