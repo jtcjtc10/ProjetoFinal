@@ -18,6 +18,7 @@ export default function Cadastro() {
     const [endereco, setEndereco] = useState("")
     const [cupom, setCupom] = useState("")
     const [enderecoUsuario, setEnderecoUsuario] = useState("")
+    const [observacao, setObservacao] = useState("");
     let idUsuario = window.localStorage.getItem("idUsuario");
     let objProduto = {};  
     let arrayBanco = [];
@@ -28,7 +29,8 @@ export default function Cadastro() {
         "numPedido": numPedido,
         "idUsuario": idUsuario,
         "endereco": endereco,
-        "total": total
+        "total": total,
+        "observacao": observacao
     }
 
     const getRandomNumber = () => {
@@ -249,7 +251,7 @@ export default function Cadastro() {
                                 </div>
                                 <p className="p-carrinho mb-1">Observações</p>
                                 <div className="col-sm-12">
-                                    <input type="text" className="form-control input-carrinho mb-1" />
+                                    <input type="text" value={observacao} onChange={(e) => {setObservacao(e.target.value)}} className="form-control input-carrinho mb-1" />
                                 </div>
                                 <hr />
                                 <div className="row justify-content-center">
