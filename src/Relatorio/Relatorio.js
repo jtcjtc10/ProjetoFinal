@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Relatorio.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import HeaderADM from "../Header/HeaderADM";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 
@@ -105,6 +106,7 @@ export default function Relatorio(props) {
         <>
             <div className="container-fluid bg-relatorio">
                 <div className="row justify-content-center">
+                <HeaderADM login={logado}/>
                     <div className="row justify-content-center section-relatorio">
                         <div className="col-lg-5 col-md-8 col-sm-10 modal-relatorio">
                             <h1 className="titulo-relatorio">RELATÓRIO</h1>
