@@ -27,6 +27,13 @@ export default function CadastroProduto() {
         imagem: tImagem
     }
 
+    const changeLogado = (props) => {
+        if (props === 0) {
+            console.log("changeLogado igual a 0")
+            setLogado(0)
+        }
+    }
+
     const MySwal = withReactContent(Swal);
 
     useEffect(() => {
