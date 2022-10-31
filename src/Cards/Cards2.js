@@ -181,7 +181,7 @@ function Cards2(props) {
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">{name}</h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">{item.nome_produto}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body " Style='margin: auto;'>
