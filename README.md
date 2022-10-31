@@ -1,18 +1,17 @@
-# ECommerce XMarket
+# E-Commerce XMark
+Este é um site funcional que simula uma empresa de revenda de tênis Nike chamada XMarket.
+O site é referente ao projeto final do programa Araujo Tech, uma parceria entre a Drogaria Araujo e a Gama Academy que visa contratar e treinar novos desenvolvedores back-end em Java.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Desenvolvedores
+Guilherme Pedrosa - https://github.com/gpedrosadev
+João Victor Ferreira - https://github.com/jtcjtc10
+Kayane Costa Martins - https://github.com/kayane-developer
+Kleuber Jacob - https://github.com/KleuberJacob
 
-## Available Scripts
 
-In the project directory, you can run:
+## Tecnologias Utilizadas
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 
