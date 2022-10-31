@@ -23,7 +23,6 @@ Kleuber Jacob - https://github.com/KleuberJacob
 - Realização da compra 
 - Login de administradores 
 - Geração de relátorio de pedidos 
-- Inserção de novos produtos no estoque 
 
 ## Tecnologias Utilizadas
 <img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" />
