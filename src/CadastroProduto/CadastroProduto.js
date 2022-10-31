@@ -29,54 +29,44 @@ export default function CadastroProduto() {
 
     const MySwal = withReactContent(Swal);
 
-    // const verificaCadastro = (e) => {
-    //     e.preventDefault();
+    const cadastrarProduto = (e) => {
+        e.preventDefault();
 
-    //     if (tNome === "" || tCpf === "" || tRg === "" || tEndereco === "" || tEmail === "" || tTelefone === "" || tSenha === "" || tConfirmSenha === "") {
-    //         MySwal.fire({
-    //             title: 'Atenção!',
-    //             text: 'Você deve preencher todos os campos.',
-    //             icon: 'error'
-    //         });
-    //     } else if (tSenha != tConfirmSenha) {
-    //         MySwal.fire({
-    //             title: 'Atenção!',
-    //             text: 'Senhas diferentes. Tente novamente!',
-    //             icon: 'warning'
-    //         });
-    //     } else {
-    //         axios.post("http://localhost:8080/api/cadastro", form)
-    //             .then((response) => {
-    //                 console.log(response.data)
-    //                 if (response.data == true) {
-    //                     MySwal.fire({
-    //                         title: 'Usuário cadastrado!',
-    //                         text: 'Credenciais verificadas com sucesso.',
-    //                         icon: 'success',
-    //                         allowEscapeKey: false,
-    //                         allowOutsideClick: false
-    //                     }).then((result) => {
-    //                         if (result.isConfirmed) {
-    //                             window.location.href = "/login"
-    //                         }
-    //                     });
+        if (tNomeProduto === "" || tTipoProduto === "" || tDescricao === "" || tPreco === "" || tTamanho === "" || tQuantidade === "" || tImagem === "") {
+            MySwal.fire({
+                title: 'Atenção!',
+                text: 'Você deve preencher todos os campos.',
+                icon: 'error',
+                allowEscapeKey: false,
+                allowOutsideClick: false
+            });
+        } else {
+            axios.post("http://localhost:8080/api/cadastroProduto", form)
+                .then((response) => {
+                    console.log(response.data)
+                    if (response.data === true) {
+                        MySwal.fire({
+                            title: 'Produto cadastrado!',
+                            icon: 'success',
+                            allowEscapeKey: false,
+                            allowOutsideClick: false
+                        })
+                    } else if (response.data === false) {
+                        MySwal.fire({
+                            title: 'Atenção!',
+                            text: 'Esse produto já existe!',
+                            icon: 'error'
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+            // }
+            // });
+        }
 
-    //                 } else if (response.data == false) {
-    //                     MySwal.fire({
-    //                         title: 'Atenção!',
-    //                         text: 'Os dados inseridos já se encontram sendo utilizados!',
-    //                         icon: 'error'
-    //                     });
-    //                 }
-    //             })
-    //             .catch((error) => {
-    //                 console.log(error)
-    //             })
-    //         // }
-    //         // });
-    //     }
-
-    // }
+    }
     return (
         <>
             <div className="container-fluid body-cadastro1">
@@ -147,7 +137,7 @@ export default function CadastroProduto() {
                                 </div>
                                 <div className="row justify-content-center">
                                     <div className="col-sm-6">
-                                        <button type="submit" className="mt-3 btn-login col-sm-12" onClick={""}>
+                                        <button type="submit" className="mt-3 btn-login col-sm-12" onClick={() => {cadastrarProduto()}}>
                                             <span className="btn-cadastrar1">REGISTRAR PRODUTO</span>
                                         </button>
                                     </div>
