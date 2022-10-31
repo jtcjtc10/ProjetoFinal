@@ -64,7 +64,7 @@ export default function Relatorio() {
                 if (diffInDays < 0) {
                     MySwal.fire({
                         title: 'Atenção!',
-                        text: 'O campo Data Final precisa ser mais recente que a Data Inicial.',
+                        text: 'O campo data final precisa ser mais recente que a data inicial.',
                         icon: 'warning'
                     });
                 } else {
