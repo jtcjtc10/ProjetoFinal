@@ -71,7 +71,7 @@ function HeaderADM(props) {
                                         <BsFillPersonFill size={26} color="black" />
                                     </a>
                                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <Link to={"/"} className="linkPessoa">
+                                        <Link to={"/cadastroProduto"} className="linkPessoa">
                                             <li><a className="dropdown-item" role="button">Cadastro de Produtos</a></li>
                                         </Link>
                                         <li><hr className="dropdown-divider" /></li>
