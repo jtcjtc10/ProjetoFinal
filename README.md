@@ -1,4 +1,4 @@
-# E-Commerce XMark
+# E-Commerce XMarket
 Este é um site funcional que simula uma empresa de revenda de tênis Nike chamada XMarket.
 O site é referente ao projeto final do programa Araujo Tech, uma parceria entre a Drogaria Araujo e a Gama Academy que visa contratar e treinar novos desenvolvedores back-end em Java.
 
@@ -10,8 +10,11 @@ Kleuber Jacob - https://github.com/KleuberJacob
 
 
 ## Tecnologias Utilizadas
-
-
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" />
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/v2.15.1/icons/mysql/mysql-original-wordmark.svg"/>
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original-wordmark.svg" />
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" />
+<img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original-wordmark.svg" />
 
 ### `npm test`
 
