@@ -3,7 +3,7 @@ Este é um site funcional que simula uma empresa de revenda de tênis Nike chama
 O site é referente ao projeto final do programa Araujo Tech, uma parceria entre a Drogaria Araujo e a Gama Academy que visa contratar e treinar novos desenvolvedores back-end em Java.
 
 ## Desenvolvedores
-Guilherme Pedrosa - https://github.com/gpedrosadev
+Guilherme Pedrosa - https://github.com/gpedrosadev .\
 João Victor Ferreira - https://github.com/jtcjtc10
 Kayane Costa Martins - https://github.com/kayane-developer
 Kleuber Jacob - https://github.com/KleuberJacob
