@@ -1,14 +1,13 @@
 
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import './styles.css';
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-function Cards2() {
+function Cards2(props) {
   const [tamanho, setTxtTamanho] = useState("");
-  const [quantidade, setTxtQuantidade] = useState("");
-  const [data, setData] = useState([]);
+  const [quantidade, setTxtQuantidade] = useState(""); 
   const tamanhos = [];
   const quantidades = [];
   const [listaTamanhos, setListaTamanhos] = useState(tamanhos);
@@ -21,13 +20,7 @@ function Cards2() {
   let objDoArray = {}
 
   const MySwal = withReactContent(Swal);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/static/shoes2.json')
-      .then((response) => response.json())
-      .then(setData);
-  }, []);
-
+  
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
@@ -37,8 +30,6 @@ function Cards2() {
     e.preventDefault();
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
-
-  if (!data || !data.length) return null;
 
   const addCarrinho = (id, name) => {
     if (tamanho == "" || tamanho == undefined) {
@@ -86,12 +77,10 @@ function Cards2() {
                         icon: 'warning'
                       });
                     })
-
                 }
               }).catch((error) => {
                 console.log(error);
               })
-
           } else {
             MySwal.fire({
               title: 'Que Pena!',
@@ -172,23 +161,23 @@ function Cards2() {
         <br />
       </div>
       <div className="carousel-cards2" ref={carousel}>
-        {data.map((item) => {
+        {props.arrayDeJordan.map((item) => {
           const { id, name, price, oldPrice, image } = item;
 
           return (
-            <div className="item" key={id}>
+            <div className="item" key={item.codigo_produto}>
               <div className="image">
-                <img src={image} alt={name} />
+                <img src={item.imagem_produto} alt={item.nome_produto} />
               </div>
               <div className="info">
-                <span className="name">{name}</span>
-                <span className="oldPrice">R$ {oldPrice}</span>
+                <span className="name">{item.nome_produto}</span>
+                <span className="oldPrice">R$ {item.preco_produto}</span>
                 {window.localStorage.getItem("logado") == "true" ?
-                  <button type="button" className="btn btn-outline-secondary" onClick={() => { puxarTamanhos(name) }} data-bs-toggle="modal" data-bs-target={"#staticBackdrop2" + id} >Comprar</button>
+                  <button type="button" className="btn btn-outline-secondary" onClick={() => { puxarTamanhos(item.nome_produto) }} data-bs-toggle="modal" data-bs-target={"#staticBackdrop2" + item.codigo_produto} >Comprar</button>
                   :
                   <button type="button" className="btn btn-outline-secondary" onClick={() => { deveValidar() }}>Comprar</button>
                 }
-                <div class="modal fade" id={"staticBackdrop2" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id={"staticBackdrop2" + item.codigo_produto} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
@@ -197,7 +186,7 @@ function Cards2() {
                       </div>
                       <div class="modal-body " Style='margin: auto;'>
                         <div className="image1">
-                          <img className='imagemodal' src={image} alt={name} />
+                          <img className='imagemodal' src={item.imagem_produto} alt={item.nome_produto} />
                         </div>
                         <div className="tamanhobutton">
                           <div className="texttamanho"><h4>Selecione o Tamanho</h4></div>
@@ -220,7 +209,7 @@ function Cards2() {
                       </div>
                       <div class="modal-footer" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setVazio()}}>Fechar</button>
-                        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button>                        
+                        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" onClick={() => {addCarrinho(item.codigo_produto, item.nome_produto)}} >Adicionar ao Carrinho</button>                        
                       </div>
                     </div>
                   </div>

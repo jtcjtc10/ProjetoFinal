@@ -5,12 +5,17 @@ import Footer from "../Footer/Footer";
 import Cards from "../Cards/Cards";
 import Cards2 from "../Cards/Cards2";
 
+import axios from "axios";
+
 export default function Home() {
     const [logado, setLogado] = useState();
+    const [arrayProdutosClassico, setArrayProdutosClassico] = useState([])
+    const [arrayProdutosJordan, setArrayProdutosJordan] = useState([])
+    const arrProdClassico = []
+    const arrProdJordan = []
 
     const changeLogado = (props) => {
         if(props === 0){
-            console.log("changeLogado igual a 0")
             setLogado(0)
         }
     }
@@ -21,11 +26,34 @@ export default function Home() {
         } else if(window.localStorage.getItem("logado") == "false"){
             setLogado(0)
         }
-    }, [])    
+    }, []) 
+    
+    const chamada = () => {
+        axios.get("http://localhost:8080/api/retornoProdutos")
+        .then((response) => {                
+            response.data.forEach(element => {
+                if(element.tipo_produto === "Clássico"){
+                    if(element.modelo_unico !== null){
+                        arrProdClassico.push(element)  
+                    }                    
+                }else if(element.tipo_produto == "Air Jordan"){
+                    arrProdJordan.push(element)
+                }
+            });  
+            setArrayProdutosClassico(arrProdClassico)
+            setArrayProdutosJordan(arrProdJordan)
+        }).catch((error) => {
+            console.log(error);
+        })           
+    }
+
+    useEffect(() => {
+        chamada()                   
+    },[])
 
     return (
         <>
-            <div className="container-fluid body-home">
+            <div className="container-fluid body-home">                
                 <div className="row justify-content-center">
                     <Header login={logado} logadoFunc={changeLogado}/>
                     <div className=" main1">
@@ -42,10 +70,10 @@ export default function Home() {
                     </div>
                     <div>
                         <div id="classicSection" className="row justify-content-center align-items-center card1 ">
-                            <Cards />
+                            <Cards arrayDeClassicos={arrayProdutosClassico}/>
                         </div>
                         <div id="jordanSection" className="row justify-content-center align-items-center card2 ">
-                            <Cards2 />
+                            <Cards2 arrayDeJordan={arrayProdutosJordan}/>
                         </div>
                         <div className=" row main2">
                             <div className=" main1-2">

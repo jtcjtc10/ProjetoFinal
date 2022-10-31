@@ -22,7 +22,6 @@ function Rotas(){
                 <Route path="/Relatorio" exact element={<Relatorio/>}></Route>
                 <Route path="/carrinho" exact element={<Carrinho/>}></Route>
                 <Route path="/cadastroProduto" exact element={<CadastroProduto/>}></Route>
-
             </Routes>
         </Router>
     )

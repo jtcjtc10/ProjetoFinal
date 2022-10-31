@@ -16,7 +16,6 @@ export default function CadastroProduto() {
     const [tQuantidade, setTxtQuantidade] = React.useState("");
     const [tImagem, setTxtImagem] = React.useState("");
 
-
     const form = {
         nome: tNomeProduto,
         tipo: tTipoProduto,

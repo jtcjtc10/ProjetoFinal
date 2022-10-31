@@ -1,13 +1,12 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import './styles.css';
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-function Cards() {
+function Cards(props) {
   const [tamanho, setTxtTamanho] = useState("");
   const [quantidade, setTxtQuantidade] = useState("");
-  const [data, setData] = useState([]);
   const tamanhos = [];
   const quantidades = [];
   const [listaTamanhos, setListaTamanhos] = useState(tamanhos);
@@ -20,13 +19,7 @@ function Cards() {
   let objDoArray = {}
 
   const MySwal = withReactContent(Swal);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/static/shoes.json')
-      .then((response) => response.json())
-      .then(setData);
-  }, []);
-
+  
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
@@ -36,8 +29,6 @@ function Cards() {
     e.preventDefault();
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
-
-  if (!data || !data.length) return null;
 
   const addCarrinho = (id, name) => {
     if (tamanho == "" || tamanho == undefined) {
@@ -58,7 +49,7 @@ function Cards() {
       for (let i = 0; i < arrayObj.length; i++) {
         if (arrayObj[i].tamanho == tamanho) {
           if (arrayObj[i].quantidade >= quantidade) {
-            arrayObj[i].quantidade = arrayObj[i].quantidade - quantidade;
+              arrayObj[i].quantidade = arrayObj[i].quantidade - quantidade;
 
             axios.post("http://localhost:8080/api/addExisteCarrinho", { idUsuario, name, quantidade, tamanho })
               .then((response) => {
@@ -92,7 +83,6 @@ function Cards() {
               }).catch((error) => {
                 console.log(error);
               })
-
           } else {
             MySwal.fire({
               title: 'Que Pena!',
@@ -168,37 +158,35 @@ function Cards() {
   return (
     <div className="container containerCardHeight">
       <div className="logo text-center">
-        <br /><br />
+        <br/><br/>
         <h1 className="title-card">CLÁSSICOS DA NIKE</h1>
         <br />
       </div>
       <div className="carousel" ref={carousel}>
-        {data.map((item) => {
-          const { id, name, price, oldPrice, image } = item;
-
+        {props.arrayDeClassicos.map((item) => {
           return (
-            <div className="item" key={id}>
+            <div className="item" key={item.codigo_produto}>
               <div className="image">
-                <img src={image} alt={name} />
+                <img src={item.imagem_produto} alt={item.nome_produto} />
               </div>
               <div className="info">
-                <span className="name">{name}</span>
-                <span className="oldPrice">R$ {oldPrice}</span>
+                <span className="name">{item.nome_produto}</span>
+                <span className="oldPrice">R$ {item.preco_produto}</span>
                 {window.localStorage.getItem("logado") == "true" ?
-                  <button type="button" className="btn btn-outline-secondary" onClick={() => { puxarTamanhos(name) }} data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + id} >Comprar</button>
+                  <button type="button" className="btn btn-outline-secondary" onClick={() => { puxarTamanhos(item.nome_produto) }} data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + item.codigo_produto} >Comprar</button>
                   :
                   <button type="button" className="btn btn-outline-secondary" onClick={() => { deveValidar() }}>Comprar</button>
                 }
-                <div class="modal fade" id={"staticBackdrop" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id={"staticBackdrop" + item.codigo_produto} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">{name}</h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">{item.nome_produto}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => {setVazio()}}></button>
                       </div>
                       <div class="modal-body " Style='margin: auto;'>
                         <div className="image1">
-                          <img className='imagemodal' src={image} alt={name} />
+                          <img className='imagemodal' src={item.imagem_produto} alt={item.nome_produto} />
                         </div>
                         <div className="tamanhobutton">
                           <div className="texttamanho"><h4>Selecione o Tamanho</h4></div>
@@ -221,7 +209,7 @@ function Cards() {
                       </div>
                       <div class="modal-footer" Style='background-image: linear-gradient(to right, bisque ,  aliceblue );'>
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onClick={() => {setVazio()}}>Fechar</button>
-                        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" onClick={() => {addCarrinho(id, name)}} >Adicionar ao Carrinho</button>                        
+                        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" onClick={() => {addCarrinho(item.codigo_produto, item.nome_produto)}} >Adicionar ao Carrinho</button>                        
                       </div>
                     </div>
                   </div>
