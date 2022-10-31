@@ -24,9 +24,6 @@ Kleuber Jacob - https://github.com/KleuberJacob
 - Geração de relátorio de pedidos 
 - Inserção de novos produtos no estoque 
 
-## Modelo do Banco de Dados
-<img src= "C:\Users\00761168\Desktop\ProjetoXMarket"/>
-
 
 ## Tecnologias Utilizadas
 <img align="left" alt="kaygithub" height="60" width="60" src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg" />
