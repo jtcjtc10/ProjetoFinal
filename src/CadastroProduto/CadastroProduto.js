@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../CadastroProduto/CadProdut.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -8,6 +8,7 @@ import HeaderADM from "../Header/HeaderADM";
 import Footer from "../Footer/Footer";
 
 export default function CadastroProduto() {
+    const [logado, setLogado] = useState();
     const [tNomeProduto, setTxtNomeProduto] = React.useState("");
     const [tTipoProduto, setTxtTipoProduto] = React.useState("");
     const [tDescricao, setTxtDescricao] = React.useState("");
@@ -16,6 +17,12 @@ export default function CadastroProduto() {
     const [tQuantidade, setTxtQuantidade] = React.useState("");
     const [tImagem, setTxtImagem] = React.useState("");
 
+    const changeLogado = (props) => {
+        if (props === 0) {
+            console.log("changeLogado igual a 0")
+            setLogado(0)
+        }
+    }
 
     const form = {
         nome: tNomeProduto,
@@ -28,6 +35,15 @@ export default function CadastroProduto() {
     }
 
     const MySwal = withReactContent(Swal);
+
+    useEffect(() => {
+        console.log("testando useeffect")
+        if (window.localStorage.getItem("logado") == "true") {
+            setLogado(1)
+        } else if (window.localStorage.getItem("logado") == "false") {
+            setLogado(0)
+        }
+    }, [])
 
     const cadastrarProduto = (e) => {
         e.preventDefault();
@@ -71,7 +87,7 @@ export default function CadastroProduto() {
         <>
             <div className="container-fluid body-cadastro1">
                 <div className="row justify-content-center">
-                    <HeaderADM />
+                    <HeaderADM login={logado} logadoFunc={changeLogado}/>
                     <div className="row justify-content-center align-items-center section-cadastro">
                         <div className="col-lg-6 col-md-8 col-sm-10 modal-cadastro1 text-center">
                             <h1 className="titulo-login">Cadastro de Produto</h1>
