@@ -115,7 +115,14 @@ export default function DadosPedidos() {
                             window.location.href= "http://localhost:3000/dados_pedidos";
                         }
                     });         
-                }
+                }else{
+                    MySwal.fire({
+                        title: 'Email inválido!',
+                        text: 'O email inserido já se encontra sendo utilizado!',
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false
+                    })                }
             }).catch((error) =>{
                 console.log(error)
             });

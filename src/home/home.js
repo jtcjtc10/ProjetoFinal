@@ -56,12 +56,12 @@ export default function Home() {
             <div className="container-fluid body-home">                
                 <div className="row justify-content-center">
                     <Header login={logado} logadoFunc={changeLogado}/>
-                    <div className=" main1">
-                        <div className=" main1-1">
-                            <img className="img1" src="/images/jordan1-crimson.png" />
+                    <div className="row col-sm-12 main1 text-center">
+                        <div className="row col-sm-12 col-md-6 main1-1 text-center">
+                            {/* <img className="img1" src="/images/jordan1-crimson.png" /> */}
                         </div>
-                        <div className=" main1-2">
-                            <div className="text1">
+                        <div className="row col-sm-12 col-md-6 main1-2 text-center text-align-center">
+                            <div className="row col-sm-12 text-center text-align-center">
                                 <h2>Nike Air Jordan Retro On!</h2>
                                 <h4>Cores Vivas estão no Nosso DNA</h4>
                                 <h4>Conheça nossos modelos</h4>
@@ -75,16 +75,16 @@ export default function Home() {
                         <div id="jordanSection" className="row justify-content-center align-items-center card2 ">
                             <Cards2 arrayDeJordan={arrayProdutosJordan}/>
                         </div>
-                        <div className=" row main2">
-                            <div className=" main1-2">
-                                <div className="text1">
+                        <div className="row col-sm-12 main2 text-center">
+                            <div className="row col-sm-12 col-md-6 main1-2 text-center text-align-center">
+                                <div className="row col-sm-12 text-center text-align-center">
                                     <h2>Os Melhores Modelos!</h2>
                                     <h4>Autencidade Garantida Pela Nike</h4>
                                     <h4>Compre Agora</h4>
                                 </div>
                             </div>
-                            <div className=" main1-1">
-                                <img className="img2" src="/images/jordan1-orange.png" />
+                            <div className="row col-sm-12 col-md-6 main2-1 text-center">
+                                {/* <img className="img2" src="/images/jordan1-orange.png" /> */}
                             </div>                            
                         </div>
                     </div>

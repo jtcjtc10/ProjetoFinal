@@ -20,17 +20,20 @@
     
 }
 .main1-1{  
-    
-    width: 50%;
-    display: inline-block;    
-    
+    background-image: url("../../public/images/jordan1-crimson.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.main2-1{  
+    background-image: url("../../public/images/jordan1-orange.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .main1-2{ 
-    display: inline-block;  
-    width: 50%;
+    display: inline-block;
     text-align: center;  
-    
-    
 }
 .img1{
     height: auto;
@@ -42,6 +45,11 @@
 }
 .text1{
     margin-top: 25%;
+}
+.text-align-center{
+    align-items: center !important;
+    align-content: center !important;
+    align-self: center !important;
 }
 .main2{
     height: 500px;

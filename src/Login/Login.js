@@ -81,7 +81,6 @@ export default function Login() {
                                     </div>
                                 </div>
                             </form>
-                            <a href="#" className="esqueci-senha-login">Esqueci minha senha</a>
                             <a href="http://localhost:3000/cadastro" className="cadastre-se-login">Não tem uma conta? Cadastre-se já!</a>
                             <a href="http://localhost:3000/loginADM" className="cadastre-se-login">É um Administrador? Clique Aqui.</a>
                         </div>

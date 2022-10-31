@@ -11,6 +11,7 @@ function Footer() {
                 <div class="col-8">
                     <div className="d-flex justify-content-center">
                         <span className="spanTextFooter">
+                            email de contato: atendimento@xmarket.com <br/>
                             &copy;2022 XMarket. Todos os direitos reservados.
                         </span>                            
                     </div>
